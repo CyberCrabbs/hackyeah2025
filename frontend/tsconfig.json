@@ -13,6 +13,5 @@
       "@pages/*": ["pages/*"]
     }
   },
-  "include": ["src"],
-  "exclude": ["src/**/*.js"]
+  "include": ["src"]
 }
