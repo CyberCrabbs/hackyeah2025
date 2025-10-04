@@ -12,10 +12,11 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["AuthServer/AuthServer/AuthServer.csproj", "AuthServer/AuthServer/"]
-RUN dotnet restore "./AuthServer/AuthServer/AuthServer.csproj"
+
+COPY ["AuthServer.csproj", "./"]
+RUN dotnet restore "./AuthServer.csproj"
+
 COPY . .
-WORKDIR "/src/AuthServer/AuthServer"
 RUN dotnet build "./AuthServer.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage
@@ -31,7 +32,7 @@ ENTRYPOINT ["dotnet", "AuthServer.dll"]
 
 #copy migration bundle
 WORKDIR /app
-COPY --from=build /app/publish .
+COPY --from=publish /app/publish .
 
 #run migration bundle
 ENTRYPOINT ./efbundle.exe $MIGRATION
