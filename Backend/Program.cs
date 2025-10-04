@@ -23,6 +23,8 @@ namespace Backend
 
             var app = builder.Build();
 
+            app.UseWebSockets();
+
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
@@ -35,6 +37,7 @@ namespace Backend
             app.UseAuthorization();
 
             Endpoints.Events.Register(app);
+            Endpoints.Chats.Register(app);
 
             app.Run();
         }
