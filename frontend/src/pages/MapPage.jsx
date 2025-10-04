@@ -9,7 +9,7 @@ const MapPage = () => {
   const defaultPosition = [50.0647, 19.945];
 
   useEffect(() => {
-    fetch("https://localhost:32771/api/v1/event/map/get")
+    fetch("https://localhost:7057/api/v1/event/map/get")
       .then(res => res.json())
       .then(data => {
         const mappedData = data.map(e => ({
