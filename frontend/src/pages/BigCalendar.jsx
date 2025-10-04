@@ -35,7 +35,7 @@ export default function BigCalendar() {
         defaultDate={new Date()}
         defaultView="month"
         events={eventsData}
-        style={{ height: "100vh"}}
+        style={{ height: "100vh", width: "90vw" }}
         onSelectEvent={(event) => alert(event.title)}
         onSelectSlot={handleSelect}
         />
