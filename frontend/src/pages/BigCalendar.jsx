@@ -11,19 +11,18 @@ export default function BigCalendar() {
   const [eventsData, setEventsData] = useState([]);
 
   useEffect(() => {
-    fetch("/api/v1/event/get")
-      .then(res => res.json())
-      .then(data => {
-        // Map backend events to react-big-calendar format
-        setEventsData(
-          data.map(e => ({
-            title: e.name,
-            start: new Date(e.start),
-            end: new Date(e.end),
-            allDay: false
-          }))
-        );
-      });
+	fetch("https://localhost:32769/api/v1/event/get")
+	  .then(res => res.json())
+	  .then(data => {
+		setEventsData(
+		  data.map(e => ({
+			title: e.name,
+			start: new Date(e.start),
+			end: new Date(e.end),
+			allDay: false
+		  }))
+		);
+	  });
   }, []);
 
   const handleSelect = ({ start, end }) => {

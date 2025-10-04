@@ -9,7 +9,7 @@ namespace Backend
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+            builder.Services.AddCors();
             StartupHelper.RegisterAuth(builder.Services);
             StartupHelper.RegisterSwagger(builder.Services);
             StartupHelper.RegisterServices(builder.Services);
@@ -30,6 +30,7 @@ namespace Backend
                 app.UseSwaggerUI();
             }
 
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseHttpsRedirection();
             app.UseAuthorization();
 
