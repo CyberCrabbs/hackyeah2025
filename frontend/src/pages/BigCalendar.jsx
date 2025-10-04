@@ -23,12 +23,14 @@ export default function BigCalendar() {
         const data = await res.json();
 
         const formattedEvents = data.map((e) => ({
-          id: e.Id, // ważne: dodaj ID, żeby można było odwołać się do eventu
           title: e.Name,
+          description: e.Description,
           start: new Date(e.Start),
           end: new Date(e.End),
           allDay: false,
-          description: e.Description || "", // dodatkowe dane
+          latitude: e.latitude,
+          longitude: e.Longnitude,
+          guid: e.Guid,
         }));
 
         setEventsData(formattedEvents);
@@ -62,7 +64,7 @@ export default function BigCalendar() {
         defaultDate={new Date()}
         defaultView="month"
         events={eventsData}
-        style={{ height: "100vh", width: "90vw", }}
+        style={{ height: "100vh", width: "90vw" }}
         onSelectEvent={(event) => {
           setSelectedEvent(event); // <-- zapisujemy event do state
           setIsOpen(true);
