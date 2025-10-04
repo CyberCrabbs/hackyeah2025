@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Net.WebSockets;
 using System.Reflection;
 using System.Text;
+using System.Text.Json;
 
 namespace Backend.Services
 {
@@ -19,13 +20,15 @@ namespace Backend.Services
         {
             if (connections.TryGetValue(userId, out var socket) && socket.State == WebSocketState.Open)
             {
-                var bytes = Encoding.UTF8.GetBytes(message.content);
+                var json = JsonSerializer.Serialize(message);
+                var bytes = Encoding.UTF8.GetBytes(json);
 
                 AddMessage(userId, message);
 
                 await socket.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, CancellationToken.None);
             }
         }
+
         public static WebSocket? GetSocket(string userId)
         {
             return connections.TryGetValue(userId, out var socket) ? socket : null;
@@ -46,7 +49,7 @@ namespace Backend.Services
         public static async Task<Message> ProcessMessageAsync(Message message)
         {
             await Task.Delay(1);
-            return new Message { sender = "bot", content = "123123" };
+            return new Message { sender = "bot", content = message.content+"123123" };
         }
 
 

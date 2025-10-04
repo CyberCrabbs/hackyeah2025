@@ -4,15 +4,18 @@ import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import Modal from "../components/Modal";
+import { useNavigate } from "react-router-dom";
+
 
 moment.locale("en-GB");
 const localizer = momentLocalizer(moment);
 
 export default function BigCalendar() {
+
   const [isOpen, setIsOpen] = useState(false);
   const [eventsData, setEventsData] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null); // <-- Nowy state
-
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchEvents = async () => {
       try {
@@ -23,12 +26,14 @@ export default function BigCalendar() {
         const data = await res.json();
 
         const formattedEvents = data.map((e) => ({
-          id: e.Id, // ważne: dodaj ID, żeby można było odwołać się do eventu
           title: e.Name,
+          description: e.Description,
           start: new Date(e.Start),
           end: new Date(e.End),
           allDay: false,
-          description: e.Description || "", // dodatkowe dane
+          latitude: e.latitude,
+          longitude: e.Longnitude,
+          guid: e.Guid,
         }));
 
         setEventsData(formattedEvents);
@@ -41,16 +46,8 @@ export default function BigCalendar() {
   }, []);
 
   const handleSelect = ({ start, end }) => {
-    const title = window.prompt("New Event name");
-    if (title)
-      setEventsData([
-        ...eventsData,
-        {
-          start,
-          end,
-          title,
-        },
-      ]);
+    console.log(start, end);
+    navigate(`/create-event/${start}/${end}`);
   };
 
   return (
@@ -62,7 +59,7 @@ export default function BigCalendar() {
         defaultDate={new Date()}
         defaultView="month"
         events={eventsData}
-        style={{ height: "100vh", width: "90vw", }}
+        style={{ height: "100vh", width: "90vw" }}
         onSelectEvent={(event) => {
           setSelectedEvent(event); // <-- zapisujemy event do state
           setIsOpen(true);

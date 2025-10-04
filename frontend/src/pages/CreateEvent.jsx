@@ -1,14 +1,20 @@
 import Layout from "layout/Layout";
-import React, {useState} from "react";
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 
 const CreateEvent = () => {
-      const [formData, setFormData] = useState({
-    name: "Hackathon 2025",
-    description: "Big coding event.",
-    start: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString().slice(0,16), // tomorrow
-    end: new Date(Date.now() + 2*24*60*60*1000).toISOString().slice(0,16), // day after tomorrow
-    longitude: 19.9450,
-    latitude: 50.0647,
+  const { start: startParam, end: endParam } = useParams();
+
+  const [formData, setFormData] = useState({
+    name: "",
+    description: "",
+    start: startParam
+      ? new Date(startParam).toISOString().slice(0, 16)
+      : undefined,
+    end: endParam
+      ? new Date(endParam).toISOString().slice(0, 16)
+      : undefined,
+
   });
 
   const [loading, setLoading] = useState(false);
@@ -16,7 +22,7 @@ const CreateEvent = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
@@ -54,87 +60,83 @@ const CreateEvent = () => {
       setLoading(false);
     }
   };
+
   return (
     <Layout>
-      
-
       <h3 className="text-lg font-semibold mb-2">Nowe wydarzenie</h3>
-      <form id="createEventForm" className=" m-auto " handleSubmit={handleSubmit} >
-        <div>
-          <label class="block mb-1 font-medium">Nazwa wydarzenia</label>
+      <form
+        id="createEventForm"
+        className="m-auto"
+        onSubmit={handleSubmit}
+      >
+        <div className="mb-3">
+          <label className="block mb-1 font-medium">Nazwa wydarzenia</label>
           <input
             type="text"
             name="name"
-            class="w-full border border-gray-300 rounded px-3 py-2"
+            className="w-full border border-gray-300 rounded px-3 py-2"
             required
-            />
+            value={formData.name}
+            onChange={handleChange}
+          />
         </div>
-        <div>
-          <label class="block mb-1 font-medium">Opis</label>
+
+        <div className="mb-3">
+          <label className="block mb-1 font-medium">Opis</label>
           <textarea
             name="description"
-            class="w-full border border-gray-300 rounded px-3 py-2"
+            className="w-full border border-gray-300 rounded px-3 py-2"
             rows="2"
             required
-            ></textarea>
+            value={formData.description}
+            onChange={handleChange}
+          ></textarea>
         </div>
-        <div>
-          <label class="block mb-1 font-medium">Data rozpoczęcia</label>
+
+        <div className="mb-3">
+          <label className="block mb-1 font-medium">Data rozpoczęcia</label>
           <input
             type="datetime-local"
             name="start"
-            class="w-full border border-gray-300 rounded px-3 py-2"
+            className="w-full border border-gray-300 rounded px-3 py-2"
             required
-            />
+            value={formData.start}
+            onChange={handleChange}
+          />
         </div>
-        <div>
-          <label class="block mb-1 font-medium">Data zakończenia</label>
+
+        <div className="mb-3">
+          <label className="block mb-1 font-medium">Data zakończenia</label>
           <input
             type="datetime-local"
             name="end"
-            class="w-full border border-gray-300 rounded px-3 py-2"
+            className="w-full border border-gray-300 rounded px-3 py-2"
             required
-            />
+            value={formData.end}
+            onChange={handleChange}
+          />
         </div>
-        <div>
-          <label class="block mb-1 font-medium">
-            Długość geograficzna (Longitude)
-          </label>
-          <input
-     
-     name="longitude"
-     class="w-full border border-gray-300 rounded px-3 py-2"
-     required
-     />
-        </div>
-        <div>
-          <label class="block mb-1 font-medium">
-            Szerokość geograficzna (Latitude)
-          </label>
-          <input
-            
-            name="latitude"
-            class="w-full border border-gray-300 rounded px-3 py-2"
-            required
-            />
-        </div>
+
+        
+
+        {message && <p className="mb-3 text-red-600">{message}</p>}
+
         <div className="flex justify-end">
           <button
             type="submit"
             className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-            >
-            Dodaj
+            disabled={loading}
+          >
+            {loading ? "Dodawanie..." : "Dodaj"}
           </button>
           <a
             href="/events"
             className="ml-2 bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500"
-            >
+          >
             Anuluj
           </a>
         </div>
       </form>
-     
-            
     </Layout>
   );
 };

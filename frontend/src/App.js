@@ -21,6 +21,7 @@ function App() {
         <Route path="/chat" element={<Chat />} />
         <Route path="/events" element={<EventPage />} />
         <Route path="/create-event" element={<CreateEvent />} />
+        <Route path="/create-event/:start/:end" element={<CreateEvent />} />
       </Routes>
     </BrowserRouter>
   );
