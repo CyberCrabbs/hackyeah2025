@@ -4,15 +4,18 @@ import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import Modal from "../components/Modal";
+import { useNavigate } from "react-router-dom";
+
 
 moment.locale("en-GB");
 const localizer = momentLocalizer(moment);
 
 export default function BigCalendar() {
+
   const [isOpen, setIsOpen] = useState(false);
   const [eventsData, setEventsData] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null); // <-- Nowy state
-
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchEvents = async () => {
       try {
@@ -43,16 +46,8 @@ export default function BigCalendar() {
   }, []);
 
   const handleSelect = ({ start, end }) => {
-    const title = window.prompt("New Event name");
-    if (title)
-      setEventsData([
-        ...eventsData,
-        {
-          start,
-          end,
-          title,
-        },
-      ]);
+    console.log(start, end);
+    navigate(`/create-event/${start}/${end}`);
   };
 
   return (
