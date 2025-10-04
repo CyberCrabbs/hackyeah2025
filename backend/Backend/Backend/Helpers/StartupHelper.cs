@@ -1,4 +1,6 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using Backend.Interface;
+using Backend.Services;
+using Microsoft.OpenApi.Models;
 using OpenIddict.Validation.AspNetCore;
 
 namespace Backend.Helpers
@@ -60,6 +62,11 @@ namespace Backend.Helpers
                     return version?.ToLower() == docName.ToLower();
                 });
             });
+        }
+
+        internal static void RegisterServices(IServiceCollection serviceCollection)
+        {
+            serviceCollection.AddScoped<IEventService, MockEventService>();
         }
     }
 }
