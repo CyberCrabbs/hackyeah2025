@@ -1,7 +1,7 @@
 services:
-  db:
+  auth-db:
     image: postgres:15-alpine
-    container_name: kindworks_db
+    container_name: auth-db
     restart: always
     environment:
       POSTGRES_DB: kindworks_auth
@@ -19,15 +19,15 @@ services:
     networks:
       - kindworks_network
 
-  db-migrations:
+  auth-db-migrations:
     build:
-      context: ./backend/Backend
-      dockerfile: AuthServer/AuthServer/Dockerfile.migrations
-    container_name: kindworks_db_migrations
+      context: ./AuthServer
+      dockerfile: Dockerfile.migrations
+    container_name:  auth-db-migrations
     entrypoint: ["/app/efbundle"]
-    command: ["--connection", "Host=db;Port=5432;Database=kindworks_auth;Username=kindworks-user;Password=SuperSecurePassword123"]
+    command: ["--connection", "Host=auth-db;Port=5432;Database=kindworks_auth;Username=kindworks-user;Password=SuperSecurePassword123"]
     depends_on:
-      db:
+      auth-db:
         condition: service_healthy
     networks:
       - kindworks_network
@@ -35,25 +35,85 @@ services:
 
   auth-server:
     build:
-      context: ./backend/Backend/AuthServer/AuthServer
+      context: ./AuthServer
       dockerfile: Dockerfile
     container_name: kindworks_auth_server
     ports:
-      - "8080:8080"  # HTTP
+      - "8081:8080"  # HTTP
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
       - ASPNETCORE_URLS=http://+:8080
-      - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=kindworks_auth;Username=kindworks-user;Password=SuperSecurePassword123
+      - ConnectionStrings__DefaultConnection=Host=auth-db;Port=5432;Database=kindworks_auth;Username=kindworks-user;Password=SuperSecurePassword123
     depends_on:
-      db-migrations:
+      auth-db-migrations:
         condition: service_completed_successfully
     networks:
       - kindworks_network
     restart: unless-stopped
 
+
+  api-db:
+    image: postgres:15-alpine
+    container_name: api-db
+    restart: always
+    environment:
+      POSTGRES_DB: apidb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5632:5432"
+    volumes:
+      - api_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d apidb"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - kindworks_network
+
+  api-db-migrations:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile.migrations
+    container_name: api-db-migrations
+    entrypoint: ["/app/efbundle"]
+    command: ["--connection", "Host=api-db;Port=5432;Database=apidb;Username=postgres;Password=postgres"]
+    depends_on:
+      api-db:
+        condition: service_healthy
+    networks:
+      - kindworks_network
+    restart: on-failure
+
+  api-server:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    container_name: api-server
+    ports:
+      - "8080:8080"  # HTTP
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8081
+      - ConnectionStrings__DefaultConnection=Host=api-db;Port=5432;Database=apidb;Username=postgres;Password=postgres
+    depends_on:
+      api-db-migrations:
+        condition: service_completed_successfully
+    networks:
+      - kindworks_network
+    restart: unless-stopped
+
+
+
+
+
 volumes:
   auth_db_data:
     driver: local
+  api_db_data:
+    driver: local
+    
 
 networks:
   kindworks_network:

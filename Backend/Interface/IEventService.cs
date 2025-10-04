@@ -5,6 +5,6 @@ namespace Backend.Interface
 {
     public interface IEventService
     {
-        public List<Events> Get(Guid userId);
+        public List<Event> Get(Guid userId);
     }
 }

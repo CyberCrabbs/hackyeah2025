@@ -7,7 +7,7 @@
         "Action": "Start"
       },
       {
-        "Path": "AuthServer\\AuthServer\\AuthServer.csproj",
+        "Path": "AuthServer\\AuthServer.csproj",
         "Action": "Start"
       }
     ]

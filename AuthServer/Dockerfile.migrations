@@ -8,12 +8,14 @@ ENV PATH="$PATH:/root/.dotnet/tools"
 
 # Copy csproj and restore
 WORKDIR /src
-COPY ["AuthServer/AuthServer/AuthServer.csproj", "AuthServer/AuthServer/"]
-RUN dotnet restore "AuthServer/AuthServer/AuthServer.csproj"
+COPY . .
+WORKDIR /src
+RUN dotnet restore
+RUN dotnet publish "AuthServer.csproj" -c $BUILD_CONFIGURATION -o /app/publish --no-restore
 
 # Copy everything else and build app
 COPY . .
-WORKDIR "/src/AuthServer/AuthServer"
+WORKDIR "/src"
 RUN dotnet publish "AuthServer.csproj" -c $BUILD_CONFIGURATION -o /app/publish --no-restore
 
 # Generate migration bundle (self-contained executable)
