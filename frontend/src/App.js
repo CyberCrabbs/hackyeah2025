@@ -15,6 +15,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/calendar" element={<BigCalendar />} />
         <Route path="/map" element={<MapPage />} />
+        <Route path="/chat" element={<Chat />} />
       </Routes>
     </BrowserRouter>
   );
