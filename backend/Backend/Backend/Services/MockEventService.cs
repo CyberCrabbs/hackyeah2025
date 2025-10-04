@@ -8,29 +8,29 @@ namespace Backend.Services
 
         public MockEventService() { }
 
-        public List<Events> Get(Guid userId)
+        public List<Event> Get(Guid userId)
         {
-            return new List<Events>
+            return new List<Event>
             {
-                new Events
+                new Event
                 {
                     Guid = Guid.NewGuid(),
                     Name = "Hackathon 2025",
                     Description = "Big coding event.",
                     Start = DateTime.UtcNow.AddDays(1),
                     End = DateTime.UtcNow.AddDays(2),
-                    Longnitude = 50.0647F,
-                    latitude = 19.9450F
+                    Longnitude =  19.9450F,
+                    latitude = 50.0647F
                 },
-                new Events
+                new Event
                 {
                     Guid = Guid.NewGuid(),
                     Name = "Tech Meetup",
                     Description = "Networking for developers.",
                     Start = DateTime.UtcNow.AddDays(10),
                     End = DateTime.UtcNow.AddDays(10).AddHours(5),
-                    Longnitude = 50.0107F,
-                    latitude = 19.9750F
+                    Longnitude = 19.9750F,
+                    latitude = 50.0107F
                 }
             };
         }
