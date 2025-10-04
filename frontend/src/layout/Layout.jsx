@@ -4,10 +4,10 @@ import Drawer from "./Drawer";
 
 const Layout = ({ children }) => {
   return (
-    <main className="relative">
+    <main className="relative container ">
       <Navbar />
       <Drawer />
-      <section className="absolute top-48 left-24 overflow-hidden">
+      <section className="absolute top-48 left-24 overflow-hidden w-[90%]">
 
       {children}
       </section>

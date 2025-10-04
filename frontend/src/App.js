@@ -5,7 +5,9 @@ import Register from './pages/Register';
 import BigCalendar from './pages/BigCalendar';
 import MapPage from './pages/MapPage';
 import Chat from './pages/Chat';
+import EventPage from './pages/EventPage';
 import './App.css';
+import CreateEvent from './pages/CreateEvent';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Route path="/calendar" element={<BigCalendar />} />
         <Route path="/map" element={<MapPage />} />
         <Route path="/chat" element={<Chat />} />
+        <Route path="/events" element={<EventPage />} />
+        <Route path="/create-event" element={<CreateEvent />} />
       </Routes>
     </BrowserRouter>
   );
