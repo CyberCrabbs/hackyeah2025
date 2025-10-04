@@ -33,6 +33,24 @@ services:
       - kindworks_network
     restart: on-failure
 
+  auth-server:
+    build:
+      context: ./backend/Backend/AuthServer/AuthServer
+      dockerfile: Dockerfile
+    container_name: kindworks_auth_server
+    ports:
+      - "8080:8080"  # HTTP
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=kindworks_auth;Username=kindworks-user;Password=SuperSecurePassword123
+    depends_on:
+      db-migrations:
+        condition: service_completed_successfully
+    networks:
+      - kindworks_network
+    restart: unless-stopped
+
 volumes:
   auth_db_data:
     driver: local
