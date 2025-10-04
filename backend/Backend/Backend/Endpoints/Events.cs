@@ -14,8 +14,14 @@ internal static class Events
             .WithOpenApi();
 
         v1.MapGet("/event/get", GetEvents);
+        v1.MapGet("/event/map/get", GetEventsGeo);
     }
 
     private static IResult GetEvents([FromServices] IEventService service) =>
         Handlers.EventsHandler.GetUserChats(null, service);
+
+    private static IResult GetEventsGeo([FromServices] IEventService service) =>
+        Handlers.EventsHandler.GetEventsGeo(null, service);
+
+    
 }

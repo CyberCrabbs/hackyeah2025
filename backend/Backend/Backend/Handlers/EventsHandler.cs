@@ -15,5 +15,15 @@ namespace Backend.Handlers
             var json = SerializationHelper.Serialize(dto);
             return Results.Content(json, "application/json", Encoding.UTF8, 200);
         }
+
+        public static IResult GetEventsGeo(Guid? userId, IEventService eventService)
+        {
+            if (userId == null)
+                userId = Guid.Empty;
+
+            var dto = eventService.Get(userId.Value);
+            var json = SerializationHelper.Serialize(dto);
+            return Results.Content(json, "application/json", Encoding.UTF8, 200);
+        }
     }
 }
