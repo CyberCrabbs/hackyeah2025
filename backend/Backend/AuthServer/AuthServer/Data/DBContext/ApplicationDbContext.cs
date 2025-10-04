@@ -14,10 +14,12 @@ namespace MetaCloud.Auth.Infrastructure
             optionsBuilder.UseOpenIddict();
 
 #if DEBUG
-            var connectionString = "Host=localhost;Port=55431;Database=auth;Username=postgres;Password=postgres;Trust Server Certificate=true";
+            // Local development - connects to Docker PostgreSQL on host machine
+            var connectionString = "Host=localhost;Port=5532;Database=kindworks_auth;Username=kindworks-user;Password=SuperSecurePassword123;Trust Server Certificate=true";
             optionsBuilder.UseNpgsql(connectionString);
 #else 
-            var connectionString = "Host=auth-db;Port=5432;Database=auth;Username=postgres;Password=postgres;Trust Server Certificate=true";
+            // Production - connects to PostgreSQL container within Docker network
+            var connectionString = "Host=db;Port=5432;Database=kindworks_auth;Username=kindworks-user;Password=SuperSecurePassword123;Trust Server Certificate=true";
             optionsBuilder.UseNpgsql(connectionString);
 #endif
 

@@ -1,0 +1,43 @@
+# Dockerfile specifically for running database migrations
+FROM mcr.microsoft.com/dotnet/sdk:8.0-alpine AS build
+ARG BUILD_CONFIGURATION=Release
+
+# Install dotnet ef tool
+RUN dotnet tool install dotnet-ef --global --version 8.0.
+ENV PATH="$PATH:/root/.dotnet/tools"
+
+# Copy csproj and restore
+WORKDIR /src
+COPY ["AuthServer/AuthServer/AuthServer.csproj", "AuthServer/AuthServer/"]
+RUN dotnet restore "AuthServer/AuthServer/AuthServer.csproj"
+
+# Copy everything else and build app
+COPY . .
+WORKDIR "/src/AuthServer/AuthServer"
+RUN dotnet publish "AuthServer.csproj" -c $BUILD_CONFIGURATION -o /app/publish --no-restore
+
+# Generate migration bundle (self-contained executable)
+RUN dotnet ef migrations bundle \
+    --configuration Release \
+    --no-build \
+    --self-contained \
+    --project AuthServer.csproj \
+    --output /app/publish/efbundle
+
+# Runtime stage - minimal Alpine image  
+FROM mcr.microsoft.com/dotnet/runtime:8.0-alpine AS final
+WORKDIR /app
+
+# Run as root to avoid permission issues
+USER root
+
+# Copy the migration bundle and dependencies
+COPY --from=build /app/publish/efbundle .
+COPY --from=build /app/publish/*.dll .
+COPY --from=build /app/publish/*.json .
+
+# Make the bundle executable
+RUN chmod +x /app/efbundle && chmod -R 755 /app
+
+# Run migration bundle with connection string from environment variable
+ENTRYPOINT ["./efbundle"]

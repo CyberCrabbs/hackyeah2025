@@ -13,9 +13,9 @@ var host = Host.CreateDefaultBuilder(args)
         services.AddDbContext<ApplicationDbContext>(options =>
         {
 #if DEBUG
-            options.UseNpgsql("Host=localhost;Port=5532;Database=auth;Username=kindworks-user;Password=superC00lp@$$word;Trust Server Certificate=true");
+            options.UseNpgsql("Host=localhost;Port=5532;Database=kindworks_auth;Username=kindworks-user;Password=SuperSecurePassword123;Trust Server Certificate=true");
 #else
-            options.UseNpgsql("Host=auth-db;Port=5432;Database=auth;Username=kindworks-user;Password=superC00lp@$$word;Trust Server Certificate=true");
+            options.UseNpgsql("Host=db;Port=5432;Database=kindworks_auth;Username=kindworks-user;Password=SuperSecurePassword123;Trust Server Certificate=true");
 #endif
         });
     })
