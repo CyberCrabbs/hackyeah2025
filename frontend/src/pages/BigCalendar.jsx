@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Layout from "layout/Layout";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import events from "../data/events";
@@ -25,7 +26,8 @@ export default function BigCalendar() {
       ]);
   };
   return (
-    <div className="App">
+    <Layout>
+
       <Calendar
         views={["day", "agenda", "work_week", "month"]}
         selectable
@@ -33,10 +35,11 @@ export default function BigCalendar() {
         defaultDate={new Date()}
         defaultView="month"
         events={eventsData}
-        style={{ height: "100vh" }}
+        style={{ height: "100vh"}}
         onSelectEvent={(event) => alert(event.title)}
         onSelectSlot={handleSelect}
-      />
-    </div>
+        />
+        </Layout>
+    
   );
 }

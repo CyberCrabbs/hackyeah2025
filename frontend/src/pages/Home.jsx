@@ -1,3 +1,5 @@
+import Layout from "layout/Layout";
+
 export default function Home() {
-  return <h1>Home Page</h1>;
+  return <Layout> Home page</Layout>
 }
