@@ -19,8 +19,8 @@ namespace Backend.Services
                     Description = "Big coding event.",
                     Start = DateTime.UtcNow.AddDays(1),
                     End = DateTime.UtcNow.AddDays(2),
-                    Longnitude =  19.9450F,
-                    latitude = 50.0647F
+                    Longnitude = 50.0647F,
+                    latitude = 19.9450F
                 },
                 new Event
                 {
@@ -29,8 +29,8 @@ namespace Backend.Services
                     Description = "Networking for developers.",
                     Start = DateTime.UtcNow.AddDays(10),
                     End = DateTime.UtcNow.AddDays(10).AddHours(5),
-                    Longnitude = 19.9750F,
-                    latitude = 50.0107F
+                    Longnitude = 50.0107F,
+                    latitude = 19.9750F
                 }
             };
         }
