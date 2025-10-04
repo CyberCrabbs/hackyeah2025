@@ -4,6 +4,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import BigCalendar from './pages/BigCalendar';
 import MapPage from './pages/MapPage';
+import Chat from './pages/Chat';
 import './App.css';
 
 function App() {
