@@ -1,0 +1,63 @@
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: kindworks_db
+    restart: always
+    environment:
+      POSTGRES_DB: kindworks_auth
+      POSTGRES_USER: kindworks-user
+      POSTGRES_PASSWORD: superC00lp@$$word
+    ports:
+      - "5532:5432"
+    volumes:
+      - auth_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kindworks-user -d auth"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - kindworks_network
+
+  auth-server:
+    build:
+      context: ./backend/Backend
+      dockerfile: AuthServer/AuthServer/Dockerfile
+    container_name: kindworks_auth_server
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: http://+:5000
+      CONNECTIONSTRINGS__DEFAULTCONNECTION: "Host=db;Port=5532;Database=auth;Username=kindworks-user;Password=superC00lp@$$word;Trust Server Certificate=true"
+    ports:
+      - "5000:5000"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - kindworks_network
+    restart: unless-stopped
+
+  seq:
+    image: datalust/seq:latest
+    container_name: kindworks_seq
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - "8341:80"
+      - "5341:5341"
+    volumes:
+      - seq_data:/data
+    networks:
+      - kindworks_network
+    profiles:
+      - logging
+
+volumes:
+  auth_db_data:
+    driver: local
+  seq_data:
+    driver: local
+
+networks:
+  kindworks_network:
+    driver: bridge
