@@ -8,3 +8,8 @@
 /backend/Backend/Backend/obj
 /backend/Backend/AuthServer/AuthServer/bin/Debug/net8.0
 /backend/Backend/Backend/bin/Debug/net8.0
+/Backend/bin/Debug/net8.0
+/Backend/obj
+/AuthServer/bin/Debug/net8.0
+/AuthServer/obj
+/.vs/Backend
