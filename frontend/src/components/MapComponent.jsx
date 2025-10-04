@@ -4,7 +4,9 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 
 const MapComponent = ({ marks }) => {
-  const defaultPosition = [marks[0].latitude, marks[0].longitude];
+const defaultLatitude = marks[0]?.latitude ?? 50.0647
+const defaultLongitude = marks[0]?.longitude ?? 19.945
+  const defaultPosition = [defaultLatitude, defaultLongitude];
   return (
     <div style={{ height: "500px", width: "800px",  position: "relative" }}>
       <MapContainer
