@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from '@pages/Home';
-import Login from '@pages/Login';
-import Register from '@pages/Register';
-import BigCalendar from '@pages/BigCalendar';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import BigCalendar from './pages/BigCalendar';
 import './App.css';
 
 function App() {
