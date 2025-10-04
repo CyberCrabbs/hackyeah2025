@@ -12,6 +12,7 @@ namespace Backend
 
             StartupHelper.RegisterAuth(builder.Services);
             StartupHelper.RegisterSwagger(builder.Services);
+            StartupHelper.RegisterServices(builder.Services);
 
             // Add services to the container.
             builder.Services.AddAuthorization();
@@ -32,50 +33,9 @@ namespace Backend
             app.UseHttpsRedirection();
             app.UseAuthorization();
 
+            Endpoints.Events.Register(app);
 
             app.Run();
-
-            //var builder = WebApplication.CreateBuilder(args);
-
-
-            //builder.Services.AddSingleton<ServerHub>();
-            //builder.Services.AddSignalR();
-
-
-            //// auth popagation
-            //builder.Services.AddTransient<AuthHeaderHandler>();
-            //builder.Services.AddHttpClient("PropagatedApi")
-            //.AddHttpMessageHandler<AuthHeaderHandler>();
-
-            //var app = builder.Build();
-
-            //app.UseForwardedHeaders();
-            //if (app.Environment.IsDevelopment())
-            //{
-            //    // Enable Swagger
-            //    app.UseSwagger();
-            //    app.UseSwaggerUI(c =>
-            //    {
-            //        c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1");
-            //        c.SwaggerEndpoint("/swagger/v2/swagger.json", "API v2");
-            //    });
-            //}
-
-            //app.UseHttpsRedirection();
-            //app.MapHub<ServerHub>(ServerHub.HubUrl);
-
-            //app.UseAuthentication();
-            //app.UseAuthorization();
-
-            //Endpoints.AIChat.Register(app);
-            //Endpoints.AIAgent.Register(app);
-            //Endpoints.Embeddings.Register(app);
-            //app.Run();
-
-            //Console.WriteLine("MetaCloud.AIChat.Api Started");
-
-
-
         }
     }
 }
