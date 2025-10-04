@@ -28,3 +28,10 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "AuthServer.dll"]
+
+#copy migration bundle
+WORKDIR /app
+COPY --from=build /app/publish .
+
+#run migration bundle
+ENTRYPOINT ./efbundle.exe $MIGRATION
