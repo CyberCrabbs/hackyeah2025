@@ -11,18 +11,33 @@ export default function BigCalendar() {
   const [eventsData, setEventsData] = useState([]);
 
   useEffect(() => {
-	fetch("https://localhost:32769/api/v1/event/get")
-	  .then(res => res.json())
-	  .then(data => {
-		setEventsData(
-		  data.map(e => ({
-			title: e.name,
-			start: new Date(e.start),
-			end: new Date(e.end),
-			allDay: false
-		  }))
-		);
-	  });
+  const fetchEvents = async () => {
+    try {
+      const res = await fetch("http://localhost:5079/api/v1/event/get");
+      console.log("Raw response:", res.body);
+
+      if (!res.ok) {
+        throw new Error(`HTTP error! Status: ${res.status}`);
+      }
+
+      const data = await res.json();
+      console.log("Parsed JSON data:", data);
+
+      // Mapujemy dane na format react-big-calendar
+      const formattedEvents = data.map(e => ({
+        title: e.Name,
+        start: new Date(e.Start),
+        end: new Date(e.End),
+        allDay: false
+      }));
+
+      setEventsData(formattedEvents);
+    } catch (err) {
+      console.error("Failed to fetch events:", err);
+    }
+  };
+
+  fetchEvents();
   }, []);
 
   const handleSelect = ({ start, end }) => {
@@ -33,8 +48,8 @@ export default function BigCalendar() {
         {
           start,
           end,
-          title
-        }
+          title,
+        },
       ]);
   };
 
@@ -48,7 +63,7 @@ export default function BigCalendar() {
         defaultView="month"
         events={eventsData}
         style={{ height: "100vh", width: "90vw" }}
-        onSelectEvent={event => alert(event.title)}
+        onSelectEvent={(event) => alert(event.title)}
         onSelectSlot={handleSelect}
       />
     </Layout>
