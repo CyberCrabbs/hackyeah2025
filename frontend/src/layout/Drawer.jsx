@@ -2,7 +2,7 @@ import { MessageCircle, MapPin, Calendar } from "lucide-react";
 
 export default function Sidebar() {
   return (
-    <div className="fixed top-1/2 left-0 transform -translate-y-1/2 flex flex-col space-y-4 bg-white shadow-lg p-2 rounded-r-lg">
+    <div className="fixed top-1/2 left-0 transform -translate-y-1/2 flex flex-col space-y-4 bg-white shadow-lg p-2 rounded-r-lg z-10">
       {/* Chat */}
       <a
         href="/chat"
