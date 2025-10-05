@@ -1,6 +1,9 @@
 import identities from "../data/identities";
+import { useNavigate } from "react-router";
 
 export default function IdentityCard({ id, message, details }) {
+  let navigate = useNavigate();
+
   const identity = identities.find((item) => item.id === Number(id));
 
   if (!identity) {
@@ -37,7 +40,8 @@ export default function IdentityCard({ id, message, details }) {
           </div>
         </div>
         {message && (
-          <button className="text-[#9B174A] font-bold">Napisz</button>
+          <button className="text-[#9B174A] font-bold" onClick={() => navigate("/chat")}>Napisz</button>
+
         )}
       </div>
     </div>

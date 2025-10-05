@@ -117,8 +117,8 @@ const VolunteerPage = () => {
         <div className="p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 -mt-20 relative z-20" style={{marginTop: "1rem"}}>
           
           {/* Completed Events */}
-          <div className="lg:col-span-4 space-y-6">
-            <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-300">
+          <div className="lg:col-span-4 space-y-6 ">
+            <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-[#f2f5fc] via-[#f7f5ff] to-[#fff0f8]">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-bold text-gray-800 flex items-center">
                   <Award className="w-6 h-6 mr-3 text-green-500" />
@@ -169,7 +169,7 @@ const VolunteerPage = () => {
             </div>
 
             {/* Applied Events */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-300">
+            <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-[#f2f5fc] via-[#f7f5ff] to-[#fff0f8]">
               <h3 className="font-bold text-gray-800 mb-4 flex items-center">
                 <Clock className="w-5 h-5 mr-2 text-orange-500" />
                 Aplikacje w toku
@@ -178,7 +178,7 @@ const VolunteerPage = () => {
               {appliedEvents.map((event) => (
                 <div 
                   key={event.id}
-                  className="bg-gradient-to-r from-orange-50 to-yellow-50 p-4 rounded-xl border border-orange-100 hover:shadow-md transition-all duration-200 cursor-pointer"
+                  className="bg-gradient-to-r from-gray-50 to-white p-4 rounded-xl border border-orange-100 hover:shadow-md transition-all duration-200 cursor-pointer"
                   onClick={() => navigate(`/event/${event.id}`)}
                 >
                   <h4 className="font-medium text-gray-800 mb-2">{event.title}</h4>
@@ -195,8 +195,8 @@ const VolunteerPage = () => {
           </div>
 
           {/* Volunteer Info */}
-          <div className="lg:col-span-4">
-            <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-300">
+          <div className="lg:col-span-4 ">
+            <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-[#f2f5fc] via-[#f7f5ff] to-[#fff0f8]">
               <h2 className="text-xl font-bold text-gray-800 mb-6 flex items-center">
                 <User className="w-6 h-6 mr-3 text-blue-500" />
                 Profil Wolontariusza
@@ -204,7 +204,7 @@ const VolunteerPage = () => {
               
               <div className="space-y-6">
                 {/* Contact Info */}
-                <div className="bg-blue-50 p-4 rounded-xl">
+                <div className="bg-gradient-to-r from-gray-50 to-white p-4 rounded-xl">
                   <h3 className="font-semibold text-gray-800 mb-3 flex items-center">
                     <MapPin className="w-4 h-4 mr-2 text-blue-500" />
                     Kontakt
@@ -262,7 +262,7 @@ const VolunteerPage = () => {
 
           {/* Conversations */}
           <div className="lg:col-span-4">
-            <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-300">
+            <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-[#f2f5fc] via-[#f7f5ff] to-[#fff0f8]">
               <h2 className="text-xl font-bold text-gray-800 mb-6 flex items-center">
                 <MessageCircle className="w-6 h-6 mr-3 text-purple-500" />
                 Rozmowy
