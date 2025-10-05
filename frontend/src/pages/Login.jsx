@@ -21,7 +21,7 @@ export default function Login() {
           borderRadius: '20px',
           boxShadow: '0 8px 40px 0 rgba(60,72,99,.13)',
           padding: '48px 32px',
-          minWidth: '480px',
+          minWidth: '640px',
           display: 'flex',
           flexDirection: 'column',
           gap: '24px',
@@ -30,11 +30,10 @@ export default function Login() {
       >
         <img 
           src={logo} 
-          alt="Logo" 
+          alt="Młody Kraków Logo" 
           style={{
-            width: '450px',
-            height: '250px',
-            objectFit: 'contain',
+            width: '400px',
+            height: 'auto',
             marginBottom: '16px'
           }}
         />
