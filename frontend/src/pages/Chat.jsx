@@ -96,7 +96,7 @@ export default function Chat() {
             ))}
           </ul>
         </div>
-        <div className="">
+        <div className="flex-1">
           <MainContainer>
             <ChatContainer className="h-full">
               <MessageList>

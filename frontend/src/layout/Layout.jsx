@@ -4,7 +4,7 @@ import Drawer from "./Drawer";
 
 const Layout = ({ children }) => {
   return (
-    <main className="relative container ">
+    <main className="relative w-full">
       <Navbar />
       <Drawer />
       <section className="absolute top-48 left-24 overflow-hidden w-[90%]">
