@@ -4,41 +4,9 @@ import { Facebook, Instagram, Settings, MapPin, Clock, Star, MessageCircle, Cale
 import { useNavigate } from "react-router-dom";
 
 const VolunteerPage = () => {
-<<<<<<< HEAD
-  const users = [1,2,3,4];
-=======
   const navigate = useNavigate();
 
-  const users = [
-    {
-      name: "Młody Kraków | Organizacja",
-      avatar: "https://mlodziez.krakow.pl/wp-content/themes/simple-bootstrap/images/mk20.svg",
-      lastMessage: "Dziękujemy za udział w ostatnim wydarzeniu!",
-      time: "2 godz. temu",
-      unread: 2
-    },
-    {
-      name: "Joe | Koordynator",
-      avatar: "https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFufGVufDB8fDB8fHww",
-      lastMessage: "Czy możesz jutro o 18:00?",
-      time: "1 dzień temu",
-      unread: 0
-    },
-    {
-      name: "Alice | Koordynator",
-      avatar: "https://plus.unsplash.com/premium_photo-1689551670902-19b441a6afde?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8d29tYW58ZW58MHx8MHx8fDA%3D",
-      lastMessage: "Świetna robota na warsztatach!",
-      time: "3 dni temu",
-      unread: 1
-    },
-    {
-      name: "Bob | Koordynator",
-      avatar: "https://images.unsplash.com/photo-1615109398623-88346a601842?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bWFufGVufDB8fDB8fHww",
-      lastMessage: "Mamy nowe zadanie dla Ciebie",
-      time: "1 tydzień temu",
-      unread: 0
-    },
-  ];
+  const users = [1,2,3,4];
 
   const completedEvents = [
     {
@@ -92,7 +60,6 @@ const VolunteerPage = () => {
     rating: 4.8
   };
 
->>>>>>> 4d63050cacd336159d9135426a3918555041340a
   return (
     <Layout>
       <div className="min-h-screen bg-gray-50">
@@ -150,7 +117,7 @@ const VolunteerPage = () => {
         <div className="p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 -mt-20 relative z-20" style={{marginTop: "1rem"}}>
           
           {/* Completed Events */}
-          <div className="lg:col-span-5 space-y-6">
+          <div className="lg:col-span-4 space-y-6">
             <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-300">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-bold text-gray-800 flex items-center">
@@ -294,15 +261,7 @@ const VolunteerPage = () => {
           </div>
 
           {/* Conversations */}
-<<<<<<< HEAD
-          <div className="bg-white p-4 rounded shadow md:col-span-1">
-            <h2 className="font-bold mb-2">Rozmowy</h2>
-            <div className="space-y-4">
-              {users.map(( id ) => (
-                <IdentityCard id={id} details={false} message={true}></IdentityCard>
-              ))}
-=======
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-4">
             <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-300">
               <h2 className="text-xl font-bold text-gray-800 mb-6 flex items-center">
                 <MessageCircle className="w-6 h-6 mr-3 text-purple-500" />
@@ -310,47 +269,10 @@ const VolunteerPage = () => {
               </h2>
               
               <div className="space-y-4">
-                {users.map((user, index) => (
-                  <div 
-                    key={index} 
-                    className="p-4 rounded-xl border border-gray-100 hover:bg-gray-50 hover:shadow-md transition-all duration-200 cursor-pointer group"
-                  >
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="flex items-center gap-3">
-                        <div className="relative">
-                          <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-gray-100 group-hover:ring-purple-200 transition-all">
-                            <img
-                              src={user.avatar}
-                              alt="Profile"
-                              className="object-cover w-full h-full"
-                            />
-                          </div>
-                          {user.unread > 0 && (
-                            <div className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
-                              {user.unread}
-                            </div>
-                          )}
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="font-medium text-gray-800 text-sm">{user.name}</h3>
-                          <p className="text-gray-500 text-xs truncate">{user.lastMessage}</p>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="flex justify-between items-center">
-                      <span className="text-xs text-gray-400">{user.time}</span>
-                      <button 
-                        className="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 shadow-md"
-                        onClick={() => navigate('/chat')}
-                      >
-                        Odpowiedz
-                      </button>
-                    </div>
-                  </div>
-                ))}
+                {users.map(( id ) => (
+                <IdentityCard id={id} details={false} message={true}></IdentityCard>
+              ))}
               </div>
->>>>>>> 4d63050cacd336159d9135426a3918555041340a
             </div>
           </div>
         </div>

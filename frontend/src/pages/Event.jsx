@@ -12,6 +12,8 @@ export default function Event() {
     if (!event) return <Layout><div>Event not found</div></Layout>;
 
     const organizer = identities.find((e) => e.id == Number(event.organizer));
+    
+    if (!organizer) organizer = identities.find((e) => e.id == 14);
 
     return (
         <Layout>
