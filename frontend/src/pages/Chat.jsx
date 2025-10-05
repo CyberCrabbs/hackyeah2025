@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import  "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import Layout from "layout/Layout";
 import {
   MainContainer,
@@ -9,7 +10,7 @@ import {
 } from "@chatscope/chat-ui-kit-react";
 
 export default function Chat() {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([{content: "Cześć, czy możesz przyjść jutro na 18:00? "}]);
   const wsRef = useRef(null);
 
   const userId = "123123";
@@ -76,14 +77,14 @@ export default function Chat() {
 
   return (
     <Layout>
-      <div className="flex h-[80%]">
-        <div className="w-58 border-r border-gray-300 p-4">
+      <div className="flex h-[80%]  items-center">
+        <div className="w-58  p-4">
           <h4 className="text-lg font-semibold mb-4">Twoje Rozmowy</h4>
           <ul className="space-y-4">
             {users.map((user, index) => (
               <li
                 key={index}
-                className="flex items-center gap-3 cursor-pointer hover:bg-gray-100 p-2 rounded"
+                className={`w-full flex items-center gap-3 cursor-pointer hover:bg-gray-100 p-2 rounded ${index===0 && "bg-blue-200"}`}
               >
                 <img
                   src={user.avatar}
@@ -95,14 +96,15 @@ export default function Chat() {
             ))}
           </ul>
         </div>
-        <div className="">
+        <div className="h-[700px] w-[800px] rounded-xl shadow-lg">
           <MainContainer>
-            <ChatContainer className="h-full">
+            <ChatContainer className="">
               <MessageList>
                 {messages.map((msg, idx) => (
                   <Message
                     key={idx}
                     model={{
+                      
                       message: msg.content,
                       sentTime: msg.timestamp || "Just now",
                       sender: msg.sender,
