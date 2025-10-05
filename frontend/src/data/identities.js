@@ -15,6 +15,8 @@ export default [
   { id: 13, photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7jIcVpMzWvt9GGD5oT5zJhm0QdMs2l_Sy5Q&s", name: "Green Poland", number: "+48 22 123 4567", email: "green@poland.com", type: "Organizacja" },
   { id: 14, photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhHpu9ypdgcEcqv7WXvp_n6ZRqzu2ffKAZd8WXaawovQ8ylI7HBhf2BAC3TfMcvP-S3Zc&usqp=CAU  ", name: "CloseAI", number: "+48 58 123 4567", email: "biuro@ai.pl", type: "Organizacja" },
   { id: 15, photo: "https://static.vecteezy.com/system/resources/thumbnails/002/582/954/small_2x/donation-charity-volunteer-help-social-handshake-assistance-line-style-icon-free-vector.jpg", name: "Towarzystwo Pomocy Polakom \"Niebieskie Serce\"", number: "+48 22 987 6543", email: "niebieskie.serce@gmail.com", type: "Organizacja" },
-  { id: 16, photo: "http://localhost:3000/static/media/logo.d53ad69ae1f3ec958eac.png", name: "Młody Kraków", number: "+48 61 123 4567", email: "ml.kr@all.pl", type: "Organizacja" },
+  { id: 16, photo: "https://i.imgur.com/lXD8Z55.png", name: "Młody Kraków", number: "+48 61 123 4567", email: "ml.kr@all.pl", type: "Organizacja" },
+  { id: 17, photo: "https://i.imgur.com/4aqKGgg.png", name: "ABC university", number: "+48 22 987 5543", email: "uni@abc.pl", type: "Organizacja" },
+  { id: 18, photo: "https://i.imgur.com/9Y0XGNW.png", name: "Uniwersytet Ekonomiczny w Polsce", number: "+48 61 323 4567", email: "uni.eco@all.pl", type: "Organizacja" },
   
 ];
