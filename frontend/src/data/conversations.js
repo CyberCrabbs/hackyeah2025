@@ -1,7 +1,7 @@
 // Mock conversations data for chat functionality
 // Each conversation contains messages related to charity/volunteering
 
-export default {
+const conversations = {
   1: {
     // Jan Kowalski - Koordynator
     messages: [
@@ -171,3 +171,5 @@ export default {
     ]
   }
 };
+
+export default conversations;
