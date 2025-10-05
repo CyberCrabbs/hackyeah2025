@@ -13,7 +13,8 @@ export default [
     "members": [101, 102, 103],
     "photos": ["dog_walk1.jpg", "dog_walk2.jpg"],
     "latitude": 50.06319412697496,
-    "longitude": 19.941270022574482
+    "longitude": 19.941270022574482,
+    "guid": "mock-guid-0"
   },
   {
     "id": 1,
@@ -25,7 +26,8 @@ export default [
     "members": [104, 105, 106, 107],
     "photos": ["tutoring1.jpg", "tutoring2.jpg"],
     "latitude": 50.06685405204043,
-    "longitude": 19.91297527098808
+    "longitude": 19.91297527098808,
+    "guid": "mock-guid-1"
   },
   {
     "id": 2,
@@ -37,7 +39,8 @@ export default [
     "members": [108, 109, 110],
     "photos": ["cleanup1.jpg", "cleanup2.jpg"],
     "latitude": 50.05498895426328,
-    "longitude": 19.966595348287616
+    "longitude": 19.966595348287616,
+    "guid": "mock-guid-2"
   },
   {
     "id": 3,
@@ -49,6 +52,138 @@ export default [
     "members": [111, 112, 113, 114],
     "photos": ["senior1.jpg", "senior2.jpg"],
     "latitude": 50.03209099253454,
-    "longitude": 19.948549002645453
+    "longitude": 19.948549002645453,
+    "guid": "mock-guid-3"
+  },
+  // Calendar events from BigCalendar
+  {
+    "id": 4,
+    "name": "Festiwal Równości 2025",
+    "description": "Największe wydarzenie równościowe w Krakowie. Organizujemy warsztaty, prezentacje i koncerty.",
+    "date": "2025-10-15",
+    "duration": "8 hours",
+    "organizer": "Młody Kraków",
+    "members": [115, 116, 117, 118, 119],
+    "photos": ["festival1.jpg", "festival2.jpg"],
+    "latitude": 50.0647,
+    "longitude": 19.9450,
+    "guid": "mock-guid-1"
+  },
+  {
+    "id": 5,
+    "name": "Garden of Kindness - Warsztaty",
+    "description": "Warsztaty edukacyjne dotyczące ekologii i zrównoważonego rozwoju dla młodzieży.",
+    "date": "2025-10-08",
+    "duration": "3 hours",
+    "organizer": "Młody Kraków",
+    "members": [120, 121, 122],
+    "photos": ["workshop1.jpg", "workshop2.jpg"],
+    "latitude": 50.0614,
+    "longitude": 19.9366,
+    "guid": "mock-guid-2"
+  },
+  {
+    "id": 6,
+    "name": "Akademia Samorządności",
+    "description": "Szkolenie z zakresu samorządności studentckiej i organizacji społecznych.",
+    "date": "2025-10-12",
+    "duration": "7 hours",
+    "organizer": "Młody Kraków",
+    "members": [123, 124, 125, 126],
+    "photos": ["academy1.jpg", "academy2.jpg"],
+    "latitude": 50.0755,
+    "longitude": 19.9198,
+    "guid": "mock-guid-3"
+  },
+  {
+    "id": 7,
+    "name": "Spotkanie Koordynatorów",
+    "description": "Miesięczne spotkanie wszystkich koordynatorów projektów Młodego Krakowa.",
+    "date": "2025-10-07",
+    "duration": "2 hours",
+    "organizer": "Młody Kraków",
+    "members": [127, 128, 129],
+    "photos": ["meeting1.jpg", "meeting2.jpg"],
+    "latitude": 50.0647,
+    "longitude": 19.9450,
+    "guid": "mock-guid-4"
+  },
+  {
+    "id": 8,
+    "name": "Wolontariat w Schronisku",
+    "description": "Akcja wolontariacka w lokalnym schronisku dla zwierząt.",
+    "date": "2025-10-10",
+    "duration": "6 hours",
+    "organizer": "Młody Kraków",
+    "members": [130, 131, 132, 133],
+    "photos": ["shelter1.jpg", "shelter2.jpg"],
+    "latitude": 50.0500,
+    "longitude": 19.9500,
+    "guid": "mock-guid-5"
+  },
+  {
+    "id": 9,
+    "name": "Prezentacja Projektów",
+    "description": "Finalna prezentacja projektów realizowanych przez młodzież w ramach programu.",
+    "date": "2025-10-20",
+    "duration": "4 hours",
+    "organizer": "Młody Kraków",
+    "members": [134, 135, 136, 137, 138],
+    "photos": ["presentation1.jpg", "presentation2.jpg"],
+    "latitude": 50.0647,
+    "longitude": 19.9450,
+    "guid": "mock-guid-6"
+  },
+  {
+    "id": 10,
+    "name": "Dzień Otwarty Młody Kraków",
+    "description": "Całodniowe wydarzenie promujące działalność organizacji i nabór nowych wolontariuszy.",
+    "date": "2025-10-25",
+    "duration": "8 hours",
+    "organizer": "Młody Kraków",
+    "members": [139, 140, 141, 142, 143, 144],
+    "photos": ["openday1.jpg", "openday2.jpg"],
+    "latitude": 50.0647,
+    "longitude": 19.9450,
+    "guid": "mock-guid-7"
+  },
+  {
+    "id": 11,
+    "name": "Warsztaty Fotograficzne",
+    "description": "Nauka podstaw fotografii reportażowej i dokumentacyjnej dla młodych aktywistów.",
+    "date": "2025-10-14",
+    "duration": "3 hours",
+    "organizer": "Młody Kraków",
+    "members": [145, 146, 147],
+    "photos": ["photo1.jpg", "photo2.jpg"],
+    "latitude": 50.0600,
+    "longitude": 19.9400,
+    "guid": "mock-guid-8"
+  },
+  {
+    "id": 12,
+    "name": "Sprzątanie Parku",
+    "description": "Akcja ekologiczna - sprzątanie i pielęgnacja lokalnego parku.",
+    "date": "2025-10-06",
+    "duration": "4 hours",
+    "organizer": "Młody Kraków",
+    "members": [148, 149, 150],
+    "photos": ["cleanup3.jpg", "cleanup4.jpg"],
+    "latitude": 50.0700,
+    "longitude": 19.9300,
+    "guid": "mock-guid-9"
+  },
+  {
+    "id": 13,
+    "name": "Koncert Charytatywny",
+    "description": "Koncert lokalnych zespołów na rzecz wsparcia młodzieży z domów dziecka.",
+    "date": "2025-10-18",
+    "duration": "4 hours",
+    "organizer": "Młody Kraków",
+    "members": [151, 152, 153, 154, 155],
+    "photos": ["concert1.jpg", "concert2.jpg"],
+    "latitude": 50.0647,
+    "longitude": 19.9450,
+    "guid": "mock-guid-10"
   }
 ]

@@ -4,7 +4,12 @@ import events from "../data/events";
 
 export default function Event() {
   const { id } = useParams();
-  const event = events.find((e) => e.id === Number(id));
+  
+  // Try to find event by id (number) first, then by guid (string)
+  let event = events.find((e) => e.id === Number(id));
+  if (!event) {
+    event = events.find((e) => e.guid === id);
+  }
 
   if (!event) return <Layout><div>Event not found</div></Layout>;
 

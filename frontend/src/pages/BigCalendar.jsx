@@ -201,8 +201,8 @@ export default function BigCalendar() {
           style={{ height: "70vh", backgroundColor: "white", borderRadius: "8px", padding: "10px" }}
           eventPropGetter={eventStyleGetter}
           onSelectEvent={(event) => {
-            setSelectedEvent(event); // <-- zapisujemy event do state
-            setIsOpen(true);
+            // Navigate to event page using the event's guid
+            navigate(`/event/${event.guid}`);
           }}
           onSelectSlot={handleSelect}
           messages={{
