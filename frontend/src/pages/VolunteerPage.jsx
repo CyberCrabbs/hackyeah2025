@@ -1,28 +1,8 @@
+import IdentityCard from "components/IdentityCardComponent";
 import Layout from "layout/Layout";
 import { Facebook, Instagram, Settings } from "lucide-react";
 const VolunteerPage = () => {
-  const users = [
-    {
-      name: "Młody Kraków | Organizacja",
-      avatar:
-        "https://mlodziez.krakow.pl/wp-content/themes/simple-bootstrap/images/mk20.svg",
-    },
-    {
-      name: "Joe | Koordynator",
-      avatar:
-        "https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFufGVufDB8fDB8fHww",
-    },
-    {
-      name: "Alice | Koordynator",
-      avatar:
-        "https://plus.unsplash.com/premium_photo-1689551670902-19b441a6afde?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8d29tYW58ZW58MHx8MHx8fDA%3D",
-    },
-    {
-      name: "Bob | Koordynator",
-      avatar:
-        "https://images.unsplash.com/photo-1615109398623-88346a601842?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bWFufGVufDB8fDB8fHww",
-    },
-  ];
+  const users = [1,2,3,4];
   return (
     <Layout>
       <div className="max-h-screen ">
@@ -112,20 +92,8 @@ const VolunteerPage = () => {
           <div className="bg-white p-4 rounded shadow md:col-span-1">
             <h2 className="font-bold mb-2">Rozmowy</h2>
             <div className="space-y-4">
-              {users.map(({ name, avatar }) => (
-                <div key={name} className="flex items-center justify-between">
-                  <div className="flex items-center space-x-2">
-                    <div class="w-20 h-20 rounded-full overflow-hidden mr-4">
-                      <img
-                        src={avatar}
-                        alt="Profile"
-                        className="object-cover w-full h-full"
-                      />
-                    </div>
-                    <span>{name}</span>
-                  </div>
-                  <button className="text-[#9B174A] font-bold">Odpowiedz</button>
-                </div>
+              {users.map(( id ) => (
+                <IdentityCard id={id} details={false} message={true}></IdentityCard>
               ))}
             </div>
           </div>

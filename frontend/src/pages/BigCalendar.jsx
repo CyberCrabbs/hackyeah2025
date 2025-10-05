@@ -21,8 +21,8 @@ export default function BigCalendar() {
     {
       title: "Festiwal Równości 2025",
       description: "Największe wydarzenie równościowe w Krakowie. Organizujemy warsztaty, prezentacje i koncerty.",
-      start: new Date(2025, 9, 15, 10, 0), // October 15, 2025, 10:00 AM
-      end: new Date(2025, 9, 15, 18, 0), // October 15, 2025, 6:00 PM
+      start: new Date(2025, 9, 15, 10, 0),
+      end: new Date(2025, 9, 15, 18, 0),
       allDay: false,
       latitude: 50.0647,
       longitude: 19.9450,
@@ -207,7 +207,7 @@ export default function BigCalendar() {
           onSelectSlot={handleSelect}
           messages={{
             next: "Następny",
-            previous: "Poprzedni", 
+            previous: "Poprzedni",
             today: "Dzisiaj",
             month: "Miesiąc",
             week: "Tydzień",

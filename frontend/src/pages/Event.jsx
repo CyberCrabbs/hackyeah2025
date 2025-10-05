@@ -16,7 +16,7 @@ export default function Event() {
     return (
         <Layout>
             <div className="flex flex-col">
-                <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-8 m-4  rounded-xl text-white">
+                <div className="bg-gradient-to-r from-[#2968AB] via-[#66A140] to-[#9B174A] p-8 m-4  rounded-xl text-white">
                     <h1 className="text-3xl font-bold">{event.name}</h1>
                     <p className="mt-2">{event.description}</p>
                 </div>
@@ -28,10 +28,17 @@ export default function Event() {
                     <div className="">
                         <div className="bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 rounded-xl shadow-lg p-6 flex flex-col justify-between" style={{ marginBottom: "20px" }}>
                             <h2 className="text-2xl font-bold text-gray-800 mb-3">Event Info</h2>
-                            <p className="text-lg text-gray-700"><strong>Date:</strong> {event.date}</p>
+                            <p className="text-lg text-gray-700">
+                                <strong>Data:</strong> {new Date(event.date).toLocaleDateString('pl-PL', {
+                                    day: 'numeric',
+                                    month: 'long',
+                                    year: 'numeric'
+                                })}
+                            </p>
+
                             <p className="text-lg text-gray-700"><strong>Duration:</strong> {event.duration}</p>
                         </div>
-                        <div className="bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 rounded-xl shadow-lg p-6 flex flex-col justify-between" style={{ marginBottom: "20px" }}>
+                        <div className="bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 rounded-xl shadow-lg p-6 flex flex-col justify-between h-full" style={{ marginBottom: "20px" }}>
                             <div>
                                 <h2 className="text-2xl font-bold text-gray-800 mb-3">Organizer Information</h2>
 
@@ -52,7 +59,7 @@ export default function Event() {
                         <div className="bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 rounded-xl shadow-lg p-6 flex flex-col justify-between" style={{ marginBottom: "20px" }}>
                             <h2 className="text-2xl font-bold text-gray-800 mb-3">Members</h2>
                             {event.members.map((member) => (
-                                <IdentityCard id={member}></IdentityCard>
+                                <IdentityCard id={member} details={true} message={true}></IdentityCard>
                             ))}
                         </div>
                     </div>
