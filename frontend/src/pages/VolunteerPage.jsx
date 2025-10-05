@@ -167,6 +167,7 @@ const VolunteerPage = () => {
                   <div 
                     key={event.id} 
                     className="bg-gradient-to-r from-gray-50 to-white p-4 rounded-xl border border-gray-100 hover:shadow-md hover:scale-[1.02] transition-all duration-200 cursor-pointer"
+                    onClick={() => navigate(`/event/${event.id}`)}
                   >
                     <div className="flex justify-between items-start mb-3">
                       <h3 className="font-semibold text-gray-800">{event.title}</h3>
@@ -210,7 +211,8 @@ const VolunteerPage = () => {
               {appliedEvents.map((event) => (
                 <div 
                   key={event.id}
-                  className="bg-gradient-to-r from-orange-50 to-yellow-50 p-4 rounded-xl border border-orange-100 hover:shadow-md transition-all duration-200"
+                  className="bg-gradient-to-r from-orange-50 to-yellow-50 p-4 rounded-xl border border-orange-100 hover:shadow-md transition-all duration-200 cursor-pointer"
+                  onClick={() => navigate(`/event/${event.id}`)}
                 >
                   <h4 className="font-medium text-gray-800 mb-2">{event.title}</h4>
                   <div className="flex justify-between items-center text-sm">
