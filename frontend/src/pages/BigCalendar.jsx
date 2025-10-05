@@ -5,6 +5,7 @@ import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import Modal from "../components/Modal";
 import { useNavigate } from "react-router-dom";
+import events from "../data/events";
 
 
 moment.locale("en-GB");
@@ -16,124 +17,33 @@ export default function BigCalendar() {
   const [selectedEvent, setSelectedEvent] = useState(null); // <-- Nowy state
   const navigate = useNavigate();
 
-  // Mock events data - initialized immediately
-  const mockEvents = [
-    {
-      title: "Festiwal Równości 2025",
-      description: "Największe wydarzenie równościowe w Krakowie. Organizujemy warsztaty, prezentacje i koncerty.",
-      start: new Date(2025, 9, 15, 10, 0), // October 15, 2025, 10:00 AM
-      end: new Date(2025, 9, 15, 18, 0), // October 15, 2025, 6:00 PM
-      allDay: false,
-      latitude: 50.0647,
-      longitude: 19.9450,
-      guid: "mock-guid-1",
-      color: "#3174ad"
-    },
-    {
-      title: "Garden of Kindness - Warsztaty",
-      description: "Warsztaty edukacyjne dotyczące ekologii i zrównoważonego rozwoju dla młodzieży.",
-      start: new Date(2025, 9, 8, 14, 0), // October 8, 2025, 2:00 PM
-      end: new Date(2025, 9, 8, 17, 0), // October 8, 2025, 5:00 PM
-      allDay: false,
-      latitude: 50.0614,
-      longitude: 19.9366,
-      guid: "mock-guid-2",
-      color: "#28a745"
-    },
-    {
-      title: "Akademia Samorządności",
-      description: "Szkolenie z zakresu samorządności studentckiej i organizacji społecznych.",
-      start: new Date(2025, 9, 12, 9, 0), // October 12, 2025, 9:00 AM
-      end: new Date(2025, 9, 12, 16, 0), // October 12, 2025, 4:00 PM
-      allDay: false,
-      latitude: 50.0755,
-      longitude: 19.9198,
-      guid: "mock-guid-3",
-      color: "#fd7e14"
-    },
-    {
-      title: "Spotkanie Koordynatorów",
-      description: "Miesięczne spotkanie wszystkich koordynatorów projektów Młodego Krakowa.",
-      start: new Date(2025, 9, 7, 18, 0), // October 7, 2025, 6:00 PM
-      end: new Date(2025, 9, 7, 20, 0), // October 7, 2025, 8:00 PM
-      allDay: false,
-      latitude: 50.0647,
-      longitude: 19.9450,
-      guid: "mock-guid-4",
-      color: "#6f42c1"
-    },
-    {
-      title: "Wolontariat w Schronisku",
-      description: "Akcja wolontariacka w lokalnym schronisku dla zwierząt.",
-      start: new Date(2025, 9, 10, 8, 0), // October 10, 2025, 8:00 AM
-      end: new Date(2025, 9, 10, 14, 0), // October 10, 2025, 2:00 PM
-      allDay: false,
-      latitude: 50.0500,
-      longitude: 19.9500,
-      guid: "mock-guid-5",
-      color: "#dc3545"
-    },
-    {
-      title: "Prezentacja Projektów",
-      description: "Finalna prezentacja projektów realizowanych przez młodzież w ramach programu.",
-      start: new Date(2025, 9, 20, 11, 0), // October 20, 2025, 11:00 AM
-      end: new Date(2025, 9, 20, 15, 0), // October 20, 2025, 3:00 PM
-      allDay: false,
-      latitude: 50.0647,
-      longitude: 19.9450,
-      guid: "mock-guid-6",
-      color: "#17a2b8"
-    },
-    {
-      title: "Dzień Otwarty Młody Kraków",
-      description: "Całodniowe wydarzenie promujące działalność organizacji i nabór nowych wolontariuszy.",
-      start: new Date(2025, 9, 25, 10, 0), // October 25, 2025, 10:00 AM
-      end: new Date(2025, 9, 25, 18, 0), // October 25, 2025, 6:00 PM
-      allDay: false,
-      latitude: 50.0647,
-      longitude: 19.9450,
-      guid: "mock-guid-7",
-      color: "#ffc107"
-    },
-    {
-      title: "Warsztaty Fotograficzne",
-      description: "Nauka podstaw fotografii reportażowej i dokumentacyjnej dla młodych aktywistów.",
-      start: new Date(2025, 9, 14, 16, 0), // October 14, 2025, 4:00 PM
-      end: new Date(2025, 9, 14, 19, 0), // October 14, 2025, 7:00 PM
-      allDay: false,
-      latitude: 50.0600,
-      longitude: 19.9400,
-      guid: "mock-guid-8",
-      color: "#6c757d"
-    },
-    {
-      title: "Sprzątanie Parku",
-      description: "Akcja ekologiczna - sprzątanie i pielęgnacja lokalnego parku.",
-      start: new Date(2025, 9, 6, 9, 0), // October 6, 2025, 9:00 AM
-      end: new Date(2025, 9, 6, 13, 0), // October 6, 2025, 1:00 PM
-      allDay: false,
-      latitude: 50.0700,
-      longitude: 19.9300,
-      guid: "mock-guid-9",
-      color: "#20c997"
-    },
-    {
-      title: "Koncert Charytatywny",
-      description: "Koncert lokalnych zespołów na rzecz wsparcia młodzieży z domów dziecka.",
-      start: new Date(2025, 9, 18, 19, 0), // October 18, 2025, 7:00 PM
-      end: new Date(2025, 9, 18, 23, 0), // October 18, 2025, 11:00 PM
-      allDay: false,
-      latitude: 50.0647,
-      longitude: 19.9450,
-      guid: "mock-guid-10",
-      color: "#e83e8c"
-    }
-  ];
+  // Convert events.js data to calendar format
+  const convertEventsToCalendarFormat = (eventsData) => {
+    const colors = ["#3174ad", "#28a745", "#fd7e14", "#6f42c1", "#dc3545", "#17a2b8", "#ffc107", "#6c757d", "#20c997", "#e83e8c"];
+    
+    return eventsData.map((event, index) => {
+      const eventDate = new Date(event.date);
+      const durationHours = parseInt(event.duration) || 2;
+      
+      return {
+        id: event.id,
+        title: event.name,
+        description: event.description,
+        start: new Date(eventDate.getFullYear(), eventDate.getMonth(), eventDate.getDate(), 10, 0), // Default 10:00 AM
+        end: new Date(eventDate.getFullYear(), eventDate.getMonth(), eventDate.getDate(), 10 + durationHours, 0),
+        allDay: false,
+        latitude: event.latitude,
+        longitude: event.longitude,
+        guid: event.guid || `event-${event.id}`,
+        color: colors[index % colors.length]
+      };
+    });
+  };
 
-  const [eventsData, setEventsData] = useState(mockEvents); // Initialize with mock data
+  const [eventsData, setEventsData] = useState(convertEventsToCalendarFormat(events)); // Initialize with events.js data
 
   useEffect(() => {
-    // Optionally try to fetch from API and merge with mock data
+    // Optionally try to fetch from API and merge with events.js data
     const fetchEvents = async () => {
       try {
         const res = await fetch("http://localhost:5079/api/v1/event/get");
@@ -149,12 +59,12 @@ export default function BigCalendar() {
             longitude: e.Longnitude,
             guid: e.Guid,
           }));
-          // Merge API events with mock events
-          setEventsData([...mockEvents, ...formattedEvents]);
+          // Merge API events with events.js data
+          setEventsData([...convertEventsToCalendarFormat(events), ...formattedEvents]);
         }
       } catch (err) {
-        console.log("API not available, using mock data only");
-        // Keep using mock data if API fails
+        console.log("API not available, using events.js data only");
+        // Keep using events.js data if API fails
       }
     };
 
@@ -201,8 +111,8 @@ export default function BigCalendar() {
           style={{ height: "70vh", backgroundColor: "white", borderRadius: "8px", padding: "10px" }}
           eventPropGetter={eventStyleGetter}
           onSelectEvent={(event) => {
-            // Navigate to event page using the event's guid
-            navigate(`/event/${event.guid}`);
+            // Navigate to event page using the event's id or guid
+            navigate(`/event/${event.id || event.guid}`);
           }}
           onSelectSlot={handleSelect}
           messages={{
