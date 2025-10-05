@@ -1,5 +1,6 @@
 ﻿using System.Net.WebSockets;
 using System.Text;
+using System.Text.Json;
 using Backend.Models;
 using Backend.Services;
 
@@ -25,12 +26,15 @@ public static class ChatsWebSocketHandler
 
             var content = Encoding.UTF8.GetString(buffer, 0, result.Count);
 
-            var message = new Message { sender = userId, content = content };
-            ChatService.AddMessage(userId, message);
+            var message = JsonSerializer.Deserialize<Message>(content);
+            if (message != null)
+            {
+                ChatService.AddMessage(userId, message);
 
-            var aiResponseMessage = await ChatService.ProcessMessageAsync(message);
+                var aiResponseMessage = await ChatService.ProcessMessageAsync(message);
 
-            await ChatService.SendMessageToUserAsync(userId, aiResponseMessage);
+                await ChatService.SendMessageToUserAsync(userId, aiResponseMessage);
+            }
         }
     }
 }
