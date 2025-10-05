@@ -1,9 +1,10 @@
 import { useEffect, useState, useRef } from "react";
 import  "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import Layout from "layout/Layout";
-import { Image, Download, Calendar, Users, MapPin } from "lucide-react";
+import { Image, Download, Calendar, Users, MapPin, Check, CheckCheck } from "lucide-react";
 import ChatIdentityCard from "../components/ChatIdentityCard";
 import identities from "../data/identities";
+import conversations from "../data/conversations";
 import {
   MainContainer,
   ChatContainer,
@@ -13,7 +14,8 @@ import {
 } from "@chatscope/chat-ui-kit-react";
 
 export default function Chat() {
-  const [messages, setMessages] = useState([{content: "Cześć, czy możesz przyjść jutro na 18:00? "}]);
+  const [messages, setMessages] = useState([]);
+  const [activeConversation, setActiveConversation] = useState(1); // Default to first user
   const [sharedImages, setSharedImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const wsRef = useRef(null);
@@ -75,6 +77,42 @@ export default function Chat() {
   // Use actual user IDs from identities data
   const userIds = [1, 2, 3, 4, 5]; // Select specific users for chat conversations
 
+  // Load conversation when activeConversation changes
+  useEffect(() => {
+    if (conversations[activeConversation]) {
+      setMessages(conversations[activeConversation].messages);
+    } else {
+      setMessages([]); // No conversation available
+    }
+  }, [activeConversation]);
+
+  // Handle conversation switching
+  const handleConversationClick = (userId) => {
+    setActiveConversation(userId);
+  };
+
+  // Get current conversation partner name
+  const getCurrentPartnerName = () => {
+    const partner = identities.find(identity => identity.id === activeConversation);
+    return partner ? partner.name : "Unknown";
+  };
+
+  // Generate message date (today for recent messages)
+  const getMessageDate = (messageIndex, isToday = true) => {
+    if (isToday) {
+      return "dzisiaj";
+    }
+    const dates = ["wczoraj", "2 dni temu", "3 dni temu"];
+    return dates[messageIndex % dates.length] || "dzisiaj";
+  };
+
+  // Determine if message is read (incoming messages are always read, outgoing have mixed status)
+  const isMessageRead = (message, index) => {
+    if (message.direction === "incoming") return true;
+    // For outgoing messages, simulate some as read and some as unread
+    return index % 3 !== 0; // Every 3rd message is unread
+  };
+
   useEffect(() => {
     // Simulate loading shared images
     setLoading(true);
@@ -110,13 +148,25 @@ export default function Chat() {
 
   const handleSend = (text) => {
     const newMessage = {
+      id: Date.now(),
       sender: "me",
       content: text,
+      direction: "outgoing",
       timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: false })
     };
-    console.log(newMessage);
+    
+    // Add message to current conversation
     setMessages((prev) => [...prev, newMessage]);
-    wsRef.current.send(JSON.stringify(newMessage));
+    
+    // Update conversations data (in real app, this would be sent to server)
+    if (conversations[activeConversation]) {
+      conversations[activeConversation].messages.push(newMessage);
+    }
+    
+    // Simulate WebSocket send (if available)
+    if (wsRef.current) {
+      wsRef.current.send(JSON.stringify(newMessage));
+    }
   };
 
   return (
@@ -133,8 +183,9 @@ export default function Chat() {
                 <div
                   key={userId}
                   className={`cursor-pointer hover:bg-gray-50 p-1 rounded-lg transition-colors ${
-                    index === 0 ? "bg-blue-50 border border-blue-200" : ""
+                    userId === activeConversation ? "bg-blue-50 border border-blue-200" : ""
                   }`}
+                  onClick={() => handleConversationClick(userId)}
                 >
                   <ChatIdentityCard id={userId} details={false} />
                 </div>
@@ -144,26 +195,79 @@ export default function Chat() {
         </div>
 
         {/* Main Chat Container */}
-        <div className="flex-1 rounded-xl  shadow-thick bg-white overflow-hidden flex flex-col max-h-full">
-          <MainContainer className="h-full">
-            <ChatContainer className="h-full">
-              <MessageList className="flex-1 overflow-y-auto">
-                {messages.map((m, i) => (
-                  <Message
-                    key={i}
-                    model={{
+        <div className="flex-1 rounded-xl shadow-thick bg-white overflow-hidden flex flex-col max-h-full">
+          {/* Chat Header */}
+          <div className="p-4 border-b bg-gradient-to-r from-blue-50 to-purple-50 flex items-center">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 rounded-full overflow-hidden">
+                <img
+                  src={identities.find(id => id.id === activeConversation)?.photo || ""}
+                  alt="Profile"
+                  className="object-cover w-full h-full"
+                />
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-900">{getCurrentPartnerName()}</h3>
+                <p className="text-sm text-gray-500">
+                  {identities.find(id => id.id === activeConversation)?.type || "Użytkownik"}
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          {/* Chat Messages Area */}
+          <div className="flex-1 flex flex-col h-full">
+            {/* Custom Message List with padding and status */}
+            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+              {messages.map((m, i) => {
+                const isOutgoing = m.direction === "outgoing" || m.sender === "me";
+                const isRead = isMessageRead(m, i);
+                const messageDate = getMessageDate(i);
+                
+                return (
+                  <div key={i} className={`flex ${isOutgoing ? 'justify-end' : 'justify-start'} mb-4`}>
+                    <div className={`max-w-xs lg:max-w-md ${
+                      isOutgoing ? 'order-1' : 'order-2'
+                    }`}>
+                      {/* Message bubble */}
+                      <div className={`rounded-2xl px-4 py-3 shadow-sm ${
+                        isOutgoing 
+                          ? 'bg-blue-500 text-white rounded-br-md' 
+                          : 'bg-gray-100 text-gray-800 rounded-bl-md'
+                      }`}>
+                        <p className="text-sm leading-relaxed">{m.content}</p>
+                      </div>
                       
-                      message: m.content,
-                      sentTime: m.timestamp || "Just now",
-                      sender: m.sender,
-                      direction: m.sender === "me" ? "outgoing" : "incoming",
-                    }}
-                  />
-                ))}
-              </MessageList>
+                      {/* Message info */}
+                      <div className={`flex items-center mt-1 space-x-2 ${
+                        isOutgoing ? 'justify-end' : 'justify-start'
+                      }`}>
+                        <span className="text-xs text-gray-500">
+                          {messageDate} • {m.timestamp || "Just now"}
+                        </span>
+                        
+                        {/* Read status for outgoing messages */}
+                        {isOutgoing && (
+                          <div className="flex items-center">
+                            {isRead ? (
+                              <CheckCheck className="w-4 h-4 text-blue-500" title="Przeczytane" />
+                            ) : (
+                              <Check className="w-4 h-4 text-gray-400" title="Dostarczone" />
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            
+            {/* Message Input */}
+            <div className="border-t p-4">
               <MessageInput placeholder="Wpisz wiadomość tutaj." onSend={handleSend} />
-            </ChatContainer>
-          </MainContainer>
+            </div>
+          </div>
         </div>
 
         {/* Right Sidebar - Shared Images */}
