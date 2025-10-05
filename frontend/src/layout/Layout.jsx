@@ -7,7 +7,7 @@ const Layout = ({ children }) => {
     <main className="relative w-full">
       <Navbar />
       <Drawer />
-      <section style={{ top: "7rem" }} className="absolute left-24 overflow-hidden w-[90%]">
+      <section style={{ top: "7rem", zIndex: 0 }} className="absolute left-24 overflow-hidden w-[90%]">
 
       {children}
       </section>

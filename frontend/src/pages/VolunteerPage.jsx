@@ -6,7 +6,7 @@ import { useNavigate, Link } from "react-router-dom";
 const VolunteerPage = () => {
   const navigate = useNavigate();
 
-  const users = [1,2,3,4];
+  const users = [1, 2, 3, 4];
 
   const completedEvents = [
     {
@@ -62,7 +62,7 @@ const VolunteerPage = () => {
 
   return (
     <Layout>
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gray-50" >
         {/* Modern Header */}
         <div className="relative w-full h-80 bg-gradient-to-br from-blue-600 via-green-500 to-pink-600 overflow-hidden">
           <div className="absolute inset-0 bg-black bg-opacity-20"></div>
@@ -78,7 +78,7 @@ const VolunteerPage = () => {
                 </div>
                 <div className="absolute -bottom-1 -right-1 bg-green-500 w-6 h-6 rounded-full border-2 border-white"></div>
               </div>
-              
+
               <div className="flex-1 ml-6">
                 <div className="flex items-center gap-3 mb-2">
                   <h1 className="text-3xl font-bold text-gray-800">Alec Thompson</h1>
@@ -104,18 +104,15 @@ const VolunteerPage = () => {
                 <button className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white p-3 rounded-xl shadow-lg transition-all duration-200 hover:scale-105">
                   <Instagram className="w-5 h-5" />
                 </button>
-                <Link to="/settings" className="bg-gray-700 hover:bg-gray-800 text-white px-4 py-3 rounded-xl shadow-lg transition-all duration-200 hover:scale-105 flex items-center gap-2">
-                  <Settings className="w-5 h-5" />
-                  <span className="hidden sm:block">Ustawienia</span>
-                </Link>
+                <Link to="/settings" className="bg-gray-700 hover:bg-gray-800 text-white px-4 py-3 rounded-xl shadow-lg transition-all duration-200 hover:scale-105 flex items-center gap-2"> <Settings className="w-5 h-5" /> <span className="hidden sm:block">Ustawienia</span> </Link>
               </div>
             </div>
           </div>
         </div>
 
         {/* Main Content Grid */}
-        <div className="p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 -mt-20 relative z-20" style={{marginTop: "1rem"}}>
-          
+        <div className="p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 -mt-20 relative z-20" style={{ marginTop: "1rem" }}>
+
           {/* Completed Events */}
           <div className="lg:col-span-4 space-y-6 ">
             <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-[#f2f5fc] via-[#f7f5ff] to-[#fff0f8]">
@@ -128,11 +125,11 @@ const VolunteerPage = () => {
                   {completedEvents.length} ukończone
                 </span>
               </div>
-              
+
               <div className="space-y-4">
                 {completedEvents.map((event) => (
-                  <div 
-                    key={event.id} 
+                  <div
+                    key={event.id}
                     className="bg-gradient-to-r from-gray-50 to-white p-4 rounded-xl border border-gray-100 hover:shadow-md hover:scale-[1.02] transition-all duration-200 cursor-pointer"
                     onClick={() => navigate(`/event/${event.id}`)}
                   >
@@ -143,7 +140,7 @@ const VolunteerPage = () => {
                         {event.rating}
                       </div>
                     </div>
-                    
+
                     <div className="flex items-center justify-between text-sm text-gray-600 mb-2">
                       <span className="flex items-center">
                         <Calendar className="w-4 h-4 mr-1" />
@@ -154,7 +151,7 @@ const VolunteerPage = () => {
                         {event.hours}h
                       </span>
                     </div>
-                    
+
                     <div className="flex justify-between items-center">
                       <span className="text-sm font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded-lg">
                         {event.role}
@@ -174,9 +171,9 @@ const VolunteerPage = () => {
                 <Clock className="w-5 h-5 mr-2 text-orange-500" />
                 Aplikacje w toku
               </h3>
-              
+
               {appliedEvents.map((event) => (
-                <div 
+                <div
                   key={event.id}
                   className="bg-gradient-to-r from-gray-50 to-white p-4 rounded-xl border border-orange-100 hover:shadow-md transition-all duration-200 cursor-pointer"
                   onClick={() => navigate(`/event/${event.id}`)}
@@ -201,7 +198,7 @@ const VolunteerPage = () => {
                 <User className="w-6 h-6 mr-3 text-blue-500" />
                 Profil Wolontariusza
               </h2>
-              
+
               <div className="space-y-6">
                 {/* Contact Info */}
                 <div className="bg-gradient-to-r from-gray-50 to-white p-4 rounded-xl">
@@ -226,7 +223,7 @@ const VolunteerPage = () => {
                   <h3 className="font-semibold text-gray-800 mb-3">Zainteresowania</h3>
                   <div className="flex flex-wrap gap-2">
                     {volunteerInfo.interests.map((interest, index) => (
-                      <span 
+                      <span
                         key={index}
                         className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm hover:bg-green-200 transition-colors cursor-pointer"
                       >
@@ -241,7 +238,7 @@ const VolunteerPage = () => {
                   <h3 className="font-semibold text-gray-800 mb-3">Umiejętności</h3>
                   <div className="flex flex-wrap gap-2">
                     {volunteerInfo.skills.map((skill, index) => (
-                      <span 
+                      <span
                         key={index}
                         className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm hover:bg-purple-200 transition-colors cursor-pointer"
                       >
@@ -252,7 +249,7 @@ const VolunteerPage = () => {
                 </div>
 
                 {/* Experience */}
-                <div className="bg-gray-50 p-4 rounded-xl">
+                <div className="bg-gradient-to-r from-gray-50 to-white p-4 rounded-xl">
                   <h3 className="font-semibold text-gray-800 mb-2">Doświadczenie</h3>
                   <p className="text-gray-600 text-sm">{volunteerInfo.experience} w wolontariacie</p>
                 </div>
@@ -267,11 +264,11 @@ const VolunteerPage = () => {
                 <MessageCircle className="w-6 h-6 mr-3 text-purple-500" />
                 Rozmowy
               </h2>
-              
-              <div className="space-y-4">
-                {users.map(( id ) => (
-                <IdentityCard id={id} details={false} message={true}></IdentityCard>
-              ))}
+
+              <div className="">
+                {users.map((id) => (
+                  <IdentityCard id={id} details={false} message={true}></IdentityCard>
+                ))}
               </div>
             </div>
           </div>

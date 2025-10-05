@@ -1,5 +1,5 @@
 import identities from "../data/identities";
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router";
 
 export default function IdentityCard({ id, message, details }) {
   let navigate = useNavigate();
@@ -15,7 +15,8 @@ export default function IdentityCard({ id, message, details }) {
   return (
     <div
       key={id}
-      className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow"
+      className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow" 
+      style={{marginBottom: "10px"}}
     >
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-2">
