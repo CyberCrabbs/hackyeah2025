@@ -26,6 +26,8 @@ function App() {
         <Route path="/create-event" element={<CreateEvent />} />
         <Route path="/create-event/:start/:end" element={<CreateEvent />} />
         <Route path="/volunteer" element={<VolunteerPage />} />
+        <Route path="/organization" element={<OrganizationPage />} />
+        <Route path="/coordinator" element={<CoordinatorPage />} />
       </Routes>
     </BrowserRouter>
   );
