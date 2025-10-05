@@ -11,7 +11,7 @@ export default function Event() {
 
     if (!event) return <Layout><div>Event not found</div></Layout>;
 
-    const organizer = identities.find((e) => e.id == Number(event.organizer));
+    var organizer = identities.find((e) => e.id == Number(event.organizer));
     
     if (!organizer) organizer = identities.find((e) => e.id == 14);
 
@@ -28,7 +28,7 @@ export default function Event() {
                         <SimpleMapComponent latitude={event.latitude} longitude={event.longitude} zoom={17} />
                     </div>
                     <div className="">
-                        <div className="bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 rounded-xl shadow-lg p-6 flex flex-col justify-between" style={{ marginBottom: "20px" }}>
+                        <div className="bg-gradient-to-r from-[#f2f5fc] via-[#ede9fe] to-[#fff0f8] rounded-xl shadow-lg p-6 flex flex-col justify-between" style={{ marginBottom: "20px" }}>
                             <h2 className="text-2xl font-bold text-gray-800 mb-3">Event Info</h2>
                             <p className="text-lg text-gray-700">
                                 <strong>Data:</strong> {new Date(event.date).toLocaleDateString('pl-PL', {
@@ -40,7 +40,7 @@ export default function Event() {
 
                             <p className="text-lg text-gray-700"><strong>Duration:</strong> {event.duration}</p>
                         </div>
-                        <div className="bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 rounded-xl shadow-lg p-6 flex flex-col justify-between h-full" style={{ marginBottom: "20px" }}>
+                        <div className="bg-gradient-to-r from-[#f2f5fc] via-[#ede9fe] to-[#fff0f8] rounded-xl shadow-lg p-6 flex flex-col justify-between h-full" style={{ marginBottom: "20px" }}>
                             <div>
                                 <h2 className="text-2xl font-bold text-gray-800 mb-3">Organizer Information</h2>
 
@@ -58,7 +58,7 @@ export default function Event() {
                     </div>
 
                     <div className="">
-                        <div className="bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 rounded-xl shadow-lg p-6 flex flex-col justify-between" style={{ marginBottom: "20px" }}>
+                        <div className="bg-gradient-to-r from-[#f2f5fc] via-[#ede9fe] to-[#fff0f8] rounded-xl shadow-lg p-6 flex flex-col justify-between" style={{ marginBottom: "20px" }}>
                             <h2 className="text-2xl font-bold text-gray-800 mb-3">Members</h2>
                             {event.members.map((member) => (
                                 <IdentityCard id={member} details={true} message={true}></IdentityCard>
