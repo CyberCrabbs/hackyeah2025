@@ -7,14 +7,14 @@ import Modal from "../components/Modal";
 import { useNavigate } from "react-router-dom";
 import events from "../data/events";
 
-
 moment.locale("en-GB");
 const localizer = momentLocalizer(moment);
 
 export default function BigCalendar() {
-
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedEvent, setSelectedEvent] = useState(null); // <-- Nowy state
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [currentView, setCurrentView] = useState("month"); // Add view state management
+  const [currentDate, setCurrentDate] = useState(new Date()); // Add date state management
   const navigate = useNavigate();
 
   // Convert events.js data to calendar format
@@ -29,7 +29,7 @@ export default function BigCalendar() {
         id: event.id,
         title: event.name,
         description: event.description,
-        start: new Date(eventDate.getFullYear(), eventDate.getMonth(), eventDate.getDate(), 10, 0), // Default 10:00 AM
+        start: new Date(eventDate.getFullYear(), eventDate.getMonth(), eventDate.getDate(), 10, 0),
         end: new Date(eventDate.getFullYear(), eventDate.getMonth(), eventDate.getDate(), 10 + durationHours, 0),
         allDay: false,
         latitude: event.latitude,
@@ -40,10 +40,9 @@ export default function BigCalendar() {
     });
   };
 
-  const [eventsData, setEventsData] = useState(convertEventsToCalendarFormat(events)); // Initialize with events.js data
+  const [eventsData, setEventsData] = useState(convertEventsToCalendarFormat(events));
 
   useEffect(() => {
-    // Optionally try to fetch from API and merge with events.js data
     const fetchEvents = async () => {
       try {
         const res = await fetch("http://localhost:5079/api/v1/event/get");
@@ -59,12 +58,10 @@ export default function BigCalendar() {
             longitude: e.Longnitude,
             guid: e.Guid,
           }));
-          // Merge API events with events.js data
           setEventsData([...convertEventsToCalendarFormat(events), ...formattedEvents]);
         }
       } catch (err) {
         console.log("API not available, using events.js data only");
-        // Keep using events.js data if API fails
       }
     };
 
@@ -76,22 +73,29 @@ export default function BigCalendar() {
     navigate(`/create-event/${start}/${end}`);
   };
 
-  // Custom event styling
+  // Simplified event styling - less complex to avoid interference
   const eventStyleGetter = (event, start, end, isSelected) => {
     const backgroundColor = event.color || '#3174ad';
-    const style = {
-      backgroundColor: backgroundColor,
-      borderRadius: '5px',
-      opacity: 0.8,
-      color: 'white',
-      border: '0px',
-      display: 'block',
-      fontSize: '12px',
-      fontWeight: 'bold'
-    };
     return {
-      style: style
+      style: {
+        backgroundColor: backgroundColor,
+        borderRadius: '4px',
+        opacity: 0.8,
+        color: 'white',
+        border: 'none',
+        fontSize: '12px'
+      }
     };
+  };
+
+  // Handle view changes
+  const handleViewChange = (view) => {
+    setCurrentView(view);
+  };
+
+  // Handle date navigation
+  const handleNavigate = (date) => {
+    setCurrentDate(date);
   };
 
   return (
@@ -101,36 +105,41 @@ export default function BigCalendar() {
           <h2 className="text-2xl font-bold text-gray-800 mb-2">Kalendarz Wydarzeń</h2>
           <p className="text-gray-600">Przeglądaj i zarządzaj wydarzeniami Młodego Krakowa</p>
         </div>
-        <Calendar
-          views={["day", "agenda", "work_week", "month"]}
-          selectable
-          localizer={localizer}
-          defaultDate={new Date()}
-          defaultView="month"
-          events={eventsData}
-          style={{ height: "70vh", backgroundColor: "white", borderRadius: "8px", padding: "10px" }}
-          eventPropGetter={eventStyleGetter}
-          onSelectEvent={(event) => {
-            // Navigate to event page using the event's id or guid
-            navigate(`/event/${event.id || event.guid}`);
-          }}
-          onSelectSlot={handleSelect}
-          messages={{
-            next: "Następny",
-            previous: "Poprzedni",
-            today: "Dzisiaj",
-            month: "Miesiąc",
-            week: "Tydzień",
-            day: "Dzień",
-            agenda: "Agenda",
-            work_week: "Tydzień roboczy",
-            date: "Data",
-            time: "Czas",
-            event: "Wydarzenie",
-            noEventsInRange: "Brak wydarzeń w tym okresie",
-            allDay: "Cały dzień"
-          }}
-        />
+        
+        <div className="bg-white rounded-lg shadow-sm p-4">
+          <Calendar
+            views={["month", "week", "work_week", "day", "agenda"]}
+            selectable
+            localizer={localizer}
+            date={currentDate}
+            view={currentView}
+            events={eventsData}
+            style={{ height: "70vh" }}
+            eventPropGetter={eventStyleGetter}
+            onView={handleViewChange}
+            onNavigate={handleNavigate}
+            onSelectEvent={(event) => {
+              navigate(`/event/${event.id || event.guid}`);
+            }}
+            onSelectSlot={handleSelect}
+            popup={true}
+            messages={{
+              next: "Następny",
+              previous: "Poprzedni",
+              today: "Dzisiaj",
+              month: "Miesiąc",
+              week: "Tydzień",
+              day: "Dzień",
+              agenda: "Agenda",
+              work_week: "Tydzień roboczy",
+              date: "Data",
+              time: "Czas",
+              event: "Wydarzenie",
+              noEventsInRange: "Brak wydarzeń w tym okresie",
+              allDay: "Cały dzień"
+            }}
+          />
+        </div>
       </div>
     </Layout>
   );
