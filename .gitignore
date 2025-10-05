@@ -13,3 +13,6 @@
 /AuthServer/bin/Debug/net8.0
 /AuthServer/obj
 /.vs/Backend
+.vs/ProjectEvaluation/backend.metadata.v9.bin
+.vs/ProjectEvaluation/backend.projects.v9.bin
+.vs/ProjectEvaluation/backend.strings.v9.bin

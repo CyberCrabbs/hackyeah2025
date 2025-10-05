@@ -9,6 +9,9 @@ import Events from './pages/Events';
 import Event from './pages/Event';
 import './App.css';
 import CreateEvent from './pages/CreateEvent';
+import VolunteerPage from './pages/VolunteerPage';
+import OrganizationPage from './pages/OrganizationPage';
+import CoordinatorPage from './pages/CoordinatorPage';
 
 function App() {
   return (
@@ -24,6 +27,9 @@ function App() {
         <Route path="/events" element={<Events />} />
         <Route path="/create-event" element={<CreateEvent />} />
         <Route path="/create-event/:start/:end" element={<CreateEvent />} />
+        <Route path="/volunteer" element={<VolunteerPage />} />
+        <Route path="/organization" element={<OrganizationPage />} />
+        <Route path="/coordinator" element={<CoordinatorPage />} />
       </Routes>
     </BrowserRouter>
   );
