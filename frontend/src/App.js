@@ -9,6 +9,7 @@ import EventPage from './pages/EventPage';
 import './App.css';
 import CreateEvent from './pages/CreateEvent';
 import VolunteerPage from './pages/VolunteerPage';
+import OrganizationPage from './pages/OrganizationPage';
 import CoordinatorPage from './pages/CoordinatorPage';
 
 function App() {
@@ -25,7 +26,6 @@ function App() {
         <Route path="/create-event" element={<CreateEvent />} />
         <Route path="/create-event/:start/:end" element={<CreateEvent />} />
         <Route path="/volunteer" element={<VolunteerPage />} />
-        <Route path="/coordinator" element={<CoordinatorPage />} />
       </Routes>
     </BrowserRouter>
   );
