@@ -2,6 +2,8 @@ import { useEffect, useState, useRef } from "react";
 import  "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import Layout from "layout/Layout";
 import { Image, Download, Calendar, Users, MapPin } from "lucide-react";
+import ChatIdentityCard from "../components/ChatIdentityCard";
+import identities from "../data/identities";
 import {
   MainContainer,
   ChatContainer,
@@ -70,28 +72,8 @@ export default function Chat() {
     }
   ];
 
-  const users = [
-    {
-      name: "Młody Kraków | Organizacja",
-      avatar:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIrI3jnLYZju_NsvbpNUOfWudrHqmW9oXj0Q&s",
-    },
-    {
-      name: "Joe | Koordynator",
-      avatar:
-        "https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFufGVufDB8fDB8fHww",
-    },
-    {
-      name: "Alice | Koordynator",
-      avatar:
-        "https://plus.unsplash.com/premium_photo-1689551670902-19b441a6afde?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8d29tYW58ZW58MHx8MHx8fDA%3D",
-    },
-    {
-      name: "Bob | Koordynator",
-      avatar:
-        "https://images.unsplash.com/photo-1615109398623-88346a601842?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bWFufGVufDB8fDB8fHww",
-    }
-  ];
+  // Use actual user IDs from identities data
+  const userIds = [1, 2, 3, 4, 5]; // Select specific users for chat conversations
 
   useEffect(() => {
     // Simulate loading shared images
@@ -146,21 +128,18 @@ export default function Chat() {
             <h4 className="text-lg font-semibold">Twoje Rozmowy</h4>
           </div>
           <div className="flex-1 overflow-y-auto p-4">
-            <ul className="space-y-4">
-              {users.map((user, index) => (
-                <li
-                  key={index}
-                  className={`w-full flex items-center gap-3 cursor-pointer hover:bg-gray-100 p-2 rounded transition-colors ${index===0 && "bg-blue-200"}`}
+            <div className="space-y-2">
+              {userIds.map((userId, index) => (
+                <div
+                  key={userId}
+                  className={`cursor-pointer hover:bg-gray-50 p-1 rounded-lg transition-colors ${
+                    index === 0 ? "bg-blue-50 border border-blue-200" : ""
+                  }`}
                 >
-                  <img
-                    src={user.avatar}
-                    alt={user.name}
-                    className="w-10 h-10 rounded-full object-cover flex-shrink-0"
-                  />
-                  <span className="font-medium text-sm truncate">{user.name}</span>
-                </li>
+                  <ChatIdentityCard id={userId} details={false} />
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
 
