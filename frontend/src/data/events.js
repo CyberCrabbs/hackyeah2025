@@ -1,9 +1,9 @@
 
-export default [
+const events = [
   {
     "id": 0,
-    "name": "Walking Dogs",
-    "description": "Join us for a fun morning walking dogs from the local animal shelter. Help give these furry friends some exercise and love!",
+    "name": "Wyprowadzanie psów",
+    "description": "Dołącz do nas na porannym, radosnym spacerze z psami z lokalnego schroniska. Pomóż tym futrzanym przyjaciołom zapewnić trochę ruchu i miłości!",
     "date": "2025-10-15",
     "duration": "2 hours",
     "organizer": 1,
@@ -14,8 +14,8 @@ export default [
   },
   {
     "id": 1,
-    "name": "Helping Children",
-    "description": "Volunteer at the community center to assist with after-school tutoring and activities for children aged 6-12.",
+    "name": "Pomoc dzieciom",
+    "description": "Wolontariat w centrum społecznym - pomoc w zajęciach pozalekcyjnych i opiece nad dziećmi w wieku 6-12 lat.",
     "date": "2025-10-20",
     "duration": "3 hours",
     "organizer": 2,
@@ -26,8 +26,8 @@ export default [
   },
   {
     "id": 2,
-    "name": "Public Work",
-    "description": "Participate in a community cleanup event to beautify our local park and promote environmental awareness.",
+    "name": "Prace publiczne",
+    "description": "Weź udział w akcji sprzątania społeczności, aby upiększyć lokalny park i promować świadomość ekologiczną.",
     "date": "2025-10-25",
     "duration": "4 hours",
     "organizer": 4,
@@ -38,8 +38,8 @@ export default [
   },
   {
     "id": 3,
-    "name": "Senior Care Support",
-    "description": "Spend time with seniors at the local care home, engaging in conversations and assisting with recreational activities.",
+    "name": "Wsparcie opieki nad seniorami",
+    "description": "Spędzaj czas z seniorami w lokalnym domu opieki, rozmawiając i pomagając w zajęciach rekreacyjnych.",
     "date": "2025-10-30",
     "duration": "2.5 hours",
     "organizer": 5,
@@ -49,9 +49,9 @@ export default [
     "guid": "mock-guid-3"
   },
   {
-    "id": 4,
-    "name": "Festiwal Równości 2025",
+    "id": 4, "name": "Festiwal Równości 2025",
     "description": "Największe wydarzenie równościowe w Krakowie. Organizujemy warsztaty, prezentacje i koncerty.",
+
     "date": "2025-10-15",
     "duration": "8 hours",
     "organizer": 14,
@@ -61,21 +61,21 @@ export default [
     "guid": "mock-guid-1"
   },
   {
-    "id": 5,
-    "name": "Garden of Kindness - Warsztaty",
+    "id": 5, "name": "Garden of Kindness - Warsztaty",
     "description": "Warsztaty edukacyjne dotyczące ekologii i zrównoważonego rozwoju dla młodzieży.",
+
     "date": "2025-10-08",
     "duration": "3 hours",
     "organizer": 6,
-    "members": [16, 1, 0],
+    "members": [16, 1, 2],
     "latitude": 50.0614,
     "longitude": 19.9366,
     "guid": "mock-guid-2"
   },
   {
-    "id": 6,
-    "name": "Akademia Samorządności",
+    "id": 6, "name": "Akademia Samorządności",
     "description": "Szkolenie z zakresu samorządności studentckiej i organizacji społecznych.",
+
     "date": "2025-10-12",
     "duration": "7 hours",
     "organizer": 10,
@@ -85,9 +85,9 @@ export default [
     "guid": "mock-guid-3"
   },
   {
-    "id": 7,
-    "name": "Spotkanie Koordynatorów",
+    "id": 7, "name": "Spotkanie Koordynatorów",
     "description": "Miesięczne spotkanie wszystkich koordynatorów projektów Młodego Krakowa.",
+
     "date": "2025-10-07",
     "duration": "2 hours",
     "organizer": 12,
@@ -97,9 +97,9 @@ export default [
     "guid": "mock-guid-4"
   },
   {
-    "id": 8,
-    "name": "Wolontariat w Schronisku",
+    "id": 8, "name": "Wolontariat w Schronisku",
     "description": "Akcja wolontariacka w lokalnym schronisku dla zwierząt.",
+
     "date": "2025-10-10",
     "duration": "6 hours",
     "organizer": 10,
@@ -109,9 +109,9 @@ export default [
     "guid": "mock-guid-5"
   },
   {
-    "id": 9,
-    "name": "Prezentacja Projektów",
+    "id": 9, "name": "Prezentacja Projektów",
     "description": "Finalna prezentacja projektów realizowanych przez młodzież w ramach programu.",
+
     "date": "2025-10-20",
     "duration": "4 hours",
     "organizer": 11,
@@ -121,9 +121,9 @@ export default [
     "guid": "mock-guid-6"
   },
   {
-    "id": 10,
-    "name": "Dzień Otwarty Młody Kraków",
+    "id": 10, "name": "Dzień Otwarty Młody Kraków",
     "description": "Całodniowe wydarzenie promujące działalność organizacji i nabór nowych wolontariuszy.",
+
     "date": "2025-10-25",
     "duration": "8 hours",
     "organizer": 9,
@@ -133,9 +133,9 @@ export default [
     "guid": "mock-guid-7"
   },
   {
-    "id": 11,
-    "name": "Warsztaty Fotograficzne",
+    "id": 11, "name": "Warsztaty Fotograficzne",
     "description": "Nauka podstaw fotografii reportażowej i dokumentacyjnej dla młodych aktywistów.",
+
     "date": "2025-10-14",
     "duration": "3 hours",
     "organizer": 13,
@@ -145,9 +145,9 @@ export default [
     "guid": "mock-guid-8"
   },
   {
-    "id": 12,
-    "name": "Sprzątanie Parku",
+    "id": 12, "name": "Sprzątanie Parku",
     "description": "Akcja ekologiczna - sprzątanie i pielęgnacja lokalnego parku.",
+
     "date": "2025-10-06",
     "duration": "4 hours",
     "organizer": 10,
@@ -157,9 +157,9 @@ export default [
     "guid": "mock-guid-9"
   },
   {
-    "id": 13,
-    "name": "Koncert Charytatywny",
+    "id": 13, "name": "Koncert Charytatywny",
     "description": "Koncert lokalnych zespołów na rzecz wsparcia młodzieży z domów dziecka.",
+
     "date": "2025-10-18",
     "duration": "4 hours",
     "organizer": 12,
@@ -169,3 +169,4 @@ export default [
     "guid": "mock-guid-10"
   }
 ]
+export default events;
