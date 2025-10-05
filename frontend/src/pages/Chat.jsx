@@ -139,35 +139,39 @@ export default function Chat() {
 
   return (
     <Layout>
-      <div className="flex h-[80%] items-center gap-4">
+      <div className="flex flex-col lg:flex-row h-[calc(100vh-160px)] gap-4 p-4 max-h-screen overflow-hidden">
         {/* Left Sidebar - Conversations */}
-        <div className="w-64 p-4 bg-white rounded-lg shadow-md">
-          <h4 className="text-lg font-semibold mb-4">Twoje Rozmowy</h4>
-          <ul className="space-y-4">
-            {users.map((user, index) => (
-              <li
-                key={index}
-                className={`w-full flex items-center gap-3 cursor-pointer hover:bg-gray-100 p-2 rounded ${index===0 && "bg-blue-200"}`}
-              >
-                <img
-                  src={user.avatar}
-                  alt={user.name}
-                  className="w-10 h-10 rounded-full object-cover"
-                />
-                <span className="font-medium text-sm">{user.name}</span>
-              </li>
-            ))}
-          </ul>
+        <div className="w-full lg:w-64 xl:w-80 bg-white rounded-lg shadow-thick flex-shrink-0 flex flex-col max-h-full">
+          <div className="p-4 border-b">
+            <h4 className="text-lg font-semibold">Twoje Rozmowy</h4>
+          </div>
+          <div className="flex-1 overflow-y-auto p-4">
+            <ul className="space-y-4">
+              {users.map((user, index) => (
+                <li
+                  key={index}
+                  className={`w-full flex items-center gap-3 cursor-pointer hover:bg-gray-100 p-2 rounded transition-colors ${index===0 && "bg-blue-200"}`}
+                >
+                  <img
+                    src={user.avatar}
+                    alt={user.name}
+                    className="w-10 h-10 rounded-full object-cover flex-shrink-0"
+                  />
+                  <span className="font-medium text-sm truncate">{user.name}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         {/* Main Chat Container */}
-        <div className="h-[700px] flex-1 max-w-2xl rounded-xl shadow-lg">
-          <MainContainer>
-            <ChatContainer className="">
-              <MessageList>
-                {messages.map((m, i) => (
+        <div className="flex-1 rounded-xl  shadow-thick bg-white overflow-hidden flex flex-col max-h-full">
+          <MainContainer className="h-full">
+            <ChatContainer className="h-full">
+              <MessageList className="flex-1 overflow-y-auto">
+                {messages.map((msg, idx) => (
                   <Message
-                    key={i}
+                    key={idx}
                     model={{
                       
                       message: msg.content,
@@ -184,60 +188,62 @@ export default function Chat() {
         </div>
 
         {/* Right Sidebar - Shared Images */}
-        <div className="w-80 p-4 bg-white rounded-lg shadow-md h-[700px] overflow-hidden">
-          <div className="flex items-center mb-4">
+        <div className="w-full lg:w-80 xl:w-96 bg-white rounded-lg  shadow-thick flex-shrink-0 flex flex-col max-h-full overflow-hidden">
+          <div className="p-4 border-b flex items-center">
             <Image className="w-5 h-5 text-blue-600 mr-2" />
             <h4 className="text-lg font-semibold">Udostępnione Zdjęcia</h4>
           </div>
           
-          {loading ? (
-            <div className="flex items-center justify-center h-32">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-            </div>
-          ) : (
-            <div className="space-y-4 h-full overflow-y-auto">
-              {sharedImages.map((image) => (
-                <div key={image.id} className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition-shadow">
-                  <div className="relative group">
-                    <img
-                      src={image.url}
-                      alt={image.alt}
-                      className="w-full h-32 object-cover"
-                    />
-                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-200 flex items-center justify-center">
-                      <button className="opacity-0 group-hover:opacity-100 bg-white p-2 rounded-full hover:bg-gray-100 transition-all">
-                        <Download className="w-4 h-4 text-gray-700" />
-                      </button>
-                    </div>
-                  </div>
-                  
-                  <div className="p-3">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs font-medium text-blue-600">{image.event}</span>
-                      <span className="text-xs text-gray-500">{image.date}</span>
+          <div className="flex-1 overflow-y-auto p-4">
+            {loading ? (
+              <div className="flex items-center justify-center h-32">
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {sharedImages.map((image) => (
+                  <div key={image.id} className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition-shadow">
+                    <div className="relative group">
+                      <img
+                        src={image.url}
+                        alt={image.alt}
+                        className="w-full h-32 object-cover"
+                      />
+                      <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-200 flex items-center justify-center">
+                        <button className="opacity-0 group-hover:opacity-100 bg-white p-2 rounded-full hover:bg-gray-100 transition-all">
+                          <Download className="w-4 h-4 text-gray-700" />
+                        </button>
+                      </div>
                     </div>
                     
-                    <p className="text-sm text-gray-800 mb-2">{image.alt}</p>
-                    
-                    <div className="flex items-center text-xs text-gray-500">
-                      <Users className="w-3 h-3 mr-1" />
-                      <span>Udostępnił: {image.sharedBy}</span>
+                    <div className="p-3">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-xs font-medium text-blue-600">{image.event}</span>
+                        <span className="text-xs text-gray-500">{image.date}</span>
+                      </div>
+                      
+                      <p className="text-sm text-gray-800 mb-2">{image.alt}</p>
+                      
+                      <div className="flex items-center text-xs text-gray-500">
+                        <Users className="w-3 h-3 mr-1" />
+                        <span>Udostępnił: {image.sharedBy}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-              
-              {sharedImages.length === 0 && (
-                <div className="text-center py-8 text-gray-500">
-                  <Image className="w-12 h-12 mx-auto mb-3 text-gray-300" />
-                  <p>Brak udostępnionych zdjęć</p>
-                </div>
-              )}
-            </div>
-          )}
+                ))}
+                
+                {sharedImages.length === 0 && (
+                  <div className="text-center py-8 text-gray-500">
+                    <Image className="w-12 h-12 mx-auto mb-3 text-gray-300" />
+                    <p>Brak udostępnionych zdjęć</p>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
           
           {/* Quick Stats */}
-          <div className="mt-4 pt-4 border-t border-gray-200">
+          <div className="p-4 border-t border-gray-200 flex-shrink-0">
             <div className="grid grid-cols-2 gap-2 text-xs">
               <div className="bg-blue-50 p-2 rounded text-center">
                 <div className="font-semibold text-blue-600">{sharedImages.length}</div>
