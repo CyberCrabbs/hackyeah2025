@@ -1,5 +1,6 @@
 import Layout from "layout/Layout";
 import { Facebook, Instagram, Settings } from "lucide-react";
+import { Link } from "react-router-dom";
 const OrganizationPage = () => {
   const users = [
     {
@@ -50,9 +51,9 @@ const OrganizationPage = () => {
               <button className="bg-white px-4 py-2 rounded shadow flex justify-center items-center">
                 <Instagram className="w-6 h-6 text-gray-700" />
               </button>
-              <button className="bg-white px-4 py-2 rounded shadow flex justify-center items-center">
+              <Link to="/settings" className="bg-white px-4 py-2 rounded shadow flex justify-center items-center hover:shadow-md transition-shadow">
                 <Settings className="w-6 h-6 text-gray-700" /> Ustawienia
-              </button>
+              </Link>
             </div>
           </div>
         </div>

@@ -12,6 +12,7 @@ import CreateEvent from './pages/CreateEvent';
 import VolunteerPage from './pages/VolunteerPage';
 import OrganizationPage from './pages/OrganizationPage';
 import CoordinatorPage from './pages/CoordinatorPage';
+import Settings from './pages/Settings';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/volunteer" element={<VolunteerPage />} />
         <Route path="/organization" element={<OrganizationPage />} />
         <Route path="/coordinator" element={<CoordinatorPage />} />
+        <Route path="/settings" element={<Settings />} />
       </Routes>
     </BrowserRouter>
   );

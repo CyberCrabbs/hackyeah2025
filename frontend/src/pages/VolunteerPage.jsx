@@ -1,7 +1,7 @@
 import IdentityCard from "components/IdentityCardComponent";
 import Layout from "layout/Layout";
 import { Facebook, Instagram, Settings, MapPin, Clock, Star, MessageCircle, Calendar, Award, User, Phone, Mail } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const VolunteerPage = () => {
   const navigate = useNavigate();
@@ -104,10 +104,10 @@ const VolunteerPage = () => {
                 <button className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white p-3 rounded-xl shadow-lg transition-all duration-200 hover:scale-105">
                   <Instagram className="w-5 h-5" />
                 </button>
-                <button className="bg-gray-700 hover:bg-gray-800 text-white px-4 py-3 rounded-xl shadow-lg transition-all duration-200 hover:scale-105 flex items-center gap-2">
+                <Link to="/settings" className="bg-gray-700 hover:bg-gray-800 text-white px-4 py-3 rounded-xl shadow-lg transition-all duration-200 hover:scale-105 flex items-center gap-2">
                   <Settings className="w-5 h-5" />
                   <span className="hidden sm:block">Ustawienia</span>
-                </button>
+                </Link>
               </div>
             </div>
           </div>
