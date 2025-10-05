@@ -111,10 +111,18 @@ const VolunteerPage = () => {
                     <div className="absolute -top-1 -right-1 bg-red-500 w-3 h-3 rounded-full border-2 border-white animate-pulse"></div>
                   )}
                 </button>
-                <button className="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-xl shadow-lg transition-all duration-200 hover:scale-105">
+                <button 
+                  className="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-xl shadow-lg transition-all duration-200 hover:scale-105"
+                  onClick={() => window.open('https://facebook.com', '_blank')}
+                  title="Facebook"
+                >
                   <Facebook className="w-5 h-5" />
                 </button>
-                <button className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white p-3 rounded-xl shadow-lg transition-all duration-200 hover:scale-105">
+                <button 
+                  className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white p-3 rounded-xl shadow-lg transition-all duration-200 hover:scale-105"
+                  onClick={() => window.open('https://instagram.com', '_blank')}
+                  title="Instagram"
+                >
                   <Instagram className="w-5 h-5" />
                 </button>
                 <Link to="/settings" className="bg-gray-700 hover:bg-gray-800 text-white px-4 py-3 rounded-xl shadow-lg transition-all duration-200 hover:scale-105 flex items-center gap-2"> <Settings className="w-5 h-5" /> <span className="hidden sm:block">Ustawienia</span> </Link>
