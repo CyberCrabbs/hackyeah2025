@@ -122,7 +122,7 @@ const OrganizationPage = () => {
                   Zatwierdź udział w wydarzeniu
                 </button>
               </label>
-               <label className="flex items-center space-x-2">
+              <label className="flex items-center space-x-2">
                 <span>Jola Lojalajna | 13.03.2024 - 13.03.2025</span>
                 <button className="px-12 py-2 bg-gray-500 text-white rounded-lg w-full">
                   Zatwierdzono

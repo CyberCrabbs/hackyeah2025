@@ -28,9 +28,9 @@ export default function Login() {
           alignItems: 'center'
         }}
       >
-        <img 
-          src={logo} 
-          alt="Młody Kraków Logo" 
+        <img
+          src={logo}
+          alt="Młody Kraków Logo"
           style={{
             width: '400px',
             height: 'auto',

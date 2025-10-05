@@ -1,18 +1,18 @@
 import Layout from "layout/Layout";
 
 const EventPage = () => {
-    
+
   return (
     <Layout>
       <div className="p-6">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-semibold">Wydarzenia</h2>
-         
-           <a href="/create-event"  className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"  >
-            
+
+          <a href="/create-event" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"  >
+
             Dodaj wydarzenie
-            </a> 
-          
+          </a>
+
         </div>
 
         <div className="overflow-x-auto">

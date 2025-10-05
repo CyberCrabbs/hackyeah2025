@@ -21,7 +21,7 @@ export default function Event() {
                 </div>
 
                 <div className="p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 -mt-20 relative z-20" style={{ marginTop: "1rem" }}>
-                        <div className="lg:col-span-4 space-y-6 ">
+                    <div className="lg:col-span-4 space-y-6 ">
                         <SimpleMapComponent latitude={event.latitude} longitude={event.longitude} zoom={17} />
                     </div>
                     <div className="lg:col-span-4 space-y-6 ">
@@ -55,98 +55,98 @@ export default function Event() {
                     </div>
                 </div>
                 {/* Comment Section */}
-                        <div className="px-8 pb-8">
-                          <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-[#f2f5fc] via-[#f7f5ff] to-[#fff0f8]">
-                            <h2 className="text-xl font-bold text-gray-800 mb-6 flex items-center">
-                              <MessageSquare className="w-6 h-6 mr-3 text-green-500" />
-                              Zostaw komentarz o wolontariuszu
-                            </h2>
-                            
-                            <div className="space-y-4">
-                              <div>
+                <div className="px-8 pb-8">
+                    <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-[#f2f5fc] via-[#f7f5ff] to-[#fff0f8]">
+                        <h2 className="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                            <MessageSquare className="w-6 h-6 mr-3 text-green-500" />
+                            Zostaw komentarz o wolontariuszu
+                        </h2>
+
+                        <div className="space-y-4">
+                            <div>
                                 <label htmlFor="comment" className="block text-sm font-medium text-gray-700 mb-2">
-                                  Twój komentarz
+                                    Twój komentarz
                                 </label>
                                 <textarea
-                                  id="comment"
-                                  value={comment}
-                                  onChange={(e) => setComment(e.target.value)}
-                                  placeholder="Podziel się swoimi przemyśleniami o współpracy z tym wolontariuszem..."
-                                  className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none transition-all duration-200 bg-gradient-to-r from-gray-50 to-white"
-                                  rows="4"
+                                    id="comment"
+                                    value={comment}
+                                    onChange={(e) => setComment(e.target.value)}
+                                    placeholder="Podziel się swoimi przemyśleniami o współpracy z tym wolontariuszem..."
+                                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none transition-all duration-200 bg-gradient-to-r from-gray-50 to-white"
+                                    rows="4"
                                 />
-                              </div>
-                              
-                              <div className="flex justify-between items-center">
+                            </div>
+
+                            <div className="flex justify-between items-center">
                                 <span className="text-sm text-gray-500">
-                                  {comment.length}/500 znaków
+                                    {comment.length}/500 znaków
                                 </span>
-                                <button 
-                                  onClick={() => {
-                                    if (comment.trim()) {
-                                      alert('Komentarz został wysłany!');
-                                      setComment('');
-                                    }
-                                  }}
-                                  className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white px-6 py-2 rounded-xl shadow-lg transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
-                                  disabled={!comment.trim()}
+                                <button
+                                    onClick={() => {
+                                        if (comment.trim()) {
+                                            alert('Komentarz został wysłany!');
+                                            setComment('');
+                                        }
+                                    }}
+                                    className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white px-6 py-2 rounded-xl shadow-lg transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                                    disabled={!comment.trim()}
                                 >
-                                  Wyślij komentarz
+                                    Wyślij komentarz
                                 </button>
-                              </div>
-                              
-                              {/* Sample comments */}
-                              <div className="mt-6 pt-6 border-t border-gray-200">
+                            </div>
+
+                            {/* Sample comments */}
+                            <div className="mt-6 pt-6 border-t border-gray-200">
                                 <h3 className="text-lg font-semibold text-gray-800 mb-4">Poprzednie komentarze</h3>
                                 <div className="space-y-4">
-                                  <div className="bg-gradient-to-r from-gray-50 to-white p-4 rounded-xl border border-gray-100">
-                                    <div className="flex items-center justify-between mb-2">
-                                      <div className="flex items-center">
-                                        <img 
-                                          src="https://randomuser.me/api/portraits/women/1.jpg" 
-                                          alt="Anna Kowalska" 
-                                          className="w-8 h-8 rounded-full mr-3"
-                                        />
-                                        <span className="font-medium text-gray-800">Anna Kowalska</span>
-                                        <span className="ml-2 text-sm text-gray-500">Koordynator</span>
-                                      </div>
-                                      <div className="flex items-center text-yellow-600">
-                                        <Star className="w-4 h-4 mr-1 fill-current" />
-                                        <span className="text-sm">4.9</span>
-                                      </div>
+                                    <div className="bg-gradient-to-r from-gray-50 to-white p-4 rounded-xl border border-gray-100">
+                                        <div className="flex items-center justify-between mb-2">
+                                            <div className="flex items-center">
+                                                <img
+                                                    src="https://randomuser.me/api/portraits/women/1.jpg"
+                                                    alt="Anna Kowalska"
+                                                    className="w-8 h-8 rounded-full mr-3"
+                                                />
+                                                <span className="font-medium text-gray-800">Anna Kowalska</span>
+                                                <span className="ml-2 text-sm text-gray-500">Koordynator</span>
+                                            </div>
+                                            <div className="flex items-center text-yellow-600">
+                                                <Star className="w-4 h-4 mr-1 fill-current" />
+                                                <span className="text-sm">4.9</span>
+                                            </div>
+                                        </div>
+                                        <p className="text-gray-600 text-sm">
+                                            Alec to fantastyczny wolontariusz! Bardzo zaangażowany, punktualny i pomocny. Jego pozytywne nastawienie motywuje całą grupę.
+                                        </p>
+                                        <span className="text-xs text-gray-400 mt-2 block">2 dni temu</span>
                                     </div>
-                                    <p className="text-gray-600 text-sm">
-                                      Alec to fantastyczny wolontariusz! Bardzo zaangażowany, punktualny i pomocny. Jego pozytywne nastawienie motywuje całą grupę.
-                                    </p>
-                                    <span className="text-xs text-gray-400 mt-2 block">2 dni temu</span>
-                                  </div>
-                                  
-                                  <div className="bg-gradient-to-r from-gray-50 to-white p-4 rounded-xl border border-gray-100">
-                                    <div className="flex items-center justify-between mb-2">
-                                      <div className="flex items-center">
-                                        <img 
-                                          src="https://randomuser.me/api/portraits/men/4.jpg" 
-                                          alt="Piotr Nowak" 
-                                          className="w-8 h-8 rounded-full mr-3"
-                                        />
-                                        <span className="font-medium text-gray-800">Piotr Nowak</span>
-                                        <span className="ml-2 text-sm text-gray-500">Organizacja</span>
-                                      </div>
-                                      <div className="flex items-center text-yellow-600">
-                                        <Star className="w-4 h-4 mr-1 fill-current" />
-                                        <span className="text-sm">4.8</span>
-                                      </div>
+
+                                    <div className="bg-gradient-to-r from-gray-50 to-white p-4 rounded-xl border border-gray-100">
+                                        <div className="flex items-center justify-between mb-2">
+                                            <div className="flex items-center">
+                                                <img
+                                                    src="https://randomuser.me/api/portraits/men/4.jpg"
+                                                    alt="Piotr Nowak"
+                                                    className="w-8 h-8 rounded-full mr-3"
+                                                />
+                                                <span className="font-medium text-gray-800">Piotr Nowak</span>
+                                                <span className="ml-2 text-sm text-gray-500">Organizacja</span>
+                                            </div>
+                                            <div className="flex items-center text-yellow-600">
+                                                <Star className="w-4 h-4 mr-1 fill-current" />
+                                                <span className="text-sm">4.8</span>
+                                            </div>
+                                        </div>
+                                        <p className="text-gray-600 text-sm">
+                                            Profesjonalne podejście i doskonała komunikacja. Alec świetnie sprawdził się podczas Festiwalu Równości.
+                                        </p>
+                                        <span className="text-xs text-gray-400 mt-2 block">1 tydzień temu</span>
                                     </div>
-                                    <p className="text-gray-600 text-sm">
-                                      Profesjonalne podejście i doskonała komunikacja. Alec świetnie sprawdził się podczas Festiwalu Równości.
-                                    </p>
-                                    <span className="text-xs text-gray-400 mt-2 block">1 tydzień temu</span>
-                                  </div>
                                 </div>
-                              </div>
                             </div>
-                          </div>
                         </div>
+                    </div>
+                </div>
             </div>
         </Layout>
     );
