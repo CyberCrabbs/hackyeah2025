@@ -1,6 +1,9 @@
 import Layout from "layout/Layout";
 import { Facebook, Instagram, Settings } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+
 const VolunteerPage = () => {
+  const navigate = useNavigate();
   const users = [
     {
       name: "Młody Kraków | Organizacja",
@@ -124,7 +127,12 @@ const VolunteerPage = () => {
                     </div>
                     <span>{name}</span>
                   </div>
-                  <button className="text-[#9B174A] font-bold">Odpowiedz</button>
+                  <button 
+                    className="text-[#9B174A] font-bold hover:text-[#7d1339] transition-colors"
+                    onClick={() => navigate('/chat')}
+                  >
+                    Odpowiedz
+                  </button>
                 </div>
               ))}
             </div>
