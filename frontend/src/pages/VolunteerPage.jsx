@@ -65,22 +65,36 @@ const VolunteerPage = () => {
 
   return (
     <Layout>
-      <div className="min-h-screen bg-gray-50" >
-        {/* Modern Header */}
-        <div className="relative w-full h-80 bg-gradient-to-br from-blue-600 via-green-500 to-pink-600 overflow-hidden">
-          <div className="absolute inset-0 bg-black bg-opacity-20"></div>
-          <div className="relative z-10 flex items-end h-full p-8">
-            <div className="bg-white bg-opacity-95 backdrop-blur-sm p-6 rounded-2xl shadow-xl flex items-center w-full max-w-4xl hover:bg-opacity-100 transition-all duration-300">
-              <div className="relative">
-                <div className="w-24 h-24 rounded-full overflow-hidden ring-4 ring-white shadow-lg">
-                  <img
-                    src="https://plus.unsplash.com/premium_photo-1689977927774-401b12d137d6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8bWFufGVufDB8fDB8fHww"
-                    alt="Profile"
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-                <div className="absolute -bottom-1 -right-1 bg-green-500 w-6 h-6 rounded-full border-2 border-white"></div>
-              </div>
+      <div className="min-h-screen bg-gray-50">
+  {/* Modern Header */}
+  <div className="relative w-full rounded-2xl h-80 overflow-hidden" style={{background: "linear-gradient(135deg, #efbcffff 0%, #84a1ffff 33%, #14ac00a4 65%, #ffee00ff 100%)"}}>
+    <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+    
+    {/* Separated Background Image - Left Side */}
+    <div className="absolute right-0 top-0 h-full"
+      style={{
+        width: "800px",
+        backgroundImage: "url('https://i.imgur.com/hUkN5hD.png')",
+        backgroundSize: "100% auto",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        maskImage: "linear-gradient(to right, transparent, black 50%)",
+        WebkitMaskImage: "linear-gradient(to right, transparent, black 50%)",
+      }}
+    ></div>
+    
+    <div className="relative z-10 flex items-end h-full p-8">
+      <div className="bg-white bg-opacity-95 backdrop-blur-sm p-6 rounded-2xl shadow-xl flex items-center w-full max-w-4xl hover:bg-opacity-100 transition-all duration-300">
+        <div className="relative">
+          <div className="w-24 h-24 rounded-full overflow-hidden ring-4 ring-white shadow-lg">
+            <img
+              src="https://plus.unsplash.com/premium_photo-1689977927774-401b12d137d6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8bWFufGVufDB8fDB8fHww"
+              alt="Profile"
+              className="object-cover w-full h-full"
+            />
+          </div>
+          <div className="absolute -bottom-1 -right-1 bg-green-500 w-6 h-6 rounded-full border-2 border-white"></div>
+        </div>
 
               <div className="flex-1 ml-6">
                 <div className="flex items-center gap-3 mb-2">

@@ -74,7 +74,20 @@ const OrganizationPage = () => {
     <Layout>
       <div className="min-h-screen bg-gray-50">
         {/* Modern Header */}
-        <div className="relative w-full h-80 bg-gradient-to-br from-blue-600 via-green-500 to-pink-600 overflow-hidden">
+        {/* Separated Background Image - Left Side */}
+    
+        <div className="relative rounded-2xl w-full h-80 overflow-hidden" style={{background: "linear-gradient(135deg, #efbcffff 0%, #84a1ffff 33%, #14ac00a4 65%, #ffee00ff 100%)"}}>
+          <div className="absolute right-0 top-0 h-full"
+      style={{
+        width: "800px",
+        backgroundImage: "url('https://i.imgur.com/hUkN5hD.png')",
+        backgroundSize: "100% auto",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        maskImage: "linear-gradient(to right, transparent, black 50%)",
+        WebkitMaskImage: "linear-gradient(to right, transparent, black 50%)",
+      }}
+    ></div>
           <div className="absolute inset-0 bg-black bg-opacity-20"></div>
           <div className="relative z-10 flex items-end h-full p-8">
             <div className="bg-white bg-opacity-95 backdrop-blur-sm p-6 rounded-2xl shadow-xl flex items-center w-full max-w-4xl hover:bg-opacity-100 transition-all duration-300">

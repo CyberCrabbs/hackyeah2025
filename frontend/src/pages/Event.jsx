@@ -14,11 +14,22 @@ export default function Event() {
 
     return (
         <Layout>
-            <div className="flex flex-col">
-                <div className="bg-gradient-to-r from-[#2968AB] via-[#66A140] to-[#9B174A] p-8 m-4  rounded-xl text-white">
-                    <h1 className="text-3xl font-bold">{event.name}</h1>
-                    <p className="mt-2">{event.description}</p>
-                </div>
+            <div className="min-h-screen bg-gray-50">
+                <div className="relative rounded-2xl p-8 m-4 rounded-xl text-white overflow-hidden" style={{background: "linear-gradient(135deg, #a17aadff 0%, #728ad8ff 33%, #14ac00a4 65%, #ffee00ff 100%)"}}>
+    <h1 className="text-3xl font-bold relative z-10">{event.name}</h1>
+    <p className="mt-2 relative z-10">{event.description}</p>
+    <div className="absolute right-0 top-0 h-full"
+      style={{
+        width: "400px",
+        backgroundImage: "url('https://i.imgur.com/hUkN5hD.png')",
+        backgroundSize: "100% auto",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        maskImage: "linear-gradient(to right, transparent, black 50%)",
+        WebkitMaskImage: "linear-gradient(to right, transparent, black 50%)",opacity: 0.95,
+      }}
+    ></div>
+</div>
 
                 <div className="p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 -mt-20 relative z-20" style={{ marginTop: "1rem" }}>
                     <div className="lg:col-span-4 space-y-6 ">
