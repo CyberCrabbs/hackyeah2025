@@ -117,7 +117,7 @@ export default function BigCalendar() {
           onSelectSlot={handleSelect}
           messages={{
             next: "Następny",
-            previous: "Poprzedni", 
+            previous: "Poprzedni",
             today: "Dzisiaj",
             month: "Miesiąc",
             week: "Tydzień",

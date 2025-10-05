@@ -7,7 +7,7 @@ export default [
     "date": "2025-10-15",
     "duration": "2 hours",
     "organizer": 1,
-    "members": [2, 3, 4],
+    "members": [3, 6, 7],
     "photos": ["dog_walk1.jpg", "dog_walk2.jpg"],
     "latitude": 50.06319412697496,
     "longitude": 19.941270022574482,
