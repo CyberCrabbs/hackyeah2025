@@ -59,7 +59,7 @@ export default function BigCalendar() {
         defaultDate={new Date()}
         defaultView="month"
         events={eventsData}
-        style={{ height: "100vh", width: "90vw" }}
+        style={{ height: "80vh"}}
         onSelectEvent={(event) => {
           setSelectedEvent(event); // <-- zapisujemy event do state
           setIsOpen(true);
@@ -67,8 +67,6 @@ export default function BigCalendar() {
         onSelectSlot={handleSelect}
       />
 
-      {/* Modal dostaje event jako props */}
-      <Modal isOpen={isOpen} setIsOpen={setIsOpen} event={selectedEvent} />
     </Layout>
   );
 }
