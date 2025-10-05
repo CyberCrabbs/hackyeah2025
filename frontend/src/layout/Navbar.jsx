@@ -11,7 +11,7 @@ const Navbar = () => {
     <ul className="flex space-x-6">
       <li>
         <a
-          href="/"
+          href="/Volunteer"
           className="flex justify-center items-center text-gray-700 hover:font-bold font-medium"
         >
           <User className="w-6 h-6 text-gray-700" /> Moje konto
@@ -19,7 +19,7 @@ const Navbar = () => {
       </li>
       <li>
         <a
-          href="/"
+          href="/login"
           className="flex justify-center items-center text-gray-700 hover:font-bold font-medium"
         >
           <LogOut className="w-6 h-6 text-gray-700" /> Wyloguj
