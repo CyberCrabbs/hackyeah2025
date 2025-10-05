@@ -1,9 +1,10 @@
 import Layout from "layout/Layout";
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const CreateEvent = () => {
   const { start: startParam, end: endParam } = useParams();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -31,28 +32,17 @@ const CreateEvent = () => {
     setMessage("");
 
     try {
-      const res = await fetch("http://localhost:5079/api/post/create-event", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          description: formData.description,
-          start: new Date(formData.start).toISOString(),
-          end: new Date(formData.end).toISOString(),
-          longitude: parseFloat(formData.longitude),
-          latitude: parseFloat(formData.latitude),
-        }),
-      });
-
-      if (!res.ok) {
-        throw new Error(`Błąd: ${res.status}`);
-      }
-
-      const data = await res.json();
-      setMessage("Wydarzenie utworzone pomyślnie!");
-      console.log("Response:", data);
+      // Simulate event creation with a delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Instead of making API call, redirect to event page with id 0
+      setMessage("Wydarzenie utworzone pomyślnie! Przekierowywanie...");
+      
+      // Redirect after a short delay to show success message
+      setTimeout(() => {
+        navigate('/event/0');
+      }, 1500);
+      
     } catch (error) {
       setMessage(`Nie udało się utworzyć wydarzenia: ${error.message}`);
       console.error(error);
@@ -119,7 +109,13 @@ const CreateEvent = () => {
 
         
 
-        {message && <p className="mb-3 text-red-600">{message}</p>}
+        {message && (
+          <p className={`mb-3 ${
+            message.includes('pomyślnie') ? 'text-green-600' : 'text-red-600'
+          }`}>
+            {message}
+          </p>
+        )}
 
         <div className="flex justify-end">
           <button
