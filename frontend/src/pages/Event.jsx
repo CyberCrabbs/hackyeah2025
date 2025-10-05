@@ -33,21 +33,12 @@ export default function Event() {
                                     year: 'numeric'
                                 })}
                             </p>
-
                             <p className="text-lg text-gray-700"><strong>Duration:</strong> {event.duration}</p>
                         </div>
-                        <div className="bg-gradient-to-r from-[#f2f5fc] via-[#f7f5ff] to-[#fff0f8] rounded-xl shadow-lg p-6 flex flex-col justify-between h-full" style={{ marginBottom: "20px" }}>
-                            <div>
-                                <h2 className="text-2xl font-bold text-gray-800 mb-3">Organizer Information</h2>
-
-                                <p className="text-lg text-gray-700"><strong>Name:</strong> {organizer.name}</p>
-                                <p className="text-lg text-gray-700"><strong>Email:</strong> {organizer.email}</p>
-
-                                {organizer.organization && (
-                                    <p className="text-lg text-gray-700"><strong>Organization:</strong> {organizer.organization}</p>
-                                )}
-                            </div>
-                            <div className="text-right">
+                        <div className="bg-gradient-to-r from-[#f2f5fc] via-[#f7f5ff] to-[#fff0f8] rounded-xl shadow-lg p-6 flex flex-col justify-between" style={{ marginBottom: "20px" }}>
+                            <h2 className="text-2xl font-bold text-gray-800 mb-3">Organizer Information</h2>
+                            <IdentityCard id={event.organizer} details={true} message={true}></IdentityCard>
+                            <div className="text-right mt-3">
                                 <span className="text-sm text-gray-500 italic">Trusted since 2020</span>
                             </div>
                         </div>
