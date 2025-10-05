@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from "react-leaflet";
+import { useNavigate } from "react-router-dom";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 
@@ -45,8 +46,12 @@ const initialMarks = [
 
 const STORAGE_KEY = "marks";
 
-const MapComponent = () => {
+const MapComponent = ({ marks: propMarks }) => {
+  const navigate = useNavigate();
   const [marks, setMarks] = useState(() => {
+    if (propMarks && propMarks.length > 0) {
+      return propMarks;
+    }
     try {
       if (typeof window === "undefined") return initialMarks;
       const raw = localStorage.getItem(STORAGE_KEY);
@@ -56,6 +61,13 @@ const MapComponent = () => {
       return initialMarks;
     }
   });
+
+  // Update marks when propMarks changes
+  useEffect(() => {
+    if (propMarks && propMarks.length > 0) {
+      setMarks(propMarks);
+    }
+  }, [propMarks]);
 
   useEffect(() => {
     try {
@@ -123,11 +135,53 @@ const removeMarker = (guid) => {
             icon={markerIcon}
           >
             <Popup>
-              <strong>{mark.title}</strong>
-              <br />
-              {mark.description}
-              <br />
-              <button onClick={() => removeMarker(mark.guid)}>Remove</button>
+              <div style={{ minWidth: '200px' }}>
+                <strong style={{ fontSize: '16px', color: '#2563eb' }}>{mark.title}</strong>
+                <br />
+                <span style={{ color: '#6b7280', fontSize: '14px' }}>{mark.description}</span>
+                <br /><br />
+                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                  <button 
+                    onClick={() => {
+                      const eventId = mark.id !== undefined ? mark.id : 0; // Default to event 0 if no ID
+                      navigate(`/event/${eventId}`);
+                    }}
+                    style={{
+                      backgroundColor: '#3b82f6',
+                      color: 'white',
+                      border: 'none',
+                      padding: '8px 16px',
+                      borderRadius: '6px',
+                      cursor: 'pointer',
+                      fontSize: '14px',
+                      fontWeight: '500',
+                      transition: 'background-color 0.2s'
+                    }}
+                    onMouseOver={(e) => e.target.style.backgroundColor = '#2563eb'}
+                    onMouseOut={(e) => e.target.style.backgroundColor = '#3b82f6'}
+                  >
+                    Zobacz wydarzenie {mark.id !== undefined ? `(${mark.id})` : '(0)'}
+                  </button>
+                  <button 
+                    onClick={() => removeMarker(mark.guid)}
+                    style={{
+                      backgroundColor: '#ef4444',
+                      color: 'white',
+                      border: 'none',
+                      padding: '8px 16px',
+                      borderRadius: '6px',
+                      cursor: 'pointer',
+                      fontSize: '14px',
+                      fontWeight: '500',
+                      transition: 'background-color 0.2s'
+                    }}
+                    onMouseOver={(e) => e.target.style.backgroundColor = '#dc2626'}
+                    onMouseOut={(e) => e.target.style.backgroundColor = '#ef4444'}
+                  >
+                    Usuń
+                  </button>
+                </div>
+              </div>
             </Popup>
           </Marker>
         ))}
