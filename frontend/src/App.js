@@ -8,6 +8,7 @@ import Chat from './pages/Chat';
 import EventPage from './pages/EventPage';
 import './App.css';
 import CreateEvent from './pages/CreateEvent';
+import VolunteerPage from './pages/VolunteerPage';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/events" element={<EventPage />} />
         <Route path="/create-event" element={<CreateEvent />} />
         <Route path="/create-event/:start/:end" element={<CreateEvent />} />
+        <Route path="/volunteer" element={<VolunteerPage />} />
       </Routes>
     </BrowserRouter>
   );
