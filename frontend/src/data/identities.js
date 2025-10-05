@@ -12,9 +12,9 @@ export default [
   { id: 11, photo: "https://randomuser.me/api/portraits/men/13.jpg", name: "Krzysztof Kaczmarek", number: "+48 511 234 567", email: "krzysztof.kaczmarek@gmail.com" },
   { id: 12, photo: "https://randomuser.me/api/portraits/women/9.jpg", name: "Ewa Pawlak", number: "+48 512 345 678", email: "ewa.pawlak@o2.pl" },
 
-  { id: 13, photo: "https://logo.clearbit.com/orlen.pl", name: "PKN Orlen", number: "+48 22 123 4567", email: "kontakt@orlen.pl", type: "Organizacja" },
-  { id: 14, photo: "https://logo.clearbit.com/lotos.pl", name: "Grupa Lotos", number: "+48 58 123 4567", email: "biuro@lotos.pl", type: "Organizacja" },
-  { id: 15, photo: "https://logo.clearbit.com/cdp.pl", name: "CD Projekt", number: "+48 22 987 6543", email: "contact@cdprojekt.com", type: "Organizacja" },
-  { id: 16, photo: "https://logo.clearbit.com/allegro.pl", name: "Allegro", number: "+48 61 123 4567", email: "support@allegro.pl", type: "Organizacja" },
+  { id: 13, photo: "https://logo.clearbit.com/orlen.pl", name: "Green Poland", number: "+48 22 123 4567", email: "green@poland.com", type: "Organizacja" },
+  { id: 14, photo: "https://logo.clearbit.com/lotos.pl", name: "CloseAI", number: "+48 58 123 4567", email: "biuro@ai.pl", type: "Organizacja" },
+  { id: 15, photo: "https://logo.clearbit.com/cdp.pl", name: "Towarzystwo Pomocy Polakom \"Niebieskie Serce\"", number: "+48 22 987 6543", email: "niebieskie.serce@gmail.com", type: "Organizacja" },
+  { id: 16, photo: "https://logo.clearbit.com/allegro.pl", name: "Młody Kraków", number: "+48 61 123 4567", email: "ml.kr@all.pl", type: "Organizacja" },
   
 ];
