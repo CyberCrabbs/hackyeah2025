@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import logo from '../assets/logo.png';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -20,13 +21,22 @@ export default function Login() {
           borderRadius: '20px',
           boxShadow: '0 8px 40px 0 rgba(60,72,99,.13)',
           padding: '48px 32px',
-          minWidth: '340px',
+          minWidth: '640px',
           display: 'flex',
           flexDirection: 'column',
           gap: '24px',
           alignItems: 'center'
         }}
       >
+        <img 
+          src={logo} 
+          alt="Młody Kraków Logo" 
+          style={{
+            width: '400px',
+            height: 'auto',
+            marginBottom: '16px'
+          }}
+        />
         <h2 style={{ fontWeight: 700, fontSize: '1.6em', letterSpacing: '-1px', margin: 0 }}>
           Zaloguj się
         </h2>
