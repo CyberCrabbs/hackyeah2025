@@ -67,7 +67,7 @@ export default [
     "date": "2025-10-08",
     "duration": "3 hours",
     "organizer": 6,
-    "members": [16, 1, 0],
+    "members": [16, 1, 2],
     "latitude": 50.0614,
     "longitude": 19.9366,
     "guid": "mock-guid-2"
