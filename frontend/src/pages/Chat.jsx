@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import  "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import Layout from "layout/Layout";
-import { Image, Download, Calendar, Users, MapPin } from "lucide-react";
+import { Image, Download, Users } from "lucide-react";
 import {
   MainContainer,
   ChatContainer,
@@ -166,7 +166,7 @@ export default function Chat() {
 
         {/* Main Chat Container */}
         <div className="flex-1 rounded-xl  shadow-thick bg-white overflow-hidden flex flex-col max-h-full">
-          <MainContainer className="h-full">
+          <MainContainer className="h-full" style={{paddingTop: "10px"}}>
             <ChatContainer className="h-full">
               <MessageList className="flex-1 overflow-y-auto">
                 {messages.map((m, i) => (

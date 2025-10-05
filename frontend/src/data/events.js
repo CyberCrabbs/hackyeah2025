@@ -1,9 +1,9 @@
 
-export default [
+const events = [
   {
     "id": 0,
-    "name": "Walking Dogs",
-    "description": "Join us for a fun morning walking dogs from the local animal shelter. Help give these furry friends some exercise and love!",
+    "name": "Wyprowadzanie psów",
+    "description": "Dołącz do nas na porannym, radosnym spacerze z psami z lokalnego schroniska. Pomóż tym futrzanym przyjaciołom zapewnić trochę ruchu i miłości!",
     "date": "2025-10-15",
     "duration": "2 hours",
     "organizer": 1,
@@ -14,8 +14,8 @@ export default [
   },
   {
     "id": 1,
-    "name": "Helping Children",
-    "description": "Volunteer at the community center to assist with after-school tutoring and activities for children aged 6-12.",
+    "name": "Pomoc dzieciom",
+    "description": "Wolontariat w centrum społecznym - pomoc w zajęciach pozalekcyjnych i opiece nad dziećmi w wieku 6-12 lat.",
     "date": "2025-10-20",
     "duration": "3 hours",
     "organizer": 2,
@@ -169,3 +169,4 @@ export default [
     "guid": "mock-guid-10"
   }
 ]
+export default events;
