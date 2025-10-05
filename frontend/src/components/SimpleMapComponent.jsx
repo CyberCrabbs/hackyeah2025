@@ -15,7 +15,7 @@ const SimpleMapComponent = ({ latitude, longitude, zoom = 13 }) => {
 
   return (
     <div style={{ height: "100%", width: "100%" }}>
-      <MapContainer center={position} zoom={zoom} style={{ height: "100%", width: "100%" }}>
+      <MapContainer center={position} zoom={zoom} style={{ height: "100%", width: "100%", zIndex: 0 }}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

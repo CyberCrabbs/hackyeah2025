@@ -169,9 +169,9 @@ export default function Chat() {
           <MainContainer className="h-full">
             <ChatContainer className="h-full">
               <MessageList className="flex-1 overflow-y-auto">
-                {messages.map((msg, idx) => (
+                {messages.map((m, i) => (
                   <Message
-                    key={idx}
+                    key={i}
                     model={{
                       
                       message: m.content,

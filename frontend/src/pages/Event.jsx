@@ -22,42 +22,40 @@ export default function Event() {
                 </div>
 
                 <div className="grid grid-cols-3 gap-4 m-4">
-                    <div className="h-[300px]"><div className="bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 rounded-xl shadow-lg p-6 flex flex-col justify-between" style={{marginBottom: "20px"}}>
-           
+                    <div className="">
+                        <SimpleMapComponent latitude={event.latitude} longitude={event.longitude} zoom={17} />
+                    </div>
+                    <div className="">
+                        <div className="bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 rounded-xl shadow-lg p-6 flex flex-col justify-between" style={{ marginBottom: "20px" }}>
                             <h2 className="text-2xl font-bold text-gray-800 mb-3">Event Info</h2>
-
                             <p className="text-lg text-gray-700"><strong>Date:</strong> {event.date}</p>
                             <p className="text-lg text-gray-700"><strong>Duration:</strong> {event.duration}</p>
-
-                    </div>
-                    <SimpleMapComponent latitude={event.latitude} longitude={event.longitude} zoom={17} /></div>
-                    <div className="h-[300px]">
-                    </div>
-
-                    <div className="bg-gray-100 rounded-lg h-[620px] row-span-2">
-                        <div className="bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 rounded-xl shadow-lg p-6 flex flex-col justify-between" style={{marginBottom: "20px"}}>
-                        <div>
-                            <h2 className="text-2xl font-bold text-gray-800 mb-3">Organizer Information</h2>
-
-                            <p className="text-lg text-gray-700"><strong>Name:</strong> {organizer.name}</p>
-                            <p className="text-lg text-gray-700"><strong>Email:</strong> {organizer.email}</p>
-
-                            {organizer.organization && (
-                                <p className="text-lg text-gray-700"><strong>Organization:</strong> {organizer.organization}</p>
-                            )}
                         </div>
-                        <div className="text-right">
-                            <span className="text-sm text-gray-500 italic">Trusted since 2020</span>
+                        <div className="bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 rounded-xl shadow-lg p-6 flex flex-col justify-between" style={{ marginBottom: "20px" }}>
+                            <div>
+                                <h2 className="text-2xl font-bold text-gray-800 mb-3">Organizer Information</h2>
+
+                                <p className="text-lg text-gray-700"><strong>Name:</strong> {organizer.name}</p>
+                                <p className="text-lg text-gray-700"><strong>Email:</strong> {organizer.email}</p>
+
+                                {organizer.organization && (
+                                    <p className="text-lg text-gray-700"><strong>Organization:</strong> {organizer.organization}</p>
+                                )}
+                            </div>
+                            <div className="text-right">
+                                <span className="text-sm text-gray-500 italic">Trusted since 2020</span>
+                            </div>
                         </div>
                     </div>
-                        <div className="bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 rounded-xl shadow-lg p-6 flex flex-col justify-between" style={{marginBottom: "20px"}}>
+
+                    <div className="">
+                        <div className="bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 rounded-xl shadow-lg p-6 flex flex-col justify-between" style={{ marginBottom: "20px" }}>
                             <h2 className="text-2xl font-bold text-gray-800 mb-3">Members</h2>
                             {event.members.map((member) => (
                                 <IdentityCard id={member}></IdentityCard>
                             ))}
-                        </div></div>
-                    <div className="bg-gray-100 rounded-lg h-[300px]"></div>
-                    <div className="bg-gray-100 rounded-lg h-[300px]"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </Layout>
