@@ -19,7 +19,7 @@ export default function Chat() {
     {
       name: "Młody Kraków | Organizacja",
       avatar:
-        "https://mlodziez.krakow.pl/wp-content/themes/simple-bootstrap/images/mk20.svg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIrI3jnLYZju_NsvbpNUOfWudrHqmW9oXj0Q&s",
     },
     {
       name: "Joe | Koordynator",
@@ -35,7 +35,7 @@ export default function Chat() {
       name: "Bob | Koordynator",
       avatar:
         "https://images.unsplash.com/photo-1615109398623-88346a601842?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bWFufGVufDB8fDB8fHww",
-    },
+    }
   ];
 
   useEffect(() => {
@@ -78,36 +78,37 @@ export default function Chat() {
   return (
     <Layout>
       <div className="flex h-[80%]">
-        <div className="w-58 border-r border-gray-300 p-4">
-          <h4 className="text-lg font-semibold mb-4">Twoje Rozmowy</h4>
-          <ul className="space-y-4">
-            {users.map((user, index) => (
-              <li
-                key={index}
-                className="flex items-center gap-3 cursor-pointer hover:bg-gray-100 p-2 rounded"
-              >
-                <img
-                  src={user.avatar}
-                  alt={user.name}
-                  className="w-10 h-10 rounded-full object-cover"
-                />
-                <span className="font-medium">{user.name}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <div className="w-96 border-r border-gray-300 p-4 flex flex-col h-full">
+        <h4 className="text-lg font-semibold mb-4">Twoje Rozmowy</h4>
+        <ul className="space-y-4 overflow-y-auto flex-1">
+          {users.map((user, index) => (
+            <li
+              key={index}
+              className="flex items-center gap-3 cursor-pointer hover:bg-gray-100 p-2 rounded"
+            >
+              <img
+                src={user.avatar}
+                alt={user.name}
+                className="w-10 h-10 rounded-full object-cover"
+              />
+              <span className="font-medium">{user.name}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
         <div className="flex-1">
-          <MainContainer>
+          <MainContainer style={{height: "70vh"}}>
             <ChatContainer className="h-full">
               <MessageList>
-                {messages.map((msg, idx) => (
+                {messages.map((m, i) => (
                   <Message
-                    key={idx}
+                    key={i}
                     model={{
-                      message: msg.content,
-                      sentTime: msg.timestamp || "Just now",
-                      sender: msg.sender,
-                      direction: msg.sender === "me" ? "outgoing" : "incoming",
+                      message: m.content,
+                      sentTime: m.timestamp || "Just now",
+                      sender: m.sender,
+                      direction: m.sender === "me" ? "outgoing" : "incoming",
                     }}
                   />
                 ))}
