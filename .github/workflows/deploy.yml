@@ -36,8 +36,8 @@ jobs:
         key: ${{ secrets.SERVER_SSH_KEY }}
         port: ${{ secrets.SERVER_PORT }}
         script: |
-          rm -rf /var/www/html/hackyeah2025/*
-          cp -r /home/ubuntu/hackyeah2025/frontend/build/* /var/www/html/hackyeah2025/
-          chown -R www-data:www-data /var/www/html/hackyeah2025
-          chmod -R 755 /var/www/html/hackyeah2025
-          systemctl reload nginx
+          sudo rm -rf /var/www/html/hackyeah2025/*
+          sudo cp -r /home/ubuntu/hackyeah2025/frontend/build/* /var/www/html/hackyeah2025/
+          sudo chown -R www-data:www-data /var/www/html/hackyeah2025
+          sudo chmod -R 755 /var/www/html/hackyeah2025
+          sudo systemctl reload nginx
