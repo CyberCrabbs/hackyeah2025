@@ -7,13 +7,9 @@ import IdentityCard from "../components/IdentityCardComponent";
 
 export default function Event() {
     const { id } = useParams();
-    const event = events.find((e) => e.id === Number(id));
+    const event = events.find((e) => e.id === Number(id)) || events.find((e) => e.id === 0);
 
-    if (!event) return <Layout><div>Event not found</div></Layout>;
-
-    var organizer = identities.find((e) => e.id == Number(event.organizer));
-    
-    if (!organizer) organizer = identities.find((e) => e.id == 14);
+    const organizer = identities.find((e) => e.id == Number(event.organizer));
 
     return (
         <Layout>
