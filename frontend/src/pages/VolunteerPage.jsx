@@ -1,6 +1,8 @@
 import Layout from "layout/Layout";
 import { Facebook, Instagram, Settings, Calendar, MapPin, Clock, Award, MessageCircle, CheckCircle, Star, Users } from "lucide-react";
+import { useNavigate } from 'react-router-dom';
 const VolunteerPage = () => {
+  const navigate = useNavigate();
   const users = [
     {
       name: "Młody Kraków | Organizacja",
@@ -72,7 +74,7 @@ const VolunteerPage = () => {
   const volunteerStats = {
     totalHours: 120,
     eventsCompleted: 3,
-    rating: 4.7,
+    newConnections: 42,
     rank: "Doświadczony"
   };
   return (
@@ -93,8 +95,8 @@ const VolunteerPage = () => {
               <p className="text-gray-700">Wolontariusz</p>
               <div className="flex items-center space-x-4 mt-2">
                 <div className="flex items-center space-x-1">
-                  <Star className="w-4 h-4 text-yellow-500 fill-current" />
-                  <span className="text-sm font-medium">{volunteerStats.rating}</span>
+                  <Users className="w-4 h-4 text-green-500" />
+                  <span className="text-sm font-medium">{volunteerStats.newConnections} znajomości</span>
                 </div>
                 <div className="flex items-center space-x-1">
                   <Award className="w-4 h-4 text-blue-500" />
@@ -151,11 +153,11 @@ const VolunteerPage = () => {
             <div className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow">
               <div className="flex items-center">
                 <div className="p-2 rounded-full bg-yellow-100 mr-3">
-                  <Star className="w-6 h-6 text-yellow-600" />
+                  <Users className="w-6 h-6 text-yellow-600" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-600">Średnia ocena</p>
-                  <p className="text-lg font-bold text-gray-900">{volunteerStats.rating}/5</p>
+                  <p className="text-xs text-gray-600">Nowe znajomości</p>
+                  <p className="text-lg font-bold text-gray-900">{volunteerStats.newConnections}</p>
                 </div>
               </div>
             </div>
@@ -294,7 +296,10 @@ const VolunteerPage = () => {
                       <p className="text-sm text-gray-600 truncate mb-2">{lastMessage}</p>
                       <div className="flex items-center justify-between">
                         <span className="text-xs text-gray-500">{time}</span>
-                        <button className="text-[#9B174A] hover:text-[#6b0f32] font-medium text-sm transition-colors">
+                        <button 
+                          className="text-[#9B174A] hover:text-[#6b0f32] font-medium text-sm transition-colors"
+                          onClick={() => navigate('/chat')}
+                        >
                           Odpowiedz
                         </button>
                       </div>
