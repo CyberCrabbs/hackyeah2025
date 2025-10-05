@@ -1,7 +1,9 @@
 import Layout from "layout/Layout";
 import { Users, Calendar, FolderOpen, TrendingUp, Clock, CheckCircle, AlertCircle, Plus, UserPlus } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const CoordinatorPage = () => {
+  const navigate = useNavigate();
   // Mock data for dashboard stats
   const dashboardStats = {
     studentsInvolved: 127,
@@ -10,61 +12,61 @@ const CoordinatorPage = () => {
     completedProjects: 15
   };
 
-  // Mock data for volunteer projects
+  // Mock data for volunteer projects - mapped to events.js
   const projects = [
     {
-      id: 1,
+      id: 4, // Maps to Festiwal Równości 2025 in events.js
       name: "FESTIWAL RÓWNOŚCI 2025",
       description: "Organizacja i wsparcie festiwalu równości",
       status: "in-progress",
       studentsAssigned: 15,
       maxStudents: 20,
-      startDate: "2025-09-20",
-      endDate: "2025-09-21",
+      startDate: "2025-10-15",
+      endDate: "2025-10-15",
       coordinator: "Anna Kowalska"
     },
     {
-      id: 2,
-      name: "Krakowska Akademia Samorządności XXI",
-      description: "Wsparcie w organizacji akademii samorządności",
+      id: 6, // Maps to Akademia Samorządności in events.js
+      name: "Akademia Samorządności",
+      description: "Szkolenie z zakresu samorządności studentckiej i organizacji społecznych",
       status: "open",
       studentsAssigned: 8,
       maxStudents: 25,
-      startDate: "2025-11-15",
-      endDate: "2025-11-17",
+      startDate: "2025-10-12",
+      endDate: "2025-10-12",
       coordinator: "Piotr Nowak"
     },
     {
-      id: 3,
-      name: "Garden of Kindness - Erasmus+",
-      description: "Wymiana młodzieży w ramach programu Erasmus+",
+      id: 5, // Maps to Garden of Kindness in events.js
+      name: "Garden of Kindness - Warsztaty",
+      description: "Warsztaty edukacyjne dotyczące ekologii i zrównoważonego rozwoju dla młodzieży",
       status: "finished",
       studentsAssigned: 12,
       maxStudents: 12,
-      startDate: "2025-08-15",
-      endDate: "2025-08-21",
+      startDate: "2025-10-08",
+      endDate: "2025-10-08",
       coordinator: "Maria Wiśniewska"
     },
     {
-      id: 4,
-      name: "Świąteczna Zbiórka Żywności",
-      description: "Organizacja świątecznej zbiórki dla potrzebujących",
+      id: 8, // Maps to Wolontariat w Schronisku in events.js
+      name: "Wolontariat w Schronisku",
+      description: "Akcja wolontariacka w lokalnym schronisku dla zwierząt",
       status: "open",
       studentsAssigned: 5,
       maxStudents: 30,
-      startDate: "2025-12-10",
-      endDate: "2025-12-24",
+      startDate: "2025-10-10",
+      endDate: "2025-10-10",
       coordinator: "Jan Kowalczyk"
     },
     {
-      id: 5,
-      name: "Warsztaty Ekologiczne",
-      description: "Edukacja ekologiczna dla dzieci i młodzieży",
+      id: 11, // Maps to Warsztaty Fotograficzne in events.js
+      name: "Warsztaty Fotograficzne",
+      description: "Nauka podstaw fotografii reportażowej i dokumentacyjnej dla młodych aktywistów",
       status: "in-progress",
       studentsAssigned: 10,
       maxStudents: 15,
-      startDate: "2025-10-01",
-      endDate: "2025-10-31",
+      startDate: "2025-10-14",
+      endDate: "2025-10-14",
       coordinator: "Katarzyna Zielińska"
     }
   ];
@@ -206,7 +208,11 @@ const CoordinatorPage = () => {
               <h2 className="text-xl font-bold mb-4">Projekty Wolontariackie</h2>
               <div className="space-y-4">
                 {projects.map((project) => (
-                  <div key={project.id} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div 
+                    key={project.id} 
+                    className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer"
+                    onClick={() => navigate(`/event/${project.id}`)}
+                  >
                     <div className="flex items-start justify-between mb-3">
                       <div className="flex items-center space-x-2">
                         {getStatusIcon(project.status)}
@@ -245,7 +251,13 @@ const CoordinatorPage = () => {
                       </div>
                       
                       {project.status === "open" && (
-                        <button className="bg-[#2968AB] text-white px-4 py-2 rounded-md text-sm hover:bg-[#1e4d78] transition-colors">
+                        <button 
+                          className="bg-[#2968AB] text-white px-4 py-2 rounded-md text-sm hover:bg-[#1e4d78] transition-colors"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            // Handle volunteer assignment logic here
+                          }}
+                        >
                           Przypisz Wolontariusza
                         </button>
                       )}
