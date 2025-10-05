@@ -170,10 +170,10 @@ export default function Chat() {
                     key={i}
                     model={{
                       
-                      message: msg.content,
-                      sentTime: msg.timestamp || "Just now",
-                      sender: msg.sender,
-                      direction: msg.sender === "me" ? "outgoing" : "incoming",
+                      message: m.content,
+                      sentTime: m.timestamp || "Just now",
+                      sender: m.sender,
+                      direction: m.sender === "me" ? "outgoing" : "incoming",
                     }}
                   />
                 ))}

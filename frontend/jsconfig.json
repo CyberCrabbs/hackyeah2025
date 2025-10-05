@@ -6,12 +6,6 @@
     "strict": true,
     "jsx": "react-jsx",
     "baseUrl": "src",
-    "paths": {
-      "@lib/*": ["lib/*"],
-      "@data/*": ["data/*"],
-      "@components/*": ["components/*"],
-      "@pages/*": ["pages/*"]
-    }
   },
   "include": ["src"]
 }
