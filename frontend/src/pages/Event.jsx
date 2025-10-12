@@ -1,4 +1,4 @@
-import Layout from "layout/Layout";
+import Layout from "../layout/Layout";
 import { useParams } from "react-router-dom";
 import events from "../data/events";
 import identities from "../data/identities";
@@ -15,21 +15,21 @@ export default function Event() {
     return (
         <Layout>
             <div className="min-h-screen bg-gray-50">
-                <div className="relative rounded-2xl p-8 m-4 rounded-xl text-white overflow-hidden" style={{background: "linear-gradient(135deg, #a17aadff 0%, #728ad8ff 33%, #14ac00a4 65%, #ffee00ff 100%)"}}>
-    <h1 className="text-3xl font-bold relative z-10">{event.name}</h1>
-    <p className="mt-2 relative z-10">{event.description}</p>
-    <div className="absolute right-0 top-0 h-full"
-      style={{
-        width: "400px",
-        backgroundImage: "url('https://i.imgur.com/hUkN5hD.png')",
-        backgroundSize: "100% auto",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        maskImage: "linear-gradient(to right, transparent, black 50%)",
-        WebkitMaskImage: "linear-gradient(to right, transparent, black 50%)",opacity: 0.95,
-      }}
-    ></div>
-</div>
+                <div className="relative rounded-2xl p-8 m-4 rounded-xl text-white overflow-hidden" style={{ background: "linear-gradient(135deg, #a17aadff 0%, #728ad8ff 33%, #14ac00a4 65%, #ffee00ff 100%)" }}>
+                    <h1 className="text-3xl font-bold relative z-10">{event.name}</h1>
+                    <p className="mt-2 relative z-10">{event.description}</p>
+                    <div className="absolute right-0 top-0 h-full"
+                        style={{
+                            width: "400px",
+                            backgroundImage: "url('https://i.imgur.com/hUkN5hD.png')",
+                            backgroundSize: "100% auto",
+                            backgroundPosition: "center",
+                            backgroundRepeat: "no-repeat",
+                            maskImage: "linear-gradient(to right, transparent, black 50%)",
+                            WebkitMaskImage: "linear-gradient(to right, transparent, black 50%)", opacity: 0.95,
+                        }}
+                    ></div>
+                </div>
 
                 <div className="p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 -mt-20 relative z-20" style={{ marginTop: "1rem" }}>
                     <div className="lg:col-span-4 space-y-6 ">
@@ -37,20 +37,20 @@ export default function Event() {
                     </div>
                     <div className="lg:col-span-4 space-y-6 ">
                         <div className="bg-gradient-to-r from-[#f2f5fc] via-[#f7f5ff] to-[#fff0f8] rounded-xl shadow-lg p-6 flex flex-col justify-between" style={{ marginBottom: "20px" }}>
-                             <h2 className="text-xl font-bold text-gray-800 mb-6 flex items-center">
-                                            <Info className="w-6 h-6 mr-3 text-purple-500" />
-                                            Informacje o wydarzeniu
-                                          </h2>
-                               <h3 className="text-gray-800 mb-3">
-  <span className="font-semibold">Data: </span>
-  {new Date(event.date).toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' })}
-</h3><h3 className="text-gray-800 mb-3"><span className="font-semibold">Czas trwania: </span> {event.duration}</h3>
+                            <h2 className="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                                <Info className="w-6 h-6 mr-3 text-purple-500" />
+                                Informacje o wydarzeniu
+                            </h2>
+                            <h3 className="text-gray-800 mb-3">
+                                <span className="font-semibold">Data: </span>
+                                {new Date(event.date).toLocaleDateString('pl-PL', { day: 'numeric', month: 'long', year: 'numeric' })}
+                            </h3><h3 className="text-gray-800 mb-3"><span className="font-semibold">Czas trwania: </span> {event.duration}</h3>
                         </div>
                         <div className="bg-gradient-to-r from-[#f2f5fc] via-[#f7f5ff] to-[#fff0f8] rounded-xl shadow-lg p-6 flex flex-col justify-between" style={{ marginBottom: "20px" }}>
                             <h2 className="text-xl font-bold text-gray-800 mb-6 flex items-center">
-                                            <Landmark className="w-6 h-6 mr-3 text-green-500" />
-                                            Organizator
-                                          </h2>
+                                <Landmark className="w-6 h-6 mr-3 text-green-500" />
+                                Organizator
+                            </h2>
                             <IdentityCard id={event.organizer} details={true} message={true}></IdentityCard>
                             <div className="text-right mt-3">
                                 <span className="text-sm text-gray-500 italic">Zaufany od 2020 roku</span>
@@ -61,9 +61,9 @@ export default function Event() {
                     <div className="lg:col-span-4 space-y-6 ">
                         <div className="bg-gradient-to-r from-[#f2f5fc] via-[#f7f5ff] to-[#fff0f8] rounded-xl shadow-lg p-6 flex flex-col justify-between" style={{ marginBottom: "20px" }}>
                             <h2 className="text-xl font-bold text-gray-800 mb-6 flex items-center">
-                                            <User className="w-6 h-6 mr-3 text-blue-500" />
-                                            Uczestnicy
-                                          </h2>
+                                <User className="w-6 h-6 mr-3 text-blue-500" />
+                                Uczestnicy
+                            </h2>
                             {event.members.map((member) => (
                                 <IdentityCard id={member} details={true} message={true}></IdentityCard>
                             ))}

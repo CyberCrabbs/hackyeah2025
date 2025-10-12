@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Layout from "layout/Layout";
+import Layout from "../layout/Layout";
 import MapComponent from "../components/MapComponent";
 import eventsData from "../data/events";
 

@@ -5,7 +5,7 @@ export default function Modal({ isOpen, setIsOpen, event }) {
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
       {isOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div className="fixed inset-0  bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-2xl shadow-xl p-6 relative  w-[900px]">
             <h2 className="text-xl font-semibold mb-4">{event.title}</h2>
             <p className="text-gray-600 mb-6">{event.description}</p>

@@ -35,7 +35,7 @@ jobs:
         username: ${{ secrets.SERVER_USER }}
         key: ${{ secrets.SERVER_SSH_KEY }}
         port: ${{ secrets.SERVER_PORT }}
-        source: "frontend/build/*"
+        source: "frontend/dist/*"
         target: "/tmp/hackyeah2025-build"
         strip_components: 2
 

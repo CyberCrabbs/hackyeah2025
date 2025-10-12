@@ -18,7 +18,7 @@ const Navbar = ({ onMobileMenuToggle }) => {
               href="/Volunteer"
               className="flex justify-center items-center text-gray-700 hover:font-bold font-medium text-sm md:text-base"
             >
-              <User className="w-5 h-5 md:w-6 md:h-6 text-gray-700 mr-1" /> 
+              <User className="w-5 h-5 md:w-6 md:h-6 text-gray-700 mr-1" />
               <span className="hidden md:inline">Moje konto</span>
             </a>
           </li>
@@ -27,7 +27,7 @@ const Navbar = ({ onMobileMenuToggle }) => {
               href="/login"
               className="flex justify-center items-center text-gray-700 hover:font-bold font-medium text-sm md:text-base"
             >
-              <LogOut className="w-5 h-5 md:w-6 md:h-6 text-gray-700 mr-1" /> 
+              <LogOut className="w-5 h-5 md:w-6 md:h-6 text-gray-700 mr-1" />
               <span className="hidden md:inline">Wyloguj</span>
             </a>
           </li>

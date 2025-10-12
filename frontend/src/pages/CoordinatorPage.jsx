@@ -1,4 +1,4 @@
-import Layout from "layout/Layout";
+import Layout from "../layout/Layout";
 import { Users, Calendar, FolderOpen, TrendingUp, Clock, CheckCircle, AlertCircle, Plus, UserPlus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -208,8 +208,8 @@ const CoordinatorPage = () => {
               <h2 className="text-xl font-bold mb-4">Projekty Wolontariackie</h2>
               <div className="space-y-4">
                 {projects.map((project) => (
-                  <div 
-                    key={project.id} 
+                  <div
+                    key={project.id}
                     className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer"
                     onClick={() => navigate(`/event/${project.id}`)}
                   >
@@ -222,9 +222,9 @@ const CoordinatorPage = () => {
                         {getStatusText(project.status)}
                       </span>
                     </div>
-                    
+
                     <p className="text-gray-600 mb-3">{project.description}</p>
-                    
+
                     <div className="grid grid-cols-2 gap-4 text-sm text-gray-600 mb-3">
                       <div>
                         <span className="font-medium">Koordynator:</span> {project.coordinator}
@@ -237,21 +237,21 @@ const CoordinatorPage = () => {
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-4">
                         <div className="text-sm">
-                          <span className="font-medium">Wolontariusze:</span> 
+                          <span className="font-medium">Wolontariusze:</span>
                           <span className={project.studentsAssigned === project.maxStudents ? "text-red-600" : "text-green-600"}>
                             {" "}{project.studentsAssigned}/{project.maxStudents}
                           </span>
                         </div>
                         <div className="w-32 bg-gray-200 rounded-full h-2">
-                          <div 
-                            className="bg-blue-600 h-2 rounded-full" 
+                          <div
+                            className="bg-blue-600 h-2 rounded-full"
                             style={{ width: `${(project.studentsAssigned / project.maxStudents) * 100}%` }}
                           ></div>
                         </div>
                       </div>
-                      
+
                       {project.status === "open" && (
-                        <button 
+                        <button
                           className="bg-[#2968AB] text-white px-4 py-2 rounded-md text-sm hover:bg-[#1e4d78] transition-colors"
                           onClick={(e) => {
                             e.stopPropagation();
@@ -285,7 +285,7 @@ const CoordinatorPage = () => {
                     </div>
                   </div>
                 ))}
-                
+
                 <button className="w-full py-2 border-2 border-dashed border-gray-300 rounded-lg text-gray-500 hover:border-gray-400 hover:text-gray-600 transition-colors">
                   + Zobacz wszystkich wolontariuszy
                 </button>

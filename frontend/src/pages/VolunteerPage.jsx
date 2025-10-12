@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import IdentityCard from "components/IdentityCardComponent";
-import Layout from "layout/Layout";
+import IdentityCard from "../components/IdentityCardComponent";
+import Layout from "../layout/Layout";
 import { Facebook, Instagram, Settings, MapPin, Clock, Star, MessageCircle, Calendar, Award, User, Phone, Mail, Bell, MessageSquare } from "lucide-react";
 import { useNavigate, Link } from "react-router-dom";
 
@@ -66,35 +66,34 @@ const VolunteerPage = () => {
   return (
     <Layout>
       <div className="min-h-screen bg-gray-50">
-  {/* Modern Header */}
-  <div className="relative w-full rounded-2xl h-80 overflow-hidden" style={{background: "linear-gradient(135deg, #efbcffff 0%, #84a1ffff 33%, #14ac00a4 65%, #ffee00ff 100%)"}}>
-    <div className="absolute inset-0 bg-black bg-opacity-20"></div>
-    
-    {/* Separated Background Image - Left Side */}
-    <div className="absolute right-0 top-0 h-full"
-      style={{
-        width: "800px",
-        backgroundImage: "url('https://i.imgur.com/hUkN5hD.png')",
-        backgroundSize: "100% auto",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        maskImage: "linear-gradient(to right, transparent, black 50%)",
-        WebkitMaskImage: "linear-gradient(to right, transparent, black 50%)",
-      }}
-    ></div>
-    
-    <div className="relative z-10 flex items-end h-full p-8">
-      <div className="bg-white bg-opacity-95 backdrop-blur-sm p-6 rounded-2xl shadow-xl flex items-center w-full max-w-4xl hover:bg-opacity-100 transition-all duration-300">
-        <div className="relative">
-          <div className="w-24 h-24 rounded-full overflow-hidden ring-4 ring-white shadow-lg">
-            <img
-              src="https://plus.unsplash.com/premium_photo-1689977927774-401b12d137d6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8bWFufGVufDB8fDB8fHww"
-              alt="Profile"
-              className="object-cover w-full h-full"
-            />
-          </div>
-          <div className="absolute -bottom-1 -right-1 bg-green-500 w-6 h-6 rounded-full border-2 border-white"></div>
-        </div>
+        {/* Modern Header */}
+        <div className="relative w-full rounded-2xl h-80 overflow-hidden" style={{ background: "linear-gradient(135deg, #efbcffff 0%, #84a1ffff 33%, #14ac00a4 65%, #ffee00ff 100%)" }}>
+
+          {/* Separated Background Image - Left Side */}
+          <div className="absolute right-0 top-0 h-full"
+            style={{
+              width: "800px",
+              backgroundImage: "url('https://i.imgur.com/hUkN5hD.png')",
+              backgroundSize: "100% auto",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              maskImage: "linear-gradient(to right, transparent, black 50%)",
+              WebkitMaskImage: "linear-gradient(to right, transparent, black 50%)",
+            }}
+          ></div>
+
+          <div className="relative z-10 flex items-end h-full p-8">
+            <div className="bg-white bg-opacity-95 backdrop-blur-sm p-6 rounded-2xl shadow-xl flex items-center w-full max-w-4xl hover:bg-opacity-100 transition-all duration-300">
+              <div className="relative">
+                <div className="w-24 h-24 rounded-full overflow-hidden ring-4 ring-white shadow-lg">
+                  <img
+                    src="https://plus.unsplash.com/premium_photo-1689977927774-401b12d137d6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8bWFufGVufDB8fDB8fHww"
+                    alt="Profile"
+                    className="object-cover w-full h-full"
+                  />
+                </div>
+                <div className="absolute -bottom-1 -right-1 bg-green-500 w-6 h-6 rounded-full border-2 border-white"></div>
+              </div>
 
               <div className="flex-1 ml-6">
                 <div className="flex items-center gap-3 mb-2">
@@ -115,7 +114,7 @@ const VolunteerPage = () => {
               </div>
 
               <div className="flex gap-3">
-                <button 
+                <button
                   className="relative bg-yellow-500 hover:bg-yellow-600 text-white p-3 rounded-xl shadow-lg transition-all duration-200 hover:scale-105"
                   onClick={() => setHasUnreadNotifications(false)}
                   title="Powiadomienia"
@@ -125,14 +124,14 @@ const VolunteerPage = () => {
                     <div className="absolute -top-1 -right-1 bg-red-500 w-3 h-3 rounded-full border-2 border-white animate-pulse"></div>
                   )}
                 </button>
-                <button 
+                <button
                   className="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-xl shadow-lg transition-all duration-200 hover:scale-105"
                   onClick={() => window.open('https://facebook.com', '_blank')}
                   title="Facebook"
                 >
                   <Facebook className="w-5 h-5" />
                 </button>
-                <button 
+                <button
                   className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white p-3 rounded-xl shadow-lg transition-all duration-200 hover:scale-105"
                   onClick={() => window.open('https://instagram.com', '_blank')}
                   title="Instagram"
@@ -316,7 +315,7 @@ const VolunteerPage = () => {
               <MessageSquare className="w-6 h-6 mr-3 text-green-500" />
               Zostaw komentarz o wolontariuszu
             </h2>
-            
+
             <div className="space-y-4">
               <div>
                 <label htmlFor="comment" className="block text-sm font-medium text-gray-700 mb-2">
@@ -331,12 +330,12 @@ const VolunteerPage = () => {
                   rows="4"
                 />
               </div>
-              
+
               <div className="flex justify-between items-center">
                 <span className="text-sm text-gray-500">
                   {comment.length}/500 znaków
                 </span>
-                <button 
+                <button
                   onClick={() => {
                     if (comment.trim()) {
                       alert('Komentarz został wysłany!');
@@ -349,7 +348,7 @@ const VolunteerPage = () => {
                   Wyślij komentarz
                 </button>
               </div>
-              
+
               {/* Sample comments */}
               <div className="mt-6 pt-6 border-t border-gray-200">
                 <h3 className="text-lg font-semibold text-gray-800 mb-4">Poprzednie komentarze</h3>
@@ -357,9 +356,9 @@ const VolunteerPage = () => {
                   <div className="bg-gradient-to-r from-gray-50 to-white p-4 rounded-xl border border-gray-100">
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center">
-                        <img 
-                          src="https://randomuser.me/api/portraits/women/1.jpg" 
-                          alt="Anna Kowalska" 
+                        <img
+                          src="https://randomuser.me/api/portraits/women/1.jpg"
+                          alt="Anna Kowalska"
                           className="w-8 h-8 rounded-full mr-3"
                         />
                         <span className="font-medium text-gray-800">Anna Kowalska</span>
@@ -375,13 +374,13 @@ const VolunteerPage = () => {
                     </p>
                     <span className="text-xs text-gray-400 mt-2 block">2 dni temu</span>
                   </div>
-                  
+
                   <div className="bg-gradient-to-r from-gray-50 to-white p-4 rounded-xl border border-gray-100">
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center">
-                        <img 
-                          src="https://randomuser.me/api/portraits/men/4.jpg" 
-                          alt="Piotr Nowak" 
+                        <img
+                          src="https://randomuser.me/api/portraits/men/4.jpg"
+                          alt="Piotr Nowak"
                           className="w-8 h-8 rounded-full mr-3"
                         />
                         <span className="font-medium text-gray-800">Piotr Nowak</span>

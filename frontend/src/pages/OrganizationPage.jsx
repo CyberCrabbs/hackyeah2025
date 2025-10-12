@@ -1,4 +1,4 @@
-import Layout from "layout/Layout";
+import Layout from "../layout/Layout";
 import { Facebook, Instagram, Settings, Users, Calendar, TrendingUp, Award, MapPin, Clock, MessageCircle } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import IdentityCard from "../components/IdentityCardComponent";
@@ -75,20 +75,19 @@ const OrganizationPage = () => {
       <div className="min-h-screen bg-gray-50">
         {/* Modern Header */}
         {/* Separated Background Image - Left Side */}
-    
-        <div className="relative rounded-2xl w-full h-80 overflow-hidden" style={{background: "linear-gradient(135deg, #efbcffff 0%, #84a1ffff 33%, #14ac00a4 65%, #ffee00ff 100%)"}}>
+
+        <div className="relative rounded-2xl w-full h-80 overflow-hidden" style={{ background: "linear-gradient(135deg, #efbcffff 0%, #84a1ffff 33%, #14ac00a4 65%, #ffee00ff 100%)" }}>
           <div className="absolute right-0 top-0 h-full"
-      style={{
-        width: "800px",
-        backgroundImage: "url('https://i.imgur.com/hUkN5hD.png')",
-        backgroundSize: "100% auto",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        maskImage: "linear-gradient(to right, transparent, black 50%)",
-        WebkitMaskImage: "linear-gradient(to right, transparent, black 50%)",
-      }}
-    ></div>
-          <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+            style={{
+              width: "800px",
+              backgroundImage: "url('https://i.imgur.com/hUkN5hD.png')",
+              backgroundSize: "100% auto",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              maskImage: "linear-gradient(to right, transparent, black 50%)",
+              WebkitMaskImage: "linear-gradient(to right, transparent, black 50%)",
+            }}
+          ></div>
           <div className="relative z-10 flex items-end h-full p-8">
             <div className="bg-white bg-opacity-95 backdrop-blur-sm p-6 rounded-2xl shadow-xl flex items-center w-full max-w-4xl hover:bg-opacity-100 transition-all duration-300">
               <div className="relative">
@@ -121,14 +120,14 @@ const OrganizationPage = () => {
               </div>
 
               <div className="flex gap-3">
-                <button 
+                <button
                   className="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-xl shadow-lg transition-all duration-200 hover:scale-105"
                   onClick={() => window.open('https://facebook.com', '_blank')}
                   title="Facebook"
                 >
                   <Facebook className="w-5 h-5" />
                 </button>
-                <button 
+                <button
                   className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white p-3 rounded-xl shadow-lg transition-all duration-200 hover:scale-105"
                   onClick={() => window.open('https://instagram.com', '_blank')}
                   title="Instagram"
@@ -145,7 +144,7 @@ const OrganizationPage = () => {
         </div>
 
         {/* Statistics Cards */}
-        <div className="p-8 -mt-20 relative z-20" style={{marginTop: "1rem"}}>
+        <div className="p-8 -mt-20 relative z-20" style={{ marginTop: "1rem" }}>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
             <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-300">
               <div className="flex items-center">
@@ -198,7 +197,7 @@ const OrganizationPage = () => {
 
           {/* Main Content Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            
+
             {/* Events Section */}
             <div className="lg:col-span-4 space-y-6">
               <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-[#f2f5fc] via-[#f7f5ff] to-[#fff0f8]">
@@ -207,7 +206,7 @@ const OrganizationPage = () => {
                     <Calendar className="w-6 h-6 mr-3 text-blue-500" />
                     Wydarzenia
                   </h2>
-                  <Link 
+                  <Link
                     to="/create-event"
                     className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 hover:scale-105"
                   >
@@ -224,9 +223,8 @@ const OrganizationPage = () => {
                     >
                       <div className="flex justify-between items-start mb-3">
                         <h3 className="font-semibold text-gray-800">{event.title}</h3>
-                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                          event.status === 'active' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
-                        }`}>
+                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${event.status === 'active' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
+                          }`}>
                           {event.status === 'active' ? 'Aktywne' : 'Zakończone'}
                         </span>
                       </div>
@@ -243,8 +241,8 @@ const OrganizationPage = () => {
                           {event.volunteers}/{event.maxVolunteers} wolontariuszy
                         </span>
                         <div className="w-20 bg-gray-200 rounded-full h-2">
-                          <div 
-                            className="bg-blue-500 h-2 rounded-full" 
+                          <div
+                            className="bg-blue-500 h-2 rounded-full"
                             style={{ width: `${(event.volunteers / event.maxVolunteers) * 100}%` }}
                           ></div>
                         </div>
@@ -267,7 +265,7 @@ const OrganizationPage = () => {
                   <div className="bg-gradient-to-r from-gray-50 to-white p-4 rounded-xl">
                     <h3 className="font-semibold text-gray-800 mb-3">Misja</h3>
                     <p className="text-gray-600 text-sm leading-relaxed">
-                      Celem Fundacji jest działanie na rzecz osób poszkodowanych w wypadkach drogowych i ich rodzin. 
+                      Celem Fundacji jest działanie na rzecz osób poszkodowanych w wypadkach drogowych i ich rodzin.
                       Wspieramy leczenie, regenerację sił oraz organizujemy pomoc prawną, psychologiczną i rzeczową.
                     </p>
                   </div>
@@ -312,7 +310,7 @@ const OrganizationPage = () => {
                           <p className="text-xs text-gray-500">{volunteer.joinDate}</p>
                         </div>
                       </div>
-                      
+
                       {volunteer.status === 'pending' ? (
                         <button className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg text-sm font-medium transition-all duration-200">
                           Zatwierdź udział

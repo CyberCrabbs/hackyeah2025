@@ -29,28 +29,27 @@ const Layout = ({ children }) => {
   return (
     <main className="relative w-full">
       <Navbar onMobileMenuToggle={toggleMobileDrawer} />
-      
+
       {/* Desktop Drawer - Hidden on mobile */}
       <div className="hidden md:block">
         <Drawer />
       </div>
-      
+
       {/* Mobile Drawer Overlay */}
       {isMobileDrawerOpen && (
-        <div 
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+        <div
+          className="fixed inset-0 bg-opacity-50 z-40 md:hidden"
           onClick={closeMobileDrawer}
         ></div>
       )}
-      
+
       {/* Mobile Drawer */}
-      <div className={`fixed top-0 left-0 h-full w-64 bg-white shadow-xl transform transition-transform duration-300 z-50 md:hidden ${
-        isMobileDrawerOpen ? 'translate-x-0' : '-translate-x-full'
-      }`}>
+      <div className={`fixed top-0 left-0 h-full w-64 bg-white shadow-xl transform transition-transform duration-300 z-50 md:hidden ${isMobileDrawerOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}>
         <div className="p-4">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-lg font-semibold text-gray-800">Menu</h2>
-            <button 
+            <button
               onClick={closeMobileDrawer}
               className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
             >
@@ -60,7 +59,7 @@ const Layout = ({ children }) => {
           <Drawer isMobile={true} onItemClick={closeMobileDrawer} />
         </div>
       </div>
-      
+
       {/* Mobile Menu Toggle Button */}
       <button
         onClick={toggleMobileDrawer}
@@ -69,10 +68,10 @@ const Layout = ({ children }) => {
       >
         <Menu className="w-5 h-5 text-gray-700" />
       </button>
-      
+
       {/* Main Content - Responsive margins */}
-      <section 
-        style={{ top: "7rem", zIndex: 0 }} 
+      <section
+        style={{ top: "7rem", zIndex: 0 }}
         className="absolute overflow-hidden transition-all duration-300
                    left-4 w-[calc(100%-2rem)] 
                    md:left-24 md:w-[calc(100%-7rem)] 
@@ -100,11 +99,11 @@ const Layout = ({ children }) => {
                 <div className="bg-gradient-to-r from-blue-500 to-purple-500 p-2 rounded-full flex-shrink-0">
                   <Bot className="w-4 h-4 md:w-5 md:h-5 text-white" />
                 </div>
-                
+
                 <div className="flex-1">
                   <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-2 md:p-3 mb-3">
                     <p className="text-xs md:text-sm text-gray-800 leading-relaxed">
-                      Cześć! 👋 Jestem asystentem AI Młodego Krakowa. 
+                      Cześć! 👋 Jestem asystentem AI Młodego Krakowa.
                       <br />
                       <span className="font-medium text-blue-600">Potrzebujesz pomocy z wolontariatem?</span>
                       <br />
@@ -112,7 +111,7 @@ const Layout = ({ children }) => {
                       <span className="md:hidden">Mogę Ci pomóc!</span>
                     </p>
                   </div>
-                  
+
                   <button
                     onClick={handleChatClick}
                     className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-3 md:px-4 py-2 rounded-xl text-xs md:text-sm font-medium transition-all duration-200 hover:scale-105 flex items-center justify-center gap-2"
@@ -140,7 +139,7 @@ const Layout = ({ children }) => {
         >
           <MessageCircle className="w-5 h-5 md:w-6 md:h-6" />
           <div className="absolute -top-1 -right-1 bg-red-500 w-2 h-2 md:w-3 md:h-3 rounded-full animate-pulse"></div>
-          
+
           {/* Hover tooltip - Hidden on mobile */}
           {!showChatPopup && (
             <div className="absolute bottom-full right-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 hidden md:block">

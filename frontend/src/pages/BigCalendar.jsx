@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Layout from "layout/Layout";
+import Layout from "../layout/Layout";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
@@ -20,11 +20,11 @@ export default function BigCalendar() {
   // Convert events.js data to calendar format
   const convertEventsToCalendarFormat = (eventsData) => {
     const colors = ["#3174ad", "#28a745", "#fd7e14", "#6f42c1", "#dc3545", "#17a2b8", "#ffc107", "#6c757d", "#20c997", "#e83e8c"];
-    
+
     return eventsData.map((event, index) => {
       const eventDate = new Date(event.date);
       const durationHours = parseInt(event.duration) || 2;
-      
+
       return {
         id: event.id,
         title: event.name,
@@ -105,7 +105,7 @@ export default function BigCalendar() {
           <h2 className="text-2xl font-bold text-gray-800 mb-2">Kalendarz Wydarzeń</h2>
           <p className="text-gray-600">Przeglądaj i zarządzaj wydarzeniami Młodego Krakowa</p>
         </div>
-        
+
         <div className="bg-white rounded-lg shadow-sm p-4">
           <Calendar
             views={["month", "week", "work_week", "day", "agenda"]}

@@ -1,4 +1,4 @@
-import Layout from "layout/Layout";
+import Layout from "../layout/Layout";
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
@@ -34,15 +34,15 @@ const CreateEvent = () => {
     try {
       // Simulate event creation with a delay
       await new Promise(resolve => setTimeout(resolve, 1000));
-      
+
       // Instead of making API call, redirect to event page with id 0
       setMessage("Wydarzenie utworzone pomyślnie! Przekierowywanie...");
-      
+
       // Redirect after a short delay to show success message
       setTimeout(() => {
         navigate('/event/0');
       }, 1500);
-      
+
     } catch (error) {
       setMessage(`Nie udało się utworzyć wydarzenia: ${error.message}`);
       console.error(error);
@@ -107,12 +107,11 @@ const CreateEvent = () => {
           />
         </div>
 
-        
+
 
         {message && (
-          <p className={`mb-3 ${
-            message.includes('pomyślnie') ? 'text-green-600' : 'text-red-600'
-          }`}>
+          <p className={`mb-3 ${message.includes('pomyślnie') ? 'text-green-600' : 'text-red-600'
+            }`}>
             {message}
           </p>
         )}

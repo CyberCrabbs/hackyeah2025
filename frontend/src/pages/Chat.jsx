@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
-import  "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
-import Layout from "layout/Layout";
+import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
+import Layout from "../layout/Layout";
 import { Image, Download, Calendar, Users, MapPin, Check, CheckCheck } from "lucide-react";
 import ChatIdentityCard from "../components/ChatIdentityCard";
 import identities from "../data/identities";
@@ -122,9 +122,9 @@ export default function Chat() {
     }, 1000);
 
     fetch(`https://localhost:7057/api/v1/chats/messages?userId=${userId}`)
-  .then(res => res.json())
-  .then(data => setMessages(data))
-  .catch(console.error);
+      .then(res => res.json())
+      .then(data => setMessages(data))
+      .catch(console.error);
 
 
 
@@ -154,15 +154,15 @@ export default function Chat() {
       direction: "outgoing",
       timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: false })
     };
-    
+
     // Add message to current conversation
     setMessages((prev) => [...prev, newMessage]);
-    
+
     // Update conversations data (in real app, this would be sent to server)
     if (conversations[activeConversation]) {
       conversations[activeConversation].messages.push(newMessage);
     }
-    
+
     // Simulate WebSocket send (if available)
     if (wsRef.current) {
       wsRef.current.send(JSON.stringify(newMessage));
@@ -182,9 +182,8 @@ export default function Chat() {
               {userIds.map((userId, index) => (
                 <div
                   key={userId}
-                  className={`cursor-pointer hover:bg-gray-50 p-1 rounded-lg transition-colors ${
-                    userId === activeConversation ? "bg-blue-50 border border-blue-200" : ""
-                  }`}
+                  className={`cursor-pointer hover:bg-gray-50 p-1 rounded-lg transition-colors ${userId === activeConversation ? "bg-blue-50 border border-blue-200" : ""
+                    }`}
                   onClick={() => handleConversationClick(userId)}
                 >
                   <ChatIdentityCard id={userId} details={false} />
@@ -214,7 +213,7 @@ export default function Chat() {
               </div>
             </div>
           </div>
-          
+
           {/* Chat Messages Area */}
           <div className="flex-1 flex flex-col h-full">
             {/* Custom Message List with padding and status */}
@@ -223,29 +222,26 @@ export default function Chat() {
                 const isOutgoing = m.direction === "outgoing" || m.sender === "me";
                 const isRead = isMessageRead(m, i);
                 const messageDate = getMessageDate(i);
-                
+
                 return (
                   <div key={i} className={`flex ${isOutgoing ? 'justify-end' : 'justify-start'} mb-4`}>
-                    <div className={`max-w-xs lg:max-w-md ${
-                      isOutgoing ? 'order-1' : 'order-2'
-                    }`}>
-                      {/* Message bubble */}
-                      <div className={`rounded-2xl px-4 py-3 shadow-sm ${
-                        isOutgoing 
-                          ? 'bg-blue-500 text-white rounded-br-md' 
-                          : 'bg-gray-100 text-gray-800 rounded-bl-md'
+                    <div className={`max-w-xs lg:max-w-md ${isOutgoing ? 'order-1' : 'order-2'
                       }`}>
+                      {/* Message bubble */}
+                      <div className={`rounded-2xl px-4 py-3 shadow-sm ${isOutgoing
+                        ? 'bg-blue-500 text-white rounded-br-md'
+                        : 'bg-gray-100 text-gray-800 rounded-bl-md'
+                        }`}>
                         <p className="text-sm leading-relaxed">{m.content}</p>
                       </div>
-                      
+
                       {/* Message info */}
-                      <div className={`flex items-center mt-1 space-x-2 ${
-                        isOutgoing ? 'justify-end' : 'justify-start'
-                      }`}>
+                      <div className={`flex items-center mt-1 space-x-2 ${isOutgoing ? 'justify-end' : 'justify-start'
+                        }`}>
                         <span className="text-xs text-gray-500">
                           {messageDate} • {m.timestamp || "Just now"}
                         </span>
-                        
+
                         {/* Read status for outgoing messages */}
                         {isOutgoing && (
                           <div className="flex items-center">
@@ -262,7 +258,7 @@ export default function Chat() {
                 );
               })}
             </div>
-            
+
             {/* Message Input */}
             <div className="border-t p-4">
               <MessageInput placeholder="Wpisz wiadomość tutaj." onSend={handleSend} />
@@ -276,7 +272,7 @@ export default function Chat() {
             <Image className="w-5 h-5 text-blue-600 mr-2" />
             <h4 className="text-lg font-semibold">Udostępnione Zdjęcia</h4>
           </div>
-          
+
           <div className="flex-1 overflow-y-auto p-4">
             {loading ? (
               <div className="flex items-center justify-center h-32">
@@ -292,21 +288,21 @@ export default function Chat() {
                         alt={image.alt}
                         className="w-full h-32 object-cover"
                       />
-                      <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-200 flex items-center justify-center">
+                      <div className="absolute inset-0 bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-200 flex items-center justify-center">
                         <button className="opacity-0 group-hover:opacity-100 bg-white p-2 rounded-full hover:bg-gray-100 transition-all">
                           <Download className="w-4 h-4 text-gray-700" />
                         </button>
                       </div>
                     </div>
-                    
+
                     <div className="p-3">
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-xs font-medium text-blue-600">{image.event}</span>
                         <span className="text-xs text-gray-500">{image.date}</span>
                       </div>
-                      
+
                       <p className="text-sm text-gray-800 mb-2">{image.alt}</p>
-                      
+
                       <div className="flex items-center text-xs text-gray-500">
                         <Users className="w-3 h-3 mr-1" />
                         <span>Udostępnił: {image.sharedBy}</span>
@@ -314,7 +310,7 @@ export default function Chat() {
                     </div>
                   </div>
                 ))}
-                
+
                 {sharedImages.length === 0 && (
                   <div className="text-center py-8 text-gray-500">
                     <Image className="w-12 h-12 mx-auto mb-3 text-gray-300" />
@@ -324,7 +320,7 @@ export default function Chat() {
               </div>
             )}
           </div>
-          
+
           {/* Quick Stats */}
           <div className="p-4 border-t border-gray-200 flex-shrink-0">
             <div className="grid grid-cols-2 gap-2 text-xs">

@@ -1,9 +1,9 @@
-import Layout from "layout/Layout";
-import { 
-  User, Bell, Shield, Globe, Palette, Database, 
-  Activity, TrendingUp, Users, Calendar, Award, 
-  Clock, Mail, Phone, MapPin, Camera, Edit3, 
-  Save, RotateCcw, Eye, EyeOff 
+import Layout from "../layout/Layout";
+import {
+  User, Bell, Shield, Globe, Palette, Database,
+  Activity, TrendingUp, Users, Calendar, Award,
+  Clock, Mail, Phone, MapPin, Camera, Edit3,
+  Save, RotateCcw, Eye, EyeOff
 } from "lucide-react";
 import { useState } from "react";
 
@@ -65,9 +65,9 @@ const Settings = () => {
       <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6">
         <div className="flex items-center space-x-6">
           <div className="relative">
-            <img 
-              src={userData.avatar} 
-              alt="Profile" 
+            <img
+              src={userData.avatar}
+              alt="Profile"
               className="w-24 h-24 rounded-full object-cover ring-4 ring-white shadow-lg"
             />
             <button className="absolute bottom-0 right-0 bg-blue-500 text-white p-2 rounded-full shadow-lg hover:bg-blue-600 transition-colors">
@@ -96,24 +96,24 @@ const Settings = () => {
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Imię i Nazwisko</label>
-              <input 
-                type="text" 
+              <input
+                type="text"
                 defaultValue={userData.name}
                 className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-              <input 
-                type="email" 
+              <input
+                type="email"
                 defaultValue={userData.email}
                 className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Telefon</label>
-              <input 
-                type="tel" 
+              <input
+                type="tel"
                 defaultValue={userData.phone}
                 className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
@@ -129,14 +129,14 @@ const Settings = () => {
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Adres</label>
-              <textarea 
+              <textarea
                 defaultValue={userData.address}
                 className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent h-20"
               />
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">O mnie</label>
-              <textarea 
+              <textarea
                 defaultValue={userData.bio}
                 className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent h-24"
               />
@@ -166,7 +166,7 @@ const Settings = () => {
           <Bell className="w-5 h-5 mr-2 text-yellow-500" />
           Ustawienia Powiadomień
         </h3>
-        
+
         <div className="space-y-4">
           {[
             { key: "email", label: "Powiadomienia Email", desc: "Otrzymuj powiadomienia o nowych wydarzeniach przez email" },
@@ -181,14 +181,12 @@ const Settings = () => {
               </div>
               <button
                 onClick={() => handleNotificationChange(item.key)}
-                className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                  notifications[item.key] ? 'bg-blue-500' : 'bg-gray-300'
-                }`}
+                className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${notifications[item.key] ? 'bg-blue-500' : 'bg-gray-300'
+                  }`}
               >
                 <span
-                  className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                    notifications[item.key] ? 'translate-x-6' : 'translate-x-1'
-                  }`}
+                  className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${notifications[item.key] ? 'translate-x-6' : 'translate-x-1'
+                    }`}
                 />
               </button>
             </div>
@@ -205,12 +203,12 @@ const Settings = () => {
           <Shield className="w-5 h-5 mr-2 text-red-500" />
           Bezpieczeństwo Konta
         </h3>
-        
+
         <div className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Obecne Hasło</label>
             <div className="relative">
-              <input 
+              <input
                 type={showPassword ? "text" : "password"}
                 className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent pr-10"
                 placeholder="••••••••"
@@ -223,19 +221,19 @@ const Settings = () => {
               </button>
             </div>
           </div>
-          
+
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Nowe Hasło</label>
-            <input 
+            <input
               type="password"
               className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="••••••••"
             />
           </div>
-          
+
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Potwierdź Nowe Hasło</label>
-            <input 
+            <input
               type="password"
               className="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="••••••••"
@@ -256,7 +254,7 @@ const Settings = () => {
               <span className="inline-block h-4 w-4 transform rounded-full bg-white translate-x-6" />
             </button>
           </div>
-          
+
           <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
             <div>
               <h4 className="font-medium text-gray-800">Pokaż Statystyki</h4>
@@ -322,16 +320,15 @@ const Settings = () => {
           <Activity className="w-5 h-5 mr-2 text-indigo-500" />
           Ostatnia Aktywność
         </h3>
-        
+
         <div className="space-y-4">
           {analytics.recentActivity.map((activity, index) => (
             <div key={index} className="flex items-center justify-between p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
               <div className="flex items-center space-x-4">
-                <div className={`p-2 rounded-full ${
-                  activity.type === 'event' ? 'bg-blue-100 text-blue-600' :
-                  activity.type === 'training' ? 'bg-green-100 text-green-600' :
-                  'bg-purple-100 text-purple-600'
-                }`}>
+                <div className={`p-2 rounded-full ${activity.type === 'event' ? 'bg-blue-100 text-blue-600' :
+                    activity.type === 'training' ? 'bg-green-100 text-green-600' :
+                      'bg-purple-100 text-purple-600'
+                  }`}>
                   {activity.type === 'event' && <Calendar className="w-4 h-4" />}
                   {activity.type === 'training' && <Award className="w-4 h-4" />}
                   {activity.type === 'meeting' && <Users className="w-4 h-4" />}
@@ -356,11 +353,11 @@ const Settings = () => {
           <TrendingUp className="w-5 h-5 mr-2 text-green-500" />
           Miesięczny Trend Godzin
         </h3>
-        
+
         <div className="flex items-end space-x-4 h-40">
           {analytics.monthlyHours.map((hours, index) => (
             <div key={index} className="flex-1 flex flex-col items-center">
-              <div 
+              <div
                 className="bg-gradient-to-t from-blue-500 to-blue-400 rounded-t-lg w-full transition-all hover:from-blue-600 hover:to-blue-500"
                 style={{ height: `${(hours / Math.max(...analytics.monthlyHours)) * 100}%` }}
               ></div>
@@ -409,11 +406,10 @@ const Settings = () => {
                       <button
                         key={tab.id}
                         onClick={() => setActiveTab(tab.id)}
-                        className={`w-full flex items-center px-4 py-3 rounded-xl text-left transition-all ${
-                          activeTab === tab.id
+                        className={`w-full flex items-center px-4 py-3 rounded-xl text-left transition-all ${activeTab === tab.id
                             ? 'bg-blue-50 text-blue-600 border border-blue-200'
                             : 'text-gray-600 hover:bg-gray-50 hover:text-gray-800'
-                        }`}
+                          }`}
                       >
                         <Icon className="w-5 h-5 mr-3" />
                         {tab.label}
